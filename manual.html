@@ -244,6 +244,16 @@ called implicitly:</p>
 did not find a method <code class="code docutils literal notranslate"><span class="pre">a.method</span></code> to call, it will instead be interpreted as <code class="code docutils literal notranslate"><span class="pre">method(a,</span> <span class="pre">b)</span></code>.
 This allows easily defining global functions that can be called as if they are member functions of <code class="code docutils literal notranslate"><span class="pre">a</span></code>.</p>
 </section>
+<section id="named-arguments">
+<h4>Named Arguments<a class="headerlink" href="#named-arguments" title="Permalink to this headline"></a></h4>
+<p>The value of every parameter on a call may be assigned by name:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">twice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">twice</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This feature does not allow reordering parameters! It is purely intended to improve call readability, and to
+ensure that arguments are passed to the intended parameter.</p>
+</section>
 </section>
 <section id="nested-functions">
 <h3>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this headline"></a></h3>
@@ -564,6 +574,14 @@ nullable:</p>
 <span class="n">Foo</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span><span class="c1">// errors</span><span class="w"></span>
 </pre></div>
 </div>
+</section>
+<section id="symbol-identifier">
+<h3>Symbol Identifier<a class="headerlink" href="#symbol-identifier" title="Permalink to this headline"></a></h3>
+<p>A symbol identifier takes the form <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
+<p>It is both a type and an expression. The type <code class="code docutils literal notranslate"><span class="pre">:name</span></code> has one value, which is also <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
+<p>This feature can be used to “type-tag” entries in sumtypes, to differentiate identically
+typed entries, such as <code class="code docutils literal notranslate"><span class="pre">(:centimeters,</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">:meters,</span> <span class="pre">int)</span></code>.</p>
+<p>It is also used to construct “value-less” sumtype entries, such as <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">:none)</span></code>.</p>
 </section>
 <section id="typeof">
 <h3><code class="code docutils literal notranslate"><span class="pre">typeof</span></code><a class="headerlink" href="#typeof" title="Permalink to this headline"></a></h3>
