@@ -92,6 +92,17 @@ Structs, classes, templates and functions can be declared by name.
 Every declaration can be marked as `public` or `private`; they are `public` by default.
 Private declarations cannot be seen when the module is imported.
 
+Extern(C)
+^^^^^^^^^
+
+A function can be declared as `extern(C)`. This will ensure that it matches the calling convention of the platform's native C compiler.
+
+For example::
+
+    extern(C) void* memcpy(void* dest, void* src, size_t n);
+
+Note: instead of declaring lots of extern(C) functions manually, try using the `neat.macros.cimport` built-in macro! (Grep for examples.)
+
 Expressions
 -----------
 
@@ -167,7 +178,7 @@ A function, class method or struct method can be called with a comma-separated l
 
     class.method();
 
-When a function does not have any parameters, the empty parents can be left out, and the function will be
+When a function does not have any parameters, the empty parens can be left out, and the function will be
 called implicitly::
 
     doWork;
@@ -347,6 +358,7 @@ int    32-bit signed integer
 short  16-bit signed integer
 byte   8-bit signed integer
 char   8-bit UTF-8 code unit
+long   64-bit signed integer
 void   0-bit empty data
 size_t platform-dependent unsigned word
 float  32-bit IEEE floating point number
