@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Neat Language" href="manual.html" />
+    <link rel="prev" title="Getting Started" href="getstarted.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="intro"></span><section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
+<section id="what-is-neat">
+<h2>What is Neat?<a class="headerlink" href="#what-is-neat" title="Permalink to this headline"></a></h2>
+<p>Neat is a C-like statically-typed native compiled language with automated reference counting, OOP and macros.
+If you already know <a class="reference external" href="https://www.dlang.org/">D</a>, it’s very similar to D1. But without a garbage collector. And with less powerful
+templates. But with macros!</p>
+<p>While different platforms are supported in theory, at the moment Neat <strong>only works on Linux.</strong></p>
+<p>Compared to D, it has some upsides and some downsides. It’s a lot younger and a lot less tested. It also compiles
+a lot slower. (<a class="reference external" href="https://en.wikipedia.org/wiki/Walter_Bright">Walter Bright</a> is an actual wizard.) However, as well as being extensible, it has built-in support
+for some things that are cumbersome library constructs in D: sum types, tuples, named parameters, and format strings.
+It also comes with built-in package management support.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I am aware that people who try Neat now are taking a big risk, as the language is still subject to massive change.
+To reduce this risk, <strong>Neat contains a mechanism to download, build and execute older versions of the compiler</strong>.
+If you pin the compiler version in your package.json, any future version of Neat that may be installed on your
+system will still build your project with the original version that you last used. This way, you have full
+control of the rate at which your project updates.</p>
+</div>
+</section>
+<section id="why-make-another-new-language">
+<h2>Why make another new language?<a class="headerlink" href="#why-make-another-new-language" title="Permalink to this headline"></a></h2>
+<p>The most important thing to me is that you should <strong>have fun using Neat.</strong> The biggest innovative new language in
+C-likes, Rust, is primarily built on not letting you do things. Nobody understands what the hell C++ is doing anymore,
+it’s approaching string theory levels of opaqueness. Go is specifically built on the premise that Google developers
+are incompetent and must be kept away from any semblance of language power. D is a shining light of developer
+empowerment, but <em>:snip ten minutes of gripes with the project:</em>. I believe that writing Neat should be easy and fun.
+If you do something stupid, the compiler should tell you with a nice readable error, if you want to do it anyway,
+the compiler should get out of your way. If you do things in the straightforward way, you should get straightforward
+results. Alternately, if you want to prototype a new syntax or type approach, that should be easy too. A simple,
+extensible, expressive core, predictable results, power but no magic. That’s the dream.</p>
+</section>
+<section id="okay-so-what-is-neat-like">
+<h2>Okay, so what is Neat like?<a class="headerlink" href="#okay-so-what-is-neat-like" title="Permalink to this headline"></a></h2>
+<p>Neat uses single class inheritance with multiple interfaces; classes are always
+reference types, and are intended to control state mutation, whereas structs are by-value, plain old data,
+cannot be inherited and are intended to represent domain values.</p>
+<p>C style functions look as they do in C.
+For high-level code, you can also operate on ranges, which are data types that yield successive values.
+This affords a style similar to functional programming at the function level.
+This style is supported by lambda expressions and nested functions, creating pure computational
+building blocks that are composable and testable.</p>
+<p>There’s a rich set of built-in type constructors, including length-aware arrays, hashmaps, sumtypes and tuples.</p>
+<p>Variables are immutable and unreferenceable <a class="footnote-reference brackets" href="#references" id="id1">1</a> by default, but can be easily marked as mutable.</p>
+<p>Neat code is divided into modules; each module corresponds to one file, and can be non-transitively imported into
+other modules.</p>
+<p>For reusable code, Neat also has template support, though it’s in the beginning stages. Sum types are reused for
+error handling, using built-in syntax to easily propagate errors upcall.</p>
+<p>Note that all of these are subject to change as the language develops. Neat is written in idiomatic Neat
+and BSD-licensed. The code won’t win any prizes as it stands, but I’m very much open to pull requests. If I’ve made
+a stupid decision, anything can be fixed. :-)</p>
+</section>
+<section id="a-digression-why-reference-counting">
+<h2>A digression: why reference counting?<a class="headerlink" href="#a-digression-why-reference-counting" title="Permalink to this headline"></a></h2>
+<p>In a divergence from D, Neat uses reference counting as its memory management strategy. With automatic
+lifetime tracking, this is mostly transparent to users. While the memory management
+is in total more expensive than memory management in D, the costs in memory and cleanup overhead are more
+predictable and evenly distributed.</p>
+<p>(Turns out that when he said that GC was in total faster, Walter Bright was right. Who could have predicted this.)</p>
+<p>Also reference-counting memory management is vulnerable to reference cycles. At the moment, my advice to address
+this is to avoid creating reference cycles.</p>
+<p>So why am I going with reference counting if I know GC is better?</p>
+<p>I’ve been in the D community for a decade and a half. People keep telling us they don’t like the GC.
+They keep saying GC is a dealbreaker. They want predictable memory usage and cleanup times. Somehow, none of
+this is ever an issue with C# and Java. Somehow, the fact that any memory allocator, including glibc’s, can incur
+arbitrary delays never matters. Well, fine! Fine. Whatever. I disagree with the choice, but as an offshoot of
+an offshoot, I really can’t afford alienating folks. I’m tired of arguing this point. Nobody has ever said that
+reference counting was a dealbreaker. So reference counting it is.</p>
+</section>
+<section id="is-neat-production-ready">
+<h2>Is Neat production ready?<a class="headerlink" href="#is-neat-production-ready" title="Permalink to this headline"></a></h2>
+<p>No. It is not. It is <em>hilariously</em> not.</p>
+<p>While every subsystem I really wanted for the language is in place, they’re all somewhere between
+90% and 10% built out. Hashmaps support int keys and string keys only. Overloading is barely a thing. Vectors are in,
+but not matrices. <em>Every part of the language</em> is like that. Any commit I try to make to a non-compiler Neat project
+requires me to make another to compiler, to fix the issues that inevitably crop up.
+(That’s an improvement. It used to be two.)</p>
+<p>But that said, it works. It runs, it can read source and compile it. And, you know, even now, even unfinished as it is,
+I’d like to think that some parts are pretty slick. Even neat, if you will. ;-)</p>
+</section>
+<section id="a-note-on-security">
+<h2>A note on security<a class="headerlink" href="#a-note-on-security" title="Permalink to this headline"></a></h2>
+<p>Neat has no runtime limitations on macros. A macro can do anything that the compiler itself can do. As a result,
+any package you include can run arbitrary code on your system. While this may seem unsafe, how often do you build
+a binary and then not run it anyways? Meanwhile, any build system that lets dependencies add prebuild steps,
+which is pretty much all of them, already allows unrestricted code execution. If you run a build farm, you already know
+to always run builds in VMs. As a private user, just keep in mind that building a Neat project is as good as
+running it, from a security perspective.</p>
+</section>
+<section id="final-notes">
+<h2>Final notes<a class="headerlink" href="#final-notes" title="Permalink to this headline"></a></h2>
+<p>Please report bugs on Github as you find them. Patches are welcome. And most importantly, have fun!</p>
+<dl class="footnote brackets">
+<dt class="label" id="references"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Buy me a drink and ask me why referenceability is the great killer of language and library design
+that nobody ever talks about.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Neat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-neat">What is Neat?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-make-another-new-language">Why make another new language?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#okay-so-what-is-neat-like">Okay, so what is Neat like?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-digression-why-reference-counting">A digression: why reference counting?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#is-neat-production-ready">Is Neat production ready?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-note-on-security">A note on security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#final-notes">Final notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">The Neat Language</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="getstarted.html" title="previous chapter">Getting Started</a></li>
+      <li>Next: <a href="manual.html" title="next chapter">The Neat Language</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, @FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
