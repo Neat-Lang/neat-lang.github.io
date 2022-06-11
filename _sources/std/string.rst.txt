@@ -1,0 +1,112 @@
+.. _std_string:
+.. highlight:: d
+
+std.string
+----------
+
+.. c:namespace:: std.string
+
+Module entries: :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
+
+.. function:: cToString(ptr)
+
+    `string cToString(char* ptr)`
+
+    TODO: document
+
+.. function:: cToStringFree(ptr)
+
+    `string cToStringFree(char* ptr)`
+
+    TODO: document
+
+.. function:: endsWith(haystack, needle)
+
+    `bool endsWith(string haystack, string needle)`
+
+    TODO: document
+
+    Example::
+
+        assert("Hello World".endsWith("World"));
+        assert(!"Hello World".endsWith("Hello"));
+
+    Example::
+
+        assert(itoa(5) == "5");
+        assert(itoa(-3) == "-3");
+
+    Example::
+
+        assert(atoi("5") == 5);
+        assert(atoi("-3") == -3);
+
+.. function:: find(text, match)
+
+    `int find(string text, string match)`
+
+    ///
+
+    Example::
+
+        assert("Hello World".find("o") == 4);
+        assert("Hello World".find("p") == -1);
+
+.. function:: join(array, sep)
+
+    `string join(string[] array, string sep)`
+
+    TODO: document
+
+.. function:: replace(str, match, replace)
+
+    `string replace(string str, string match, string replace)`
+
+    TODO: document
+
+.. function:: slice(text, sep)
+
+    `TODO repr(ASTSymbol): src/std/string.nt:102:1 slice(string text, string sep)`
+
+    TODO: document
+
+.. function:: split(text, sep)
+
+    `string[] split(string text, string sep)`
+
+    TODO: document
+
+    Example::
+
+        assert("Hello World".split(" ") == ["Hello", "World"]);
+        assert("Hello".split(" ") == ["Hello"]);
+        assert("".split(" ").length == 0);
+
+.. function:: startsWith(haystack, needle)
+
+    `bool startsWith(string haystack, string needle)`
+
+    TODO: document
+
+    Example::
+
+        assert("Hello World".startsWith("Hello"));
+        assert(!"Hello World".startsWith("World"));
+
+.. function:: strip(text)
+
+    `string strip(string text)`
+
+    TODO: document
+
+.. function:: toHexString(data)
+
+    `string toHexString(ubyte[] data)`
+
+    TODO: document
+
+.. function:: toStringz(s)
+
+    `char* toStringz(string s)`
+
+    TODO: document

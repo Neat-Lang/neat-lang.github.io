@@ -1,0 +1,57 @@
+.. _neat_runtime:
+.. highlight:: d
+
+neat.runtime
+------------
+
+.. c:namespace:: neat.runtime
+
+Module entries: :func:`assert`, :func:`atof`, :func:`atoi`, :func:`dtoa_hex`, :func:`ftoa`, :func:`itoa`, :func:`ltoa`, :func:`toStringz`
+
+.. function:: assert(test)
+
+    `void assert(int test)`
+
+    TODO: document
+
+.. function:: atof(s)
+
+    `double atof(string s)`
+
+    TODO: document
+
+.. function:: atoi(s)
+
+    `int atoi(string s)`
+
+    TODO: document
+
+.. function:: dtoa_hex(d)
+
+    `string dtoa_hex(double d)`
+
+    TODO: document
+
+.. function:: ftoa(d)
+
+    `string ftoa(double d)`
+
+    TODO: document
+
+.. function:: itoa(i)
+
+    `string itoa(int i)`
+
+    TODO: document
+
+.. function:: ltoa(l)
+
+    `string ltoa(long l)`
+
+    TODO: document
+
+.. function:: toStringz(s)
+
+    `char* toStringz(string s)`
+
+    TODO: document

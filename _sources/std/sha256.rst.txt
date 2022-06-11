@@ -1,0 +1,69 @@
+.. _std_sha256:
+.. highlight:: d
+
+std.sha256
+----------
+
+.. c:namespace:: std.sha256
+
+Module entries: :func:`ch`, :func:`f1`, :func:`f2`, :func:`f3`, :func:`f4`, :func:`maj`, :func:`pack32`, :func:`rotr`, :func:`unpack32`, :func:`xor`
+
+.. function:: ch(x, y, z)
+
+    `int ch(int x, int y, int z)`
+
+    TODO: document
+
+.. function:: f1(x)
+
+    `int f1(int x)`
+
+    TODO: document
+
+.. function:: f2(x)
+
+    `int f2(int x)`
+
+    TODO: document
+
+.. function:: f3(x)
+
+    `int f3(int x)`
+
+    TODO: document
+
+.. function:: f4(x)
+
+    `int f4(int x)`
+
+    TODO: document
+
+.. function:: maj(x, y, z)
+
+    `int maj(int x, int y, int z)`
+
+    TODO: document
+
+.. function:: pack32(source)
+
+    `int pack32(ubyte[] source)`
+
+    TODO: document
+
+.. function:: rotr(x, n)
+
+    `int rotr(int x, int n)`
+
+    TODO: document
+
+.. function:: unpack32(i, target)
+
+    `void unpack32(int i, ubyte[] target)`
+
+    TODO: document
+
+.. function:: xor(a, b)
+
+    `int xor(int a, int b)`
+
+    TODO: document

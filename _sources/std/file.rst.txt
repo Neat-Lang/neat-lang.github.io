@@ -1,0 +1,85 @@
+.. _std_file:
+.. highlight:: d
+
+std.file
+--------
+
+.. c:namespace:: std.file
+
+Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
+
+.. function:: basename(path)
+
+    `string basename(string path)`
+
+    The base filename part of a path.
+
+    Example::
+
+        assert("foo/bar.txt".basename == "bar.txt");
+
+.. function:: dirname(path)
+
+    `string dirname(string path)`
+
+    The directory part of a path.
+
+    Example::
+
+        assert("foo/bar.txt".dirname == "foo");
+
+.. function:: exists(file)
+
+    `bool exists(string file)`
+
+    True if the given file exists.
+
+.. function:: mkdir(path)
+
+    `void mkdir(string path)`
+
+    Create a folder with the given path. The parent folder must exist.
+
+.. function:: readFile(file)
+
+    `ubyte[] readFile(string file)`
+
+    Read the given file into a buffer and return the buffer.
+
+.. function:: readText(file)
+
+    `string readText(string file)`
+
+    Read the given file into a string buffer and return it. The file must be a text file.
+
+.. function:: realpath(path)
+
+    `string realpath(string path)`
+
+    The canonicalized absolute pathname of the parameter.
+
+.. function:: remove(path)
+
+    `void remove(string path)`
+
+    Delete the given file from the filesystem.
+
+.. function:: withoutExtension(s)
+
+    `string withoutExtension(string s)`
+
+    If the path parameter ends with a string of the form `.abcd`, return the path with it removed.
+
+    Else return the path unchanged.
+
+.. function:: writeFile(file, data)
+
+    `void writeFile(string file, ubyte[] data)`
+
+    Write the given buffer into a file.
+
+.. function:: writeText(path, data)
+
+    `void writeText(string path, string data)`
+
+    Write the given string buffer into a file.

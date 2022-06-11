@@ -1,0 +1,121 @@
+.. _std_math:
+.. highlight:: d
+
+std.math
+--------
+
+.. c:namespace:: std.math
+
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+
+.. function:: abs(d)
+
+    `double abs(double d)`
+
+    TODO: document
+
+.. function:: abs(f)
+
+    `float abs(float f)`
+
+    TODO: document
+
+.. function:: abs(i)
+
+    `int abs(int i)`
+
+    TODO: document
+
+.. function:: acos(f)
+
+    `float acos(float f)`
+
+    TODO: document
+
+.. function:: cos(f)
+
+    `float cos(float f)`
+
+    TODO: document
+
+.. function:: exp(f)
+
+    `float exp(float f)`
+
+    TODO: document
+
+.. function:: max(a, b)
+
+    `int max(int a, int b)`
+
+    TODO: document
+
+.. function:: max(a, b)
+
+    `float max(float a, float b)`
+
+    TODO: document
+
+.. function:: max(a, b)
+
+    `double max(double a, double b)`
+
+    TODO: document
+
+    Example::
+
+        assert(max(2, 3) == 3);
+        assert(max(-4.5, -5) == -4.5);
+
+.. function:: min(a, b)
+
+    `int min(int a, int b)`
+
+    TODO: document
+
+.. function:: min(a, b)
+
+    `size_t min(size_t a, size_t b)`
+
+    TODO: document
+
+.. function:: min(a, b)
+
+    `float min(float a, float b)`
+
+    TODO: document
+
+.. function:: min(a, b)
+
+    `double min(double a, double b)`
+
+    TODO: document
+
+    Example::
+
+        assert(min(2, 3) == 2);
+        assert(min(-4.5, -5) == -5);
+
+.. function:: pow(x, y)
+
+    `float pow(float x, float y)`
+
+    TODO: document
+
+.. function:: sin(f)
+
+    `float sin(float f)`
+
+    TODO: document
+
+.. function:: sqrt(f)
+
+    `float sqrt(float f)`
+
+    TODO: document
+
+.. function:: tan(f)
+
+    `float tan(float f)`
+
+    TODO: document

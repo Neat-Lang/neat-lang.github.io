@@ -1,0 +1,37 @@
+.. _std_math_vector:
+.. highlight:: d
+
+std.math.vector
+---------------
+
+.. c:namespace:: std.math.vector
+
+Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
+
+.. function:: angle(a, b)
+
+    `float angle(vec3f a, vec3f b)`
+
+    TODO: document
+
+.. function:: cross(a, b)
+
+    `vec3f cross(vec3f a, vec3f b)`
+
+    TODO: document
+
+.. function:: length(v)
+
+    `float length(vec3f v)`
+
+    TODO: document
+
+.. function:: normal(v)
+
+    `vec3f normal(vec3f v)`
+
+    TODO: document
+
+    Example::
+
+        assert(vec3f(2, 0, 0).normal == vec3f(1, 0, 0));

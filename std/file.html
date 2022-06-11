@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>std.file &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="std.json" href="json.html" />
+    <link rel="prev" title="std.algorithm" href="algorithm.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>std.file<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Module entries: <a class="reference internal" href="#basename" title="basename"><code class="xref py py-func docutils literal notranslate"><span class="pre">basename()</span></code></a>, <a class="reference internal" href="#dirname" title="dirname"><code class="xref py py-func docutils literal notranslate"><span class="pre">dirname()</span></code></a>, <a class="reference internal" href="#exists" title="exists"><code class="xref py py-func docutils literal notranslate"><span class="pre">exists()</span></code></a>, <a class="reference internal" href="#mkdir" title="mkdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">mkdir()</span></code></a>, <a class="reference internal" href="#readFile" title="readFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">readFile()</span></code></a>, <a class="reference internal" href="#readText" title="readText"><code class="xref py py-func docutils literal notranslate"><span class="pre">readText()</span></code></a>, <a class="reference internal" href="#realpath" title="realpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">realpath()</span></code></a>, <a class="reference internal" href="#remove" title="remove"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove()</span></code></a>, <a class="reference internal" href="#withoutExtension" title="withoutExtension"><code class="xref py py-func docutils literal notranslate"><span class="pre">withoutExtension()</span></code></a>, <a class="reference internal" href="#writeFile" title="writeFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeFile()</span></code></a>, <a class="reference internal" href="#writeText" title="writeText"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeText()</span></code></a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="basename">
+<span class="sig-name descname"><span class="pre">basename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#basename" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">basename(string</span> <span class="pre">path)</span></code></p>
+<p>The base filename part of a path.</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="s">&quot;foo/bar.txt&quot;</span><span class="p">.</span><span class="n">basename</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;bar.txt&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dirname">
+<span class="sig-name descname"><span class="pre">dirname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#dirname" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">dirname(string</span> <span class="pre">path)</span></code></p>
+<p>The directory part of a path.</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="s">&quot;foo/bar.txt&quot;</span><span class="p">.</span><span class="n">dirname</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="exists">
+<span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exists" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">exists(string</span> <span class="pre">file)</span></code></p>
+<p>True if the given file exists.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mkdir">
+<span class="sig-name descname"><span class="pre">mkdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mkdir" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">mkdir(string</span> <span class="pre">path)</span></code></p>
+<p>Create a folder with the given path. The parent folder must exist.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="readFile">
+<span class="sig-name descname"><span class="pre">readFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#readFile" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">ubyte[]</span> <span class="pre">readFile(string</span> <span class="pre">file)</span></code></p>
+<p>Read the given file into a buffer and return the buffer.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="readText">
+<span class="sig-name descname"><span class="pre">readText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#readText" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">readText(string</span> <span class="pre">file)</span></code></p>
+<p>Read the given file into a string buffer and return it. The file must be a text file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="realpath">
+<span class="sig-name descname"><span class="pre">realpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#realpath" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">realpath(string</span> <span class="pre">path)</span></code></p>
+<p>The canonicalized absolute pathname of the parameter.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#remove" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">remove(string</span> <span class="pre">path)</span></code></p>
+<p>Delete the given file from the filesystem.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="withoutExtension">
+<span class="sig-name descname"><span class="pre">withoutExtension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#withoutExtension" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">withoutExtension(string</span> <span class="pre">s)</span></code></p>
+<p>If the path parameter ends with a string of the form <code class="code docutils literal notranslate"><span class="pre">.abcd</span></code>, return the path with it removed.</p>
+<p>Else return the path unchanged.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="writeFile">
+<span class="sig-name descname"><span class="pre">writeFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#writeFile" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">writeFile(string</span> <span class="pre">file,</span> <span class="pre">ubyte[]</span> <span class="pre">data)</span></code></p>
+<p>Write the given buffer into a file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="writeText">
+<span class="sig-name descname"><span class="pre">writeText</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#writeText" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">writeText(string</span> <span class="pre">path,</span> <span class="pre">string</span> <span class="pre">data)</span></code></p>
+<p>Write the given string buffer into a file.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Neat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual.html">The Neat Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../std.html">Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">std.file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../std.html">Standard Library</a><ul>
+      <li>Previous: <a href="algorithm.html" title="previous chapter">std.algorithm</a></li>
+      <li>Next: <a href="json.html" title="next chapter">std.json</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, @FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/std/file.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>std.json &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="std.math" href="math.html" />
+    <link rel="prev" title="std.file" href="file.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>std.json<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Module entries: <a class="reference internal" href="#jsonParseImpl" title="jsonParseImpl"><code class="xref py py-func docutils literal notranslate"><span class="pre">jsonParseImpl()</span></code></a>, <a class="reference internal" href="#parseNumber" title="parseNumber"><code class="xref py py-func docutils literal notranslate"><span class="pre">parseNumber()</span></code></a>, <a class="reference internal" href="#parseStringLiteral" title="parseStringLiteral"><code class="xref py py-func docutils literal notranslate"><span class="pre">parseStringLiteral()</span></code></a>, <a class="reference internal" href="#quote" title="quote"><code class="xref py py-func docutils literal notranslate"><span class="pre">quote()</span></code></a>, <a class="reference internal" href="#replaceEscapes" title="replaceEscapes"><code class="xref py py-func docutils literal notranslate"><span class="pre">replaceEscapes()</span></code></a>, <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="jsonParseImpl">
+<span class="sig-name descname"><span class="pre">jsonParseImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseImpl" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">jsonParseImpl(Parser</span> <span class="pre">parser)</span></code></p>
+<p>TODO: document</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parseNumber">
+<span class="sig-name descname"><span class="pre">parseNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parseNumber" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">parseNumber(Parser</span> <span class="pre">parser)</span></code></p>
+<p>TODO: document</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JSONValue</span><span class="p">([(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">JSONValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">))]);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">str</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;{\&quot;Hello\&quot;: \&quot;World\&quot;}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">JSONValue</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;{\&quot;Hello\&quot;: \&quot;World\&quot;}&quot;</span><span class="p">).</span><span class="n">str</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;{\&quot;Hello\&quot;: \&quot;World\&quot;}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// TODO</span><span class="w"></span>
+<span class="c1">// auto value = JSONValue({ &quot;Hello&quot;: &quot;World&quot; });</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="parseStringLiteral">
+<span class="sig-name descname"><span class="pre">parseStringLiteral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parseStringLiteral" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">parseStringLiteral(Parser</span> <span class="pre">parser)</span></code></p>
+<p>TODO: document</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="quote">
+<span class="sig-name descname"><span class="pre">quote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quote" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">quote(string</span> <span class="pre">s)</span></code></p>
+<p>TODO: document</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="replaceEscapes">
+<span class="sig-name descname"><span class="pre">replaceEscapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replaceEscapes" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">replaceEscapes(string</span> <span class="pre">text)</span></code></p>
+<p>TODO: document</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="str">
+<span class="sig-name descname"><span class="pre">str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">str(JSONValue</span> <span class="pre">jv)</span></code></p>
+<p>TODO: document</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Neat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual.html">The Neat Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../std.html">Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">std.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../std.html">Standard Library</a><ul>
+      <li>Previous: <a href="file.html" title="previous chapter">std.file</a></li>
+      <li>Next: <a href="math.html" title="next chapter">std.math</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, @FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/std/json.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

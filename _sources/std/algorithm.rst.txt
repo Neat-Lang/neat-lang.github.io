@@ -1,0 +1,56 @@
+.. _std_algorithm:
+.. highlight:: d
+
+std.algorithm
+-------------
+
+.. c:namespace:: std.algorithm
+
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`map`
+
+.. function:: all(left, right)
+
+    `bool all(T, U)(T left, U right)`
+
+    TODO: document
+
+    Example::
+
+        auto a = (0 .. 5).map(a => a * 2);
+
+        assert(a.length == 5);
+        assert(a.array == [0, 2, 4, 6, 8]);
+
+.. function:: any(left, right)
+
+    `bool any(T, U)(T left, U right)`
+
+    TODO: document
+
+.. function:: array(range)
+
+    `TODO repr(ASTSymbol): src/std/algorithm.nt:39:5[] array(T)(T range)`
+
+    TODO: document
+
+.. function:: filter(left, right)
+
+    `FilterRange!(T, U) filter(T, U)(T left, U right)`
+
+    TODO: document
+
+.. function:: map(left, right)
+
+    `MapRange!(T, U) map(T, U)(T left, U right)`
+
+    Maps a range onto a lambda.
+
+    If the input range is `[x, y, z]`,
+    the output range is `[lambda(x), lambda(y), lambda(z)]`.
+
+    Example::
+
+        auto a = (0 .. 5).map(a => a * 2);
+
+        assert(a.length == 5);
+        assert(a.array == [0, 2, 4, 6, 8]);

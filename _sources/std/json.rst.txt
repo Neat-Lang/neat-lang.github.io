@@ -1,0 +1,53 @@
+.. _std_json:
+.. highlight:: d
+
+std.json
+--------
+
+.. c:namespace:: std.json
+
+Module entries: :func:`jsonParseImpl`, :func:`parseNumber`, :func:`parseStringLiteral`, :func:`quote`, :func:`replaceEscapes`, :func:`str`
+
+.. function:: jsonParseImpl(parser)
+
+    `TODO repr(ASTSymbol): :1:1 jsonParseImpl(Parser parser)`
+
+    TODO: document
+
+.. function:: parseNumber(parser)
+
+    `TODO repr(ASTSymbol): :1:1 parseNumber(Parser parser)`
+
+    TODO: document
+
+    Example::
+
+        auto value = JSONValue([("Hello", JSONValue("World"))]);
+        assert(value.str == "{\"Hello\": \"World\"}");
+        assert(JSONValue.parse("{\"Hello\": \"World\"}").str == "{\"Hello\": \"World\"}");
+        // TODO
+        // auto value = JSONValue({ "Hello": "World" });
+
+.. function:: parseStringLiteral(parser)
+
+    `TODO repr(ASTSymbol): :1:1 parseStringLiteral(Parser parser)`
+
+    TODO: document
+
+.. function:: quote(s)
+
+    `string quote(string s)`
+
+    TODO: document
+
+.. function:: replaceEscapes(text)
+
+    `string replaceEscapes(string text)`
+
+    TODO: document
+
+.. function:: str(jv)
+
+    `string str(JSONValue jv)`
+
+    TODO: document

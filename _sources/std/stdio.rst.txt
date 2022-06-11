@@ -1,0 +1,15 @@
+.. _std_stdio:
+.. highlight:: d
+
+std.stdio
+---------
+
+.. c:namespace:: std.stdio
+
+Module entries: :func:`print`
+
+.. function:: print(str)
+
+    `void print(string str)`
+
+    TODO: document
