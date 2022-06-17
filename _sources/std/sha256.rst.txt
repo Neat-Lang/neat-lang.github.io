@@ -6,64 +6,32 @@ std.sha256
 
 .. c:namespace:: std.sha256
 
-Module entries: :func:`ch`, :func:`f1`, :func:`f2`, :func:`f3`, :func:`f4`, :func:`maj`, :func:`pack32`, :func:`rotr`, :func:`unpack32`, :func:`xor`
+Module entries: :class:`Sha256`
 
-.. function:: ch(x, y, z)
+.. class:: Sha256
 
-    `int ch(int x, int y, int z)`
+    Computes the SHA-256 hash of a piece of data.
 
-    TODO: document
+    .. method:: this()
 
-.. function:: f1(x)
+        `this()`
 
-    `int f1(int x)`
+        Create a new instance.
 
-    TODO: document
+    .. method:: update(data)
 
-.. function:: f2(x)
+        `void update(ubyte[] data)`
 
-    `int f2(int x)`
+        Update the hash for a block of data.
 
-    TODO: document
+        The result for calling update multiple times is
+        the same as if update had been called once with all
+        data.
 
-.. function:: f3(x)
+    .. method:: finalize()
 
-    `int f3(int x)`
+        `ubyte[] finalize()`
 
-    TODO: document
+        Return the hash value.
 
-.. function:: f4(x)
-
-    `int f4(int x)`
-
-    TODO: document
-
-.. function:: maj(x, y, z)
-
-    `int maj(int x, int y, int z)`
-
-    TODO: document
-
-.. function:: pack32(source)
-
-    `int pack32(ubyte[] source)`
-
-    TODO: document
-
-.. function:: rotr(x, n)
-
-    `int rotr(int x, int n)`
-
-    TODO: document
-
-.. function:: unpack32(i, target)
-
-    `void unpack32(int i, ubyte[] target)`
-
-    TODO: document
-
-.. function:: xor(a, b)
-
-    `int xor(int a, int b)`
-
-    TODO: document
+        `update` must not be called past this point.

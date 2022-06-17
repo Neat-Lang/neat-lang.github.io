@@ -6,38 +6,49 @@ std.algorithm
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`map`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`map`, :func:`sort`
 
 .. function:: all(left, right)
 
     `bool all(T, U)(T left, U right)`
 
-    TODO: document
+    Returns true if all values in the range fulfill the condition.
 
     Example::
 
-        auto a = (0 .. 5).map(a => a * 2);
-
-        assert(a.length == 5);
-        assert(a.array == [0, 2, 4, 6, 8]);
+        assert((0 .. 5).all(a => a < 5));
 
 .. function:: any(left, right)
 
     `bool any(T, U)(T left, U right)`
 
-    TODO: document
+    Returns true if any value in the range fulfills the condition.
+
+    Example::
+
+        assert((0 .. 5).any(a => a == 3));
 
 .. function:: array(range)
 
-    `TODO repr(ASTSymbol): src/std/algorithm.nt:39:5[] array(T)(T range)`
+    `typeof(range.front)[] array(T)(T range)`
 
-    TODO: document
+    Converts a range into an array.
+
+    Example::
+
+        assert((0 .. 5).array == [0, 1, 2, 3, 4]);
 
 .. function:: filter(left, right)
 
     `FilterRange!(T, U) filter(T, U)(T left, U right)`
 
-    TODO: document
+    Filters a range by a condition.
+
+    Example::
+
+        auto a = (0 .. 10).filter(a => a > 4).array;
+
+        assert(a == [5, 6, 7, 8, 9]);
 
 .. function:: map(left, right)
 
@@ -54,3 +65,9 @@ Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`
 
         assert(a.length == 5);
         assert(a.array == [0, 2, 4, 6, 8]);
+
+.. function:: sort(array, smaller)
+
+    `T sort(T, U)(T array, U smaller)`
+
+    TODO: document

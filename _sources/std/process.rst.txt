@@ -12,16 +12,16 @@ Module entries: :func:`getEnv`, :func:`readback`, :func:`system`
 
     `string getEnv(string name)`
 
-    TODO: document
+    The value of the environment variable named `name`.
 
 .. function:: readback(command)
 
     `string readback(string command)`
 
-    TODO: document
+    Executes the shell command and returns the output it wrote.
 
 .. function:: system(command)
 
     `void system(string command)`
 
-    TODO: document
+    Executes the shell command.

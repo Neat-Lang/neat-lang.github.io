@@ -1,0 +1,225 @@
+.. _std_thread:
+.. highlight:: d
+
+std.thread
+----------
+
+.. c:namespace:: std.thread
+
+Module entries: :class:`CondVar`, :class:`Mutex`, :class:`Semaphore`, :class:`Task`, :class:`ThreadLocal`, :class:`ThreadPool`, :class:`Waitable`
+
+.. class:: CondVar
+
+    This class implements condition variables.
+
+    A condition variable allows a thread to wait until a condition is signaled.
+    The provided mutex must be locked when `wait` is called. It will be locked
+    when wait returns, but be unlocked for the intermediate time.
+
+    .. method:: this(mutex)
+
+        `this(this.mutex)`
+
+
+    .. method:: wait()
+
+        `void wait()`
+
+        Wait for a thread to signal us.
+
+    .. method:: signal()
+
+        `void signal()`
+
+        Wake up (at least) one waiting thread.
+
+    .. method:: broadcast()
+
+        `void broadcast()`
+
+        Wake up all waiting threads.
+
+.. class:: Mutex
+
+    This class implements mutual exclusion.
+
+    `lock` and `unlock` calls must be paired. Only one thread may be between `lock`
+    and `unlock` at the same time. To enforce this, the second thread's `lock` will
+    block until the first thread calls `unlock`.
+
+    Example::
+
+        auto mutex = new Mutex;
+
+        assert(!mutex.isLocked);
+        with (mutex.locked) {
+            assert(mutex.isLocked);
+        }
+        assert(!mutex.isLocked);
+
+    Example::
+
+        auto mutex = new Mutex;
+
+        void returnTest() {
+            with (mutex.locked) {
+                return;
+            }
+        }
+        returnTest;
+        assert(!mutex.isLocked);
+
+    .. method:: this()
+
+        `this()`
+
+
+    .. method:: lock()
+
+        `void lock()`
+
+        Lock the mutex.
+
+    .. method:: locked()
+
+        `LockGuard locked()`
+
+        Scope guard that automatically calls lock on scope entry and unlock on scope exit.
+
+    .. method:: unlocked()
+
+        `UnlockGuard unlocked()`
+
+        Scope guard that automatically calls unlock on scope entry and lock on scope exit.
+
+        Used to implement work loops that want to release their lock to do some task.
+
+    .. method:: unlock()
+
+        `void unlock()`
+
+        Unlock the mutex.
+
+.. class:: Semaphore
+
+    This class implements a counting semaphore.
+
+    `acquire` will only return when a matching number
+    of `release` calls has taken place.
+
+    .. method:: this(i)
+
+        `this(int i)`
+
+        Initialize the class with a number of available tokens.
+
+    .. method:: acquire()
+
+        `void acquire()`
+
+        Consume a token if available; block if not.
+
+    .. method:: release()
+
+        `void release()`
+
+        Provide a token.
+
+.. class:: Task
+
+    The superclass for a task that can be scheduled to run on a thread pool.
+
+    .. method:: run()
+
+        `void run()`
+
+
+.. class:: ThreadLocal
+
+    This class wraps a value that is unique per thread accessing it.
+
+    .. method:: this()
+
+        `this()`
+
+        Initialize a `ThreadLocal`.
+
+    .. method:: set(value)
+
+        `void set(T value)`
+
+        Set the `ThreadLocal` to a new value.
+
+    .. method:: get()
+
+        `T get()`
+
+        Get the value stored in the `ThreadLocal`.
+        If `set` has not been called, the default value for the type
+        is returned.
+
+.. class:: ThreadPool
+
+    A thread pool decouples threads and units of action. It manages multiple threads
+    and keeps a queue of tasks, which are distributed over threads as they become available.
+
+    .. method:: this(i)
+
+        `this(int i)`
+
+        Create a thread pool with a number of threads.
+
+    .. method:: waitComplete(progress)
+
+        `void waitComplete(void delegate(float) progress)`
+
+        Returns when all queued tasks have completed.
+        The callback will be invoked with a number between 0 and 1, indicating progress.
+        Intended for standalone tools that want to present a progress bar.
+
+    .. method:: addTask(task)
+
+        `void addTask(Task task)`
+
+        Add a task to the pool's task queue.
+
+    .. method:: getTask()
+
+        `Task getTask()`
+
+        For internal use, returns a task when one has been queued.
+
+.. class:: Waitable
+
+    A convenience wrapper around CondVar that allows waiting
+    for the outcome of an operation.
+
+    .. method:: this(value)
+
+        `this(this.value)`
+
+        Create the class with an initial value.
+
+    .. method:: set(value)
+
+        `void set(T value)`
+
+        Set the stored value to a new value.
+
+    .. method:: update(action)
+
+        `void update(T delegate(T) action)`
+
+        Provide an action that updates the stored value.
+
+    .. method:: waitFor(condition)
+
+        `void waitFor(bool delegate(T) condition)`
+
+        Wait for the stored value to fulfill the condition.
+
+    .. method:: waitReact(condition, react)
+
+        `void waitReact(bool delegate(T) condition, T delegate(T) react)`
+
+        Wait for the stored value to fulfill the condition, then modify it.

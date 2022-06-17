@@ -1,0 +1,75 @@
+.. _std_time:
+.. highlight:: d
+
+std.time
+--------
+
+.. c:namespace:: std.time
+
+Module entries: :class:`Stopwatch`, :class:`Time`
+
+.. class:: Stopwatch
+
+    This class allows measuring time taken by some task.
+
+    The stopwatch starts out stopped.
+
+    .. method:: this()
+
+        `this()`
+
+        Instantiate the class.
+
+    .. method:: stopped()
+
+        `bool stopped()`
+
+        True if the stopwatch is stopped.
+
+    .. method:: seconds()
+
+        `float seconds()`
+
+        The number of seconds accumulated on the stopwatch.
+        Note that the stopwatch must be stopped to access this property.
+
+    .. method:: start()
+
+        `void start()`
+
+        Start the stopwatch.
+
+    .. method:: stop()
+
+        `void stop()`
+
+        Stop the stopwatch.
+
+    .. method:: split()
+
+        `Stopwatch split()`
+
+        Split and reset the stopwatch.
+
+        This method returns another stopwatch stopped at the previous time.
+        If the stopwatch is still running, by the time it is stopped, the sum
+        of the returned stopwatch's seconds and this one's will be the same
+        as if the stopwatch had not been split.
+
+        So this function allows atomically taking a "checkpoint" of the stopwatch.
+
+.. class:: Time
+
+    This type describes a time without a timezone.
+
+    .. method:: secondsSince(other)
+
+        `float secondsSince(Time other)`
+
+        The number of fractional seconds from another time to this one.
+
+    .. method:: now()
+
+        `Time now()`
+
+        The current time in the system timezone.

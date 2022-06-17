@@ -12,4 +12,4 @@ Module entries: :func:`print`
 
     `void print(string str)`
 
-    TODO: document
+    Print a string to standard output.

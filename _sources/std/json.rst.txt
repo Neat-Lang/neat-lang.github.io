@@ -6,19 +6,11 @@ std.json
 
 .. c:namespace:: std.json
 
-Module entries: :func:`jsonParseImpl`, :func:`parseNumber`, :func:`parseStringLiteral`, :func:`quote`, :func:`replaceEscapes`, :func:`str`
+Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
 
-.. function:: jsonParseImpl(parser)
+.. class:: JSONValue
 
-    `TODO repr(ASTSymbol): :1:1 jsonParseImpl(Parser parser)`
-
-    TODO: document
-
-.. function:: parseNumber(parser)
-
-    `TODO repr(ASTSymbol): :1:1 parseNumber(Parser parser)`
-
-    TODO: document
+    This type represents a JSON value.
 
     Example::
 
@@ -28,26 +20,62 @@ Module entries: :func:`jsonParseImpl`, :func:`parseNumber`, :func:`parseStringLi
         // TODO
         // auto value = JSONValue({ "Hello": "World" });
 
-.. function:: parseStringLiteral(parser)
+    .. method:: parse(str)
 
-    `TODO repr(ASTSymbol): :1:1 parseStringLiteral(Parser parser)`
+        `JSONValue parse(string str)`
 
-    TODO: document
+        Parse a JSON value from a string.
 
-.. function:: quote(s)
+    .. method:: loadFile(file)
 
-    `string quote(string s)`
+        `JSONValue loadFile(string file)`
 
-    TODO: document
+        Load a JSON value from a file.
 
-.. function:: replaceEscapes(text)
+    .. method:: object()
 
-    `string replaceEscapes(string text)`
+        `(string key, JSONValue value)[] object()`
 
-    TODO: document
+        Interprets a JSON value as an object.
+
+    .. method:: isObject()
+
+        `bool isObject()`
+
+        Returns true if the JSON value is an object.
+
+    .. method:: get(key)
+
+        `JSONValue get(string key)`
+
+        Returns the JSON value for a key.
+
+    .. method:: has(key)
+
+        `bool has(string key)`
+
+        Returns true if the JSON value, which must be an object, contains the key.
+
+    .. method:: set(key, value)
+
+        `void set(string key, JSONValue value)`
+
+        Sets the given key to a value.
+
+    .. method:: keys()
+
+        `string[] keys()`
+
+        Given the value is an object, returns an array of string keys.
+
+.. function:: jsonParseImpl(parser)
+
+    `(JSONValue | fail Error) jsonParseImpl(Parser parser)`
+
+    For internal (re)use!
 
 .. function:: str(jv)
 
     `string str(JSONValue jv)`
 
-    TODO: document
+    Converts a JSON value to a string.

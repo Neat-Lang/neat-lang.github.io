@@ -15,7 +15,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="std.sha256" href="sha256.html" />
+    <link rel="next" title="std.range.iota" href="range/iota.html" />
     <link rel="prev" title="std.math.vector" href="math/vector.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -40,21 +40,21 @@
 <dt class="sig sig-object py" id="getEnv">
 <span class="sig-name descname"><span class="pre">getEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getEnv" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">getEnv(string</span> <span class="pre">name)</span></code></p>
-<p>TODO: document</p>
+<p>The value of the environment variable named <code class="code docutils literal notranslate"><span class="pre">name</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="readback">
 <span class="sig-name descname"><span class="pre">readback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#readback" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">readback(string</span> <span class="pre">command)</span></code></p>
-<p>TODO: document</p>
+<p>Executes the shell command and returns the output it wrote.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="system">
 <span class="sig-name descname"><span class="pre">system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#system" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">system(string</span> <span class="pre">command)</span></code></p>
-<p>TODO: document</p>
+<p>Executes the shell command.</p>
 </dd></dl>
 
 </section>
@@ -86,11 +86,15 @@
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thread.html">std.thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">std.time</a></li>
 </ul>
 </li>
 </ul>
@@ -101,7 +105,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="../std.html">Standard Library</a><ul>
       <li>Previous: <a href="math/vector.html" title="previous chapter">std.math.vector</a></li>
-      <li>Next: <a href="sha256.html" title="next chapter">std.sha256</a></li>
+      <li>Next: <a href="range/iota.html" title="next chapter">std.range.iota</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -132,7 +136,7 @@
       &copy;2021, @FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -15,7 +15,7 @@ Standard Library
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`map`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`filter`, :func:`map`, :func:`sort`
 
 .. rubric:: std.file
 
@@ -27,13 +27,19 @@ Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`
 
 .. c:namespace:: std.json
 
-Module entries: :func:`jsonParseImpl`, :func:`parseNumber`, :func:`parseStringLiteral`, :func:`quote`, :func:`replaceEscapes`, :func:`str`
+Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
 
 .. rubric:: std.math
 
 .. c:namespace:: std.math
 
-Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+
+.. rubric:: std.math.matrix
+
+.. c:namespace:: std.math.matrix
+
+Module entries: :class:`mat4x4`
 
 .. rubric:: std.math.vector
 
@@ -47,11 +53,17 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
 
 Module entries: :func:`getEnv`, :func:`readback`, :func:`system`
 
+.. rubric:: std.range.iota
+
+.. c:namespace:: std.range.iota
+
+Module entries: :class:`Iota`
+
 .. rubric:: std.sha256
 
 .. c:namespace:: std.sha256
 
-Module entries: :func:`ch`, :func:`f1`, :func:`f2`, :func:`f3`, :func:`f4`, :func:`maj`, :func:`pack32`, :func:`rotr`, :func:`unpack32`, :func:`xor`
+Module entries: :class:`Sha256`
 
 .. rubric:: std.stdio
 
@@ -63,4 +75,16 @@ Module entries: :func:`print`
 
 .. c:namespace:: std.string
 
-Module entries: :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
+Module entries: :func:`atoi`, :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`itoa`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
+
+.. rubric:: std.thread
+
+.. c:namespace:: std.thread
+
+Module entries: :class:`CondVar`, :class:`Mutex`, :class:`Semaphore`, :class:`Task`, :class:`ThreadLocal`, :class:`ThreadPool`, :class:`Waitable`
+
+.. rubric:: std.time
+
+.. c:namespace:: std.time
+
+Module entries: :class:`Stopwatch`, :class:`Time`

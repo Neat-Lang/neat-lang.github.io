@@ -6,75 +6,89 @@ std.string
 
 .. c:namespace:: std.string
 
-Module entries: :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
+Module entries: :func:`atoi`, :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`itoa`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
 
-.. function:: cToString(ptr)
+.. function:: atoi(s)
 
-    `string cToString(char* ptr)`
+    `int atoi(string s)`
 
-    TODO: document
-
-.. function:: cToStringFree(ptr)
-
-    `string cToStringFree(char* ptr)`
-
-    TODO: document
-
-.. function:: endsWith(haystack, needle)
-
-    `bool endsWith(string haystack, string needle)`
-
-    TODO: document
-
-    Example::
-
-        assert("Hello World".endsWith("World"));
-        assert(!"Hello World".endsWith("Hello"));
-
-    Example::
-
-        assert(itoa(5) == "5");
-        assert(itoa(-3) == "-3");
+    The string `s` converted to an integer.
 
     Example::
 
         assert(atoi("5") == 5);
         assert(atoi("-3") == -3);
 
+.. function:: cToString(ptr)
+
+    `string cToString(char* ptr)`
+
+    Convert a C zero-terminated string pointer to a Neat string.
+
+.. function:: cToStringFree(ptr)
+
+    `string cToStringFree(char* ptr)`
+
+    Convert a C zero-terminated string pointer to a Neat string.
+
+    For convenience, also frees the original pointer.
+
+.. function:: endsWith(haystack, needle)
+
+    `bool endsWith(string haystack, string needle)`
+
+    Returns true if `haystack` ends with `needle`.
+
+    Example::
+
+        assert("Hello World".endsWith("World"));
+        assert(!"Hello World".endsWith("Hello"));
+
 .. function:: find(text, match)
 
     `int find(string text, string match)`
 
-    ///
+    The offset in `text` at which `match` occurs, or -1 if it doesn't.
 
     Example::
 
         assert("Hello World".find("o") == 4);
         assert("Hello World".find("p") == -1);
 
+.. function:: itoa(i)
+
+    `string itoa(int i)`
+
+    The integer `i` converted to a string.
+
+    Example::
+
+        assert(itoa(5) == "5");
+        assert(itoa(-3) == "-3");
+
 .. function:: join(array, sep)
 
     `string join(string[] array, string sep)`
 
-    TODO: document
+    All strings in `array`, concatenated and joined with `sep`.
 
 .. function:: replace(str, match, replace)
 
     `string replace(string str, string match, string replace)`
 
-    TODO: document
+    `str` with all occurrences of `match` replaced with `replace`.
 
 .. function:: slice(text, sep)
 
-    `TODO repr(ASTSymbol): src/std/string.nt:102:1 slice(string text, string sep)`
+    `(string fragment, string rest) slice(string text, string sep)`
 
-    TODO: document
+    `text` split into two halves at the first occurrence of `sep`.
 
 .. function:: split(text, sep)
 
     `string[] split(string text, string sep)`
 
-    TODO: document
+    `text` split at every occurrence of `sep`.
 
     Example::
 
@@ -86,7 +100,7 @@ Module entries: :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :fun
 
     `bool startsWith(string haystack, string needle)`
 
-    TODO: document
+    Returns true if `haystack` starts with `needle`.
 
     Example::
 
@@ -97,16 +111,16 @@ Module entries: :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :fun
 
     `string strip(string text)`
 
-    TODO: document
+    `text`, with leading and trailing whitespace removed.
 
 .. function:: toHexString(data)
 
     `string toHexString(ubyte[] data)`
 
-    TODO: document
+    The lower-case hexadecimal representation of the given byte data `data`.
 
 .. function:: toStringz(s)
 
     `char* toStringz(string s)`
 
-    TODO: document
+    Convert a Neat string to a C zero-terminated string pointer.

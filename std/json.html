@@ -35,19 +35,11 @@
             
   <section id="id1">
 <h1>std.json<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
-<p>Module entries: <a class="reference internal" href="#jsonParseImpl" title="jsonParseImpl"><code class="xref py py-func docutils literal notranslate"><span class="pre">jsonParseImpl()</span></code></a>, <a class="reference internal" href="#parseNumber" title="parseNumber"><code class="xref py py-func docutils literal notranslate"><span class="pre">parseNumber()</span></code></a>, <a class="reference internal" href="#parseStringLiteral" title="parseStringLiteral"><code class="xref py py-func docutils literal notranslate"><span class="pre">parseStringLiteral()</span></code></a>, <a class="reference internal" href="#quote" title="quote"><code class="xref py py-func docutils literal notranslate"><span class="pre">quote()</span></code></a>, <a class="reference internal" href="#replaceEscapes" title="replaceEscapes"><code class="xref py py-func docutils literal notranslate"><span class="pre">replaceEscapes()</span></code></a>, <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a></p>
-<dl class="py function">
-<dt class="sig sig-object py" id="jsonParseImpl">
-<span class="sig-name descname"><span class="pre">jsonParseImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseImpl" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">jsonParseImpl(Parser</span> <span class="pre">parser)</span></code></p>
-<p>TODO: document</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="parseNumber">
-<span class="sig-name descname"><span class="pre">parseNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parseNumber" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">parseNumber(Parser</span> <span class="pre">parser)</span></code></p>
-<p>TODO: document</p>
+<p>Module entries: <a class="reference internal" href="#JSONValue" title="JSONValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONValue</span></code></a>, <a class="reference internal" href="#jsonParseImpl" title="jsonParseImpl"><code class="xref py py-func docutils literal notranslate"><span class="pre">jsonParseImpl()</span></code></a>, <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="JSONValue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">JSONValue</span></span><a class="headerlink" href="#JSONValue" title="Permalink to this definition"></a></dt>
+<dd><p>This type represents a JSON value.</p>
 <p>Example:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JSONValue</span><span class="p">([(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">JSONValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">))]);</span><span class="w"></span>
 <span class="k">assert</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">str</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;{\&quot;Hello\&quot;: \&quot;World\&quot;}&quot;</span><span class="p">);</span><span class="w"></span>
@@ -56,34 +48,76 @@
 <span class="c1">// auto value = JSONValue({ &quot;Hello&quot;: &quot;World&quot; });</span><span class="w"></span>
 </pre></div>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.parse" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">parse(string</span> <span class="pre">str)</span></code></p>
+<p>Parse a JSON value from a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.loadFile">
+<span class="sig-name descname"><span class="pre">loadFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.loadFile" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">loadFile(string</span> <span class="pre">file)</span></code></p>
+<p>Load a JSON value from a file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.object">
+<span class="sig-name descname"><span class="pre">object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.object" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(string</span> <span class="pre">key,</span> <span class="pre">JSONValue</span> <span class="pre">value)[]</span> <span class="pre">object()</span></code></p>
+<p>Interprets a JSON value as an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.isObject">
+<span class="sig-name descname"><span class="pre">isObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.isObject" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">isObject()</span></code></p>
+<p>Returns true if the JSON value is an object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.get" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">get(string</span> <span class="pre">key)</span></code></p>
+<p>Returns the JSON value for a key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.has">
+<span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.has" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">has(string</span> <span class="pre">key)</span></code></p>
+<p>Returns true if the JSON value, which must be an object, contains the key.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.set" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">set(string</span> <span class="pre">key,</span> <span class="pre">JSONValue</span> <span class="pre">value)</span></code></p>
+<p>Sets the given key to a value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.keys" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string[]</span> <span class="pre">keys()</span></code></p>
+<p>Given the value is an object, returns an array of string keys.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="parseStringLiteral">
-<span class="sig-name descname"><span class="pre">parseStringLiteral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#parseStringLiteral" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">TODO</span> <span class="pre">repr(ASTSymbol):</span> <span class="pre">:1:1</span> <span class="pre">parseStringLiteral(Parser</span> <span class="pre">parser)</span></code></p>
-<p>TODO: document</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="quote">
-<span class="sig-name descname"><span class="pre">quote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quote" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">quote(string</span> <span class="pre">s)</span></code></p>
-<p>TODO: document</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="replaceEscapes">
-<span class="sig-name descname"><span class="pre">replaceEscapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replaceEscapes" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">replaceEscapes(string</span> <span class="pre">text)</span></code></p>
-<p>TODO: document</p>
+<dt class="sig sig-object py" id="jsonParseImpl">
+<span class="sig-name descname"><span class="pre">jsonParseImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseImpl" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(JSONValue</span> <span class="pre">|</span> <span class="pre">fail</span> <span class="pre">Error)</span> <span class="pre">jsonParseImpl(Parser</span> <span class="pre">parser)</span></code></p>
+<p>For internal (re)use!</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="str">
 <span class="sig-name descname"><span class="pre">str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">str(JSONValue</span> <span class="pre">jv)</span></code></p>
-<p>TODO: document</p>
+<p>Converts a JSON value to a string.</p>
 </dd></dl>
 
 </section>
@@ -115,11 +149,15 @@
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thread.html">std.thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">std.time</a></li>
 </ul>
 </li>
 </ul>
@@ -161,7 +199,7 @@
       &copy;2021, @FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

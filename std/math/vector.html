@@ -16,7 +16,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="std.process" href="../process.html" />
-    <link rel="prev" title="std.math" href="../math.html" />
+    <link rel="prev" title="std.math.matrix" href="matrix.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -40,28 +40,28 @@
 <dt class="sig sig-object py" id="angle">
 <span class="sig-name descname"><span class="pre">angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#angle" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">float</span> <span class="pre">angle(vec3f</span> <span class="pre">a,</span> <span class="pre">vec3f</span> <span class="pre">b)</span></code></p>
-<p>TODO: document</p>
+<p>Return the angle between two vectors in radians.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cross">
 <span class="sig-name descname"><span class="pre">cross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cross" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">vec3f</span> <span class="pre">cross(vec3f</span> <span class="pre">a,</span> <span class="pre">vec3f</span> <span class="pre">b)</span></code></p>
-<p>TODO: document</p>
+<p>Compute the cross product of two vectors.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="length">
 <span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#length" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">float</span> <span class="pre">length(vec3f</span> <span class="pre">v)</span></code></p>
-<p>TODO: document</p>
+<p>Return the length of the vector.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="normal">
 <span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#normal" title="Permalink to this definition"></a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">vec3f</span> <span class="pre">normal(vec3f</span> <span class="pre">v)</span></code></p>
-<p>TODO: document</p>
+<p>Return a normalized vector; that is, a vector with length 1.</p>
 <p>Example:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">(</span><span class="n">vec3f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">).</span><span class="n">normal</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="n">vec3f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
 </pre></div>
@@ -97,11 +97,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">std.math.vector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../process.html">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stdio.html">std.stdio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../string.html">std.string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thread.html">std.thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html">std.time</a></li>
 </ul>
 </li>
 </ul>
@@ -111,7 +115,7 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../../std.html">Standard Library</a><ul>
-      <li>Previous: <a href="../math.html" title="previous chapter">std.math</a></li>
+      <li>Previous: <a href="matrix.html" title="previous chapter">std.math.matrix</a></li>
       <li>Next: <a href="../process.html" title="next chapter">std.process</a></li>
   </ul></li>
   </ul></li>
@@ -143,7 +147,7 @@
       &copy;2021, @FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

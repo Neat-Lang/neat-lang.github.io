@@ -1,0 +1,29 @@
+.. _c_pthread:
+.. highlight:: d
+
+c.pthread
+---------
+
+.. c:namespace:: c.pthread
+
+Module entries: :class:`pthread_cond_t`, :class:`pthread_key_t`, :class:`pthread_mutex_t`, :class:`pthread_mutexattr_t`, :class:`pthread_t`
+
+.. class:: pthread_cond_t
+
+    TODO: document
+
+.. class:: pthread_key_t
+
+    TODO: document
+
+.. class:: pthread_mutex_t
+
+    TODO: document
+
+.. class:: pthread_mutexattr_t
+
+    TODO: document
+
+.. class:: pthread_t
+
+    TODO: document

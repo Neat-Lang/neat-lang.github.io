@@ -12,25 +12,25 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
 
     `float angle(vec3f a, vec3f b)`
 
-    TODO: document
+    Return the angle between two vectors in radians.
 
 .. function:: cross(a, b)
 
     `vec3f cross(vec3f a, vec3f b)`
 
-    TODO: document
+    Compute the cross product of two vectors.
 
 .. function:: length(v)
 
     `float length(vec3f v)`
 
-    TODO: document
+    Return the length of the vector.
 
 .. function:: normal(v)
 
     `vec3f normal(vec3f v)`
 
-    TODO: document
+    Return a normalized vector; that is, a vector with length 1.
 
     Example::
 

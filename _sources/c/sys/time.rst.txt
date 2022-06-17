@@ -1,0 +1,13 @@
+.. _c_sys_time:
+.. highlight:: d
+
+c.sys.time
+----------
+
+.. c:namespace:: c.sys.time
+
+Module entries: :class:`timeval`
+
+.. class:: timeval
+
+    TODO: document

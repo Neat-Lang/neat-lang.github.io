@@ -6,61 +6,68 @@ std.math
 
 .. c:namespace:: std.math
 
-Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
 
 .. function:: abs(d)
 
     `double abs(double d)`
 
-    TODO: document
+    Returns the absolute (ie. positive) value of the parameter.
 
 .. function:: abs(f)
 
     `float abs(float f)`
 
-    TODO: document
+    Returns the absolute (ie. positive) value of the parameter.
 
 .. function:: abs(i)
 
     `int abs(int i)`
 
-    TODO: document
+    Returns the absolute (ie. positive) value of the parameter.
 
 .. function:: acos(f)
 
     `float acos(float f)`
 
-    TODO: document
+    Returns the arc cosine of the parameter.
+
+.. function:: atan2(y, x)
+
+    `float atan2(float y, float x)`
+
+    Returns the arc tangent of y/x.
+    This is the angle between a point (x, y) and the X axis.
 
 .. function:: cos(f)
 
     `float cos(float f)`
 
-    TODO: document
+    Returns the cosine of the parameter in radians.
 
 .. function:: exp(f)
 
     `float exp(float f)`
 
-    TODO: document
+    Returns the exponential value of the parameter.
 
 .. function:: max(a, b)
 
     `int max(int a, int b)`
 
-    TODO: document
+    Returns the maximum of `a` and `b`.
 
 .. function:: max(a, b)
 
     `float max(float a, float b)`
 
-    TODO: document
+    Returns the maximum of `a` and `b`.
 
 .. function:: max(a, b)
 
     `double max(double a, double b)`
 
-    TODO: document
+    Returns the maximum of `a` and `b`.
 
     Example::
 
@@ -71,25 +78,25 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`cos`
 
     `int min(int a, int b)`
 
-    TODO: document
+    Returns the minimum of `a` and `b`.
 
 .. function:: min(a, b)
 
     `size_t min(size_t a, size_t b)`
 
-    TODO: document
+    Returns the minimum of `a` and `b`.
 
 .. function:: min(a, b)
 
     `float min(float a, float b)`
 
-    TODO: document
+    Returns the minimum of `a` and `b`.
 
 .. function:: min(a, b)
 
     `double min(double a, double b)`
 
-    TODO: document
+    Returns the minimum of `a` and `b`.
 
     Example::
 
@@ -100,22 +107,22 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`cos`
 
     `float pow(float x, float y)`
 
-    TODO: document
+    Returns `x` raised to the power of `y`.
 
 .. function:: sin(f)
 
     `float sin(float f)`
 
-    TODO: document
+    Returns the sine of the parameter in radians.
 
 .. function:: sqrt(f)
 
     `float sqrt(float f)`
 
-    TODO: document
+    Returns the square root of f.
 
 .. function:: tan(f)
 
     `float tan(float f)`
 
-    TODO: document
+    Returns the tangent of the parameter in radians.
