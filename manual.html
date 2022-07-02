@@ -114,7 +114,8 @@ Private declarations cannot be seen when the module is imported.</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="nb">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Note: instead of declaring lots of extern(C) functions manually, try using the <code class="code docutils literal notranslate"><span class="pre">neat.macros.cimport</span></code> built-in macro! (Grep for examples.)</p>
+<p>Note: instead of declaring lots of extern(C) functions manually, try using the
+<code class="code docutils literal notranslate"><span class="pre">std.macro.cimport</span></code> built-in macro! (Grep for examples.)</p>
 </section>
 </section>
 <section id="expressions">
@@ -666,7 +667,7 @@ Macro classes can extend the compiler with new functionality using a set of hook
 <li><p>statements: <code class="code docutils literal notranslate"><span class="pre">macroThing;</span></code></p></li>
 <li><p>imports: <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">github(&quot;http://github.com/neat-lang/example&quot;).module;</span></code></p></li>
 </ul>
-<p>Look at <code class="code docutils literal notranslate"><span class="pre">neat.macros.*</span></code> for examples.</p>
+<p>Look at <code class="code docutils literal notranslate"><span class="pre">std.macro.*</span></code> for examples.</p>
 <p>The entire compiler is available for importing and reuse in macros. However, it is recommended
 to limit yourself to the functionality in <code class="code docutils literal notranslate"><span class="pre">neat.base</span></code>. This will also keep compile times down.</p>
 </section>

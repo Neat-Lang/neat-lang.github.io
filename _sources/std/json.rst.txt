@@ -70,7 +70,7 @@ Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
 
 .. function:: jsonParseImpl(parser)
 
-    `(JSONValue | fail Error) jsonParseImpl(Parser parser)`
+    `(JSONValue | fail Error) jsonParseImpl(ParserImpl parser)`
 
     For internal (re)use!
 

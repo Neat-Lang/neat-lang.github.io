@@ -54,6 +54,7 @@
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
 </div>
@@ -67,6 +68,8 @@
         <li><a href="std/math.html#abs">built-in function</a>, <a href="std/math.html#id0">[1]</a>, <a href="std/math.html#id2">[2]</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.accept">accept() (ParserImpl method)</a>
+</li>
       <li>
     acos()
 
@@ -77,6 +80,15 @@
       <li><a href="std/thread.html#Semaphore.acquire">acquire() (Semaphore method)</a>
 </li>
       <li><a href="std/thread.html#ThreadPool.addTask">addTask() (ThreadPool method)</a>
+</li>
+      <li>
+    advance()
+
+      <ul>
+        <li><a href="neat/parser.html#advance">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#StackEntry.advanceOneCharNonNewline">advanceOneCharNonNewline() (StackEntry method)</a>
 </li>
       <li>
     all()
@@ -99,8 +111,6 @@
         <li><a href="std/algorithm.html#any">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     array()
 
@@ -108,11 +118,39 @@
         <li><a href="std/algorithm.html#array">built-in function</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     assert()
 
       <ul>
         <li><a href="neat/runtime.html#assert">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#Loc.assert">assert() (Loc method)</a>
+</li>
+      <li><a href="neat/parser.html#Loc.assert2s2">assert2s2() (Loc method)</a>
+
+      <ul>
+        <li><a href="neat/parser.html#ParserImpl.assert2s2">(ParserImpl method)</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#Loc.assert2s3">assert2s3() (Loc method)</a>
+
+      <ul>
+        <li><a href="neat/parser.html#ParserImpl.assert2s3">(ParserImpl method)</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#Loc.assert2s4">assert2s4() (Loc method)</a>
+
+      <ul>
+        <li><a href="neat/parser.html#ParserImpl.assert2s4">(ParserImpl method)</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#Loc.assert2s5">assert2s5() (Loc method)</a>
+
+      <ul>
+        <li><a href="neat/parser.html#ParserImpl.assert2s5">(ParserImpl method)</a>
 </li>
       </ul></li>
       <li>
@@ -149,6 +187,8 @@
         <li><a href="std/file.html#basename">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.begin">begin() (ParserImpl method)</a>
+</li>
       <li><a href="std/thread.html#CondVar.broadcast">broadcast() (CondVar method)</a>
 </li>
       <li>
@@ -158,6 +198,8 @@
         <li><a href="std/math.html#abs">abs()</a>, <a href="std/math.html#id0">[1]</a>, <a href="std/math.html#id2">[2]</a>
 </li>
         <li><a href="std/math.html#acos">acos()</a>
+</li>
+        <li><a href="neat/parser.html#advance">advance()</a>
 </li>
         <li><a href="std/algorithm.html#all">all()</a>
 </li>
@@ -197,11 +239,21 @@
 </li>
         <li><a href="std/algorithm.html#filter">filter()</a>
 </li>
-        <li><a href="std/string.html#find">find()</a>
+        <li><a href="neat/parser.html#find">find()</a>, <a href="std/string.html#find">[1]</a>
 </li>
         <li><a href="neat/runtime.html#ftoa">ftoa()</a>
 </li>
         <li><a href="std/process.html#getEnv">getEnv()</a>
+</li>
+        <li><a href="neat/parser.html#isAlnum">isAlnum()</a>
+</li>
+        <li><a href="neat/parser.html#isAlpha">isAlpha()</a>
+</li>
+        <li><a href="neat/parser.html#isDigit">isDigit()</a>
+</li>
+        <li><a href="neat/parser.html#isHexDigit">isHexDigit()</a>
+</li>
+        <li><a href="neat/parser.html#isWhitespace">isWhitespace()</a>
 </li>
         <li><a href="neat/runtime.html#itoa">itoa()</a>, <a href="std/string.html#itoa">[1]</a>
 </li>
@@ -215,13 +267,21 @@
 </li>
         <li><a href="std/algorithm.html#map">map()</a>
 </li>
-        <li><a href="std/math.html#id3">max()</a>, <a href="std/math.html#id4">[1]</a>, <a href="std/math.html#max">[2]</a>
+        <li><a href="std/math.html#id3">max()</a>, <a href="std/math.html#id4">[1]</a>, <a href="std/math.html#id5">[2]</a>, <a href="std/math.html#max">[3]</a>
 </li>
-        <li><a href="std/math.html#id5">min()</a>, <a href="std/math.html#id6">[1]</a>, <a href="std/math.html#id7">[2]</a>, <a href="std/math.html#min">[3]</a>
+        <li><a href="std/math.html#id6">min()</a>, <a href="std/math.html#id7">[1]</a>, <a href="std/math.html#id8">[2]</a>, <a href="std/math.html#min">[3]</a>
 </li>
         <li><a href="std/file.html#mkdir">mkdir()</a>
 </li>
         <li><a href="std/math/vector.html#normal">normal()</a>
+</li>
+        <li><a href="neat/parser.html#parseBinaryNumber">parseBinaryNumber()</a>
+</li>
+        <li><a href="neat/parser.html#parseFloat">parseFloat()</a>
+</li>
+        <li><a href="neat/parser.html#parseHexNumber">parseHexNumber()</a>
+</li>
+        <li><a href="neat/parser.html#parseNumber">parseNumber()</a>
 </li>
         <li><a href="std/math.html#pow">pow()</a>
 </li>
@@ -249,7 +309,7 @@
 </li>
         <li><a href="std/math.html#sqrt">sqrt()</a>
 </li>
-        <li><a href="std/string.html#startsWith">startsWith()</a>
+        <li><a href="neat/parser.html#startsWith">startsWith()</a>, <a href="std/string.html#startsWith">[1]</a>
 </li>
         <li><a href="std/json.html#str">str()</a>
 </li>
@@ -262,6 +322,10 @@
         <li><a href="std/string.html#toHexString">toHexString()</a>
 </li>
         <li><a href="neat/runtime.html#toStringz">toStringz()</a>, <a href="std/string.html#toStringz">[1]</a>
+</li>
+        <li><a href="neat/parser.html#utf8Decode">utf8Decode()</a>
+</li>
+        <li><a href="neat/parser.html#utf8NextLength">utf8NextLength()</a>
 </li>
         <li><a href="std/file.html#withoutExtension">withoutExtension()</a>
 </li>
@@ -276,6 +340,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.commit">commit() (ParserImpl method)</a>
+</li>
       <li><a href="std/thread.html#CondVar">CondVar (built-in class)</a>
 </li>
       <li>
@@ -321,8 +387,12 @@
         <li><a href="std/file.html#dirname">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.drop">drop() (ParserImpl method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.dropOneCharNonNewline">dropOneCharNonNewline() (ParserImpl method)</a>
+</li>
       <li>
     dtoa_hex()
 
@@ -336,8 +406,12 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="std/range/iota.html#Iota.empty">empty() (Iota method)</a>
+      <li><a href="std/range/iota.html#IntIota.empty">empty() (IntIota method)</a>
+
+      <ul>
+        <li><a href="std/range/iota.html#Iota.empty">(Iota method)</a>
 </li>
+      </ul></li>
       <li>
     endsWith()
 
@@ -347,6 +421,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.eof">eof() (ParserImpl method)</a>
+</li>
       <li>
     exists()
 
@@ -367,6 +443,12 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#Loc.fail">fail() (Loc method)</a>
+
+      <ul>
+        <li><a href="neat/parser.html#ParserImpl.fail">(ParserImpl method)</a>
+</li>
+      </ul></li>
       <li>
     filter()
 
@@ -380,13 +462,19 @@
     find()
 
       <ul>
-        <li><a href="std/string.html#find">built-in function</a>
+        <li><a href="neat/parser.html#find">built-in function</a>, <a href="std/string.html#find">[1]</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="std/range/iota.html#Iota.front">front() (Iota method)</a>
+      <li><a href="neat/parser.html#ParserImpl.from">from() (ParserImpl method)</a>
 </li>
+      <li><a href="std/range/iota.html#IntIota.front">front() (IntIota method)</a>
+
+      <ul>
+        <li><a href="std/range/iota.html#Iota.front">(Iota method)</a>
+</li>
+      </ul></li>
       <li>
     ftoa()
 
@@ -423,6 +511,12 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.hard_eof">hard_eof() (ParserImpl method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#Loc.hardCheck">hardCheck() (Loc method)</a>
+</li>
       <li><a href="std/json.html#JSONValue.has">has() (JSONValue method)</a>
 </li>
   </ul></td>
@@ -433,12 +527,49 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/math/matrix.html#mat4x4.identity">identity() (mat4x4 method)</a>
 </li>
+      <li><a href="std/range/iota.html#IntIota">IntIota (built-in class)</a>
+</li>
       <li><a href="std/range/iota.html#Iota">Iota (built-in class)</a>
 </li>
+      <li>
+    isAlnum()
+
+      <ul>
+        <li><a href="neat/parser.html#isAlnum">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    isAlpha()
+
+      <ul>
+        <li><a href="neat/parser.html#isAlpha">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    isDigit()
+
+      <ul>
+        <li><a href="neat/parser.html#isDigit">built-in function</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    isHexDigit()
+
+      <ul>
+        <li><a href="neat/parser.html#isHexDigit">built-in function</a>
+</li>
+      </ul></li>
       <li><a href="std/json.html#JSONValue.isObject">isObject() (JSONValue method)</a>
 </li>
+      <li>
+    isWhitespace()
+
+      <ul>
+        <li><a href="neat/parser.html#isWhitespace">built-in function</a>
+</li>
+      </ul></li>
       <li>
     itoa()
 
@@ -491,15 +622,27 @@
         <li><a href="std/math/vector.html#length">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="std/range/iota.html#Iota.length">length() (Iota method)</a>
+      <li><a href="std/range/iota.html#IntIota.length">length() (IntIota method)</a>
+
+      <ul>
+        <li><a href="std/range/iota.html#Iota.length">(Iota method)</a>
 </li>
+      </ul></li>
       <li><a href="std/json.html#JSONValue.loadFile">loadFile() (JSONValue method)</a>
+</li>
+      <li><a href="neat/parser.html#Loc">Loc (built-in class)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.loc">loc() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#Loc.location">location() (Loc method)</a>
+</li>
       <li><a href="std/thread.html#Mutex.lock">lock() (Mutex method)</a>
 </li>
       <li><a href="std/thread.html#Mutex.locked">locked() (Mutex method)</a>
+</li>
+      <li><a href="neat/parser.html#Loc.locRange">locRange() (Loc method)</a>
 </li>
       <li>
     ltoa()
@@ -527,7 +670,7 @@
     max()
 
       <ul>
-        <li><a href="std/math.html#id3">built-in function</a>, <a href="std/math.html#id4">[1]</a>, <a href="std/math.html#max">[2]</a>
+        <li><a href="std/math.html#id3">built-in function</a>, <a href="std/math.html#id4">[1]</a>, <a href="std/math.html#id5">[2]</a>, <a href="std/math.html#max">[3]</a>
 </li>
       </ul></li>
   </ul></td>
@@ -536,7 +679,7 @@
     min()
 
       <ul>
-        <li><a href="std/math.html#id5">built-in function</a>, <a href="std/math.html#id6">[1]</a>, <a href="std/math.html#id7">[2]</a>, <a href="std/math.html#min">[3]</a>
+        <li><a href="std/math.html#id6">built-in function</a>, <a href="std/math.html#id7">[1]</a>, <a href="std/math.html#id8">[2]</a>, <a href="std/math.html#min">[3]</a>
 </li>
       </ul></li>
       <li>
@@ -556,8 +699,14 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="std/range/iota.html#Iota.next">next() (Iota method)</a>
+      <li><a href="std/range/iota.html#IntIota.next">next() (IntIota method)</a>
+
+      <ul>
+        <li><a href="std/range/iota.html#Iota.next">(Iota method)</a>
 </li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     normal()
 
@@ -565,8 +714,6 @@
         <li><a href="std/math/vector.html#normal">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/time.html#Time.now">now() (Time method)</a>
 </li>
   </ul></td>
@@ -590,6 +737,46 @@
       <li><a href="std/json.html#JSONValue.parse">parse() (JSONValue method)</a>
 </li>
       <li>
+    parseBinaryNumber()
+
+      <ul>
+        <li><a href="neat/parser.html#parseBinaryNumber">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.parseComment">parseComment() (ParserImpl method)</a>
+</li>
+      <li>
+    parseFloat()
+
+      <ul>
+        <li><a href="neat/parser.html#parseFloat">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    parseHexNumber()
+
+      <ul>
+        <li><a href="neat/parser.html#parseHexNumber">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.parseIdentifier">parseIdentifier() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.parseLastComment">parseLastComment() (ParserImpl method)</a>
+</li>
+      <li>
+    parseNumber()
+
+      <ul>
+        <li><a href="neat/parser.html#parseNumber">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl">ParserImpl (built-in class)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.peekUniChar">peekUniChar() (ParserImpl method)</a>
+</li>
+      <li>
     pow()
 
       <ul>
@@ -603,8 +790,6 @@
         <li><a href="std/stdio.html#print">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="c/pthread.html#pthread_cond_t">pthread_cond_t (built-in class)</a>
 </li>
       <li><a href="c/pthread.html#pthread_key_t">pthread_key_t (built-in class)</a>
@@ -667,6 +852,8 @@
         <li><a href="std/string.html#replace">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.revert">revert() (ParserImpl method)</a>
+</li>
       <li><a href="std/math/matrix.html#mat4x4.rotateX">rotateX() (mat4x4 method)</a>
 </li>
       <li><a href="std/math/matrix.html#mat4x4.rotateY">rotateY() (mat4x4 method)</a>
@@ -732,8 +919,6 @@
         <li><a href="std/algorithm.html#sort">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     split()
 
@@ -741,6 +926,8 @@
         <li><a href="std/string.html#split">built-in function</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/time.html#Stopwatch.split">split() (Stopwatch method)</a>
 </li>
       <li>
@@ -750,13 +937,15 @@
         <li><a href="std/math.html#sqrt">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#StackEntry">StackEntry (built-in class)</a>
+</li>
       <li><a href="std/time.html#Stopwatch.start">start() (Stopwatch method)</a>
 </li>
       <li>
     startsWith()
 
       <ul>
-        <li><a href="std/string.html#startsWith">built-in function</a>
+        <li><a href="neat/parser.html#startsWith">built-in function</a>, <a href="std/string.html#startsWith">[1]</a>
 </li>
       </ul></li>
       <li><a href="std/time.html#Stopwatch.stop">stop() (Stopwatch method)</a>
@@ -779,6 +968,8 @@
         <li><a href="std/string.html#strip">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.strip">strip() (ParserImpl method)</a>
+</li>
       <li>
     system()
 
@@ -801,10 +992,14 @@
       </ul></li>
       <li><a href="std/thread.html#Task">Task (built-in class)</a>
 </li>
+      <li><a href="neat/parser.html#ParserImpl.text">text() (ParserImpl method)</a>
+</li>
       <li><a href="std/thread.html#CondVar.this">this() (CondVar method)</a>
 
       <ul>
         <li><a href="std/thread.html#Mutex.this">(Mutex method)</a>
+</li>
+        <li><a href="neat/parser.html#ParserImpl.this">(ParserImpl method)</a>
 </li>
         <li><a href="std/thread.html#Semaphore.this">(Semaphore method)</a>
 </li>
@@ -828,6 +1023,10 @@
       <li><a href="std/time.html#Time">Time (built-in class)</a>
 </li>
       <li><a href="c/sys/time.html#timeval">timeval (built-in class)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.to">to() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#Loc.toBackendLoc">toBackendLoc() (Loc method)</a>
 </li>
       <li>
     toHexString()
@@ -859,14 +1058,40 @@
 </li>
       <li><a href="std/thread.html#Mutex.unlocked">unlocked() (Mutex method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/sha256.html#Sha256.update">update() (Sha256 method)</a>
 
       <ul>
         <li><a href="std/thread.html#Waitable.update">(Waitable method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    utf8Decode()
+
+      <ul>
+        <li><a href="neat/parser.html#utf8Decode">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    utf8NextLength()
+
+      <ul>
+        <li><a href="neat/parser.html#utf8NextLength">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.verify">verify() (ParserImpl method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.verifyTransactions">verifyTransactions() (ParserImpl method)</a>
+</li>
   </ul></td>
 </tr></table>
 

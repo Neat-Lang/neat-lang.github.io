@@ -33,7 +33,7 @@ Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
 
 .. c:namespace:: std.math
 
-Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
 
 .. rubric:: std.math.matrix
 
@@ -57,7 +57,7 @@ Module entries: :func:`getEnv`, :func:`readback`, :func:`system`
 
 .. c:namespace:: std.range.iota
 
-Module entries: :class:`Iota`
+Module entries: :class:`IntIota`, :class:`Iota`
 
 .. rubric:: std.sha256
 

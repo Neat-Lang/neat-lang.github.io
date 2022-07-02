@@ -1,0 +1,291 @@
+.. _neat_parser:
+.. highlight:: d
+
+neat.parser
+-----------
+
+.. c:namespace:: neat.parser
+
+Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`advance`, :func:`find`, :func:`isAlnum`, :func:`isAlpha`, :func:`isDigit`, :func:`isHexDigit`, :func:`isWhitespace`, :func:`parseBinaryNumber`, :func:`parseFloat`, :func:`parseHexNumber`, :func:`parseNumber`, :func:`startsWith`, :func:`utf8Decode`, :func:`utf8NextLength`
+
+.. class:: Loc
+
+    TODO: document
+
+    .. method:: toBackendLoc()
+
+        `BackendLocation toBackendLoc()`
+
+
+    .. method:: location()
+
+        `string location()`
+
+
+    .. method:: fail(message)
+
+        `Error fail(string message)`
+
+
+    .. method:: locRange()
+
+        `LocRange locRange()`
+
+
+    .. method:: assert(flag, message)
+
+        `(void | fail Error) assert(bool flag, string message)`
+
+
+    .. method:: hardCheck(flag, message)
+
+        `void hardCheck(bool flag, string message)`
+
+        This should have been caught earlier.
+
+    .. method:: assert2s2(test, a, b)
+
+        `(void | fail Error) assert2s2(int test, string a, string b)`
+
+
+    .. method:: assert2s3(test, a, b, c)
+
+        `(void | fail Error) assert2s3(int test, string a, string b, string c)`
+
+
+    .. method:: assert2s4(test, a, b, c, d)
+
+        `(void | fail Error) assert2s4(int test, string a, string b, string c, string d)`
+
+
+    .. method:: assert2s5(test, a, b, c, d, e)
+
+        `(void | fail Error) assert2s5(int test, string a, string b, string c, string d, string e)`
+
+
+.. class:: ParserImpl
+
+    TODO: document
+
+    .. method:: this(filename, fulltext)
+
+        `this(this.filename, this.fulltext)`
+
+
+    .. method:: loc()
+
+        `LocRange loc()`
+
+
+    .. method:: from()
+
+        `(LocRange | fail Error) from()`
+
+
+    .. method:: to(from)
+
+        `LocRange to(LocRange from)`
+
+
+    .. method:: verifyTransactions(msg, dg)
+
+        `(void | fail Error) verifyTransactions(string msg, (void | fail Error) delegate() dg)`
+
+
+    .. method:: parseIdentifier()
+
+        `(string | fail Error) parseIdentifier()`
+
+
+    .. method:: verify()
+
+        `void verify()`
+
+
+    .. method:: text()
+
+        `string text()`
+
+
+    .. method:: begin()
+
+        `void begin()`
+
+
+    .. method:: commit()
+
+        `void commit()`
+
+
+    .. method:: revert()
+
+        `void revert()`
+
+
+    .. method:: drop(length)
+
+        `void drop(size_t length)`
+
+
+    .. method:: dropOneCharNonNewline(length)
+
+        `void dropOneCharNonNewline(size_t length)`
+
+
+    .. method:: peekUniChar()
+
+        `string peekUniChar()`
+
+
+    .. method:: accept(match)
+
+        `(bool | fail Error) accept(string match)`
+
+
+    .. method:: hard_eof()
+
+        `bool hard_eof()`
+
+        ie. no more text at all.
+
+    .. method:: eof()
+
+        `(bool | fail Error) eof()`
+
+        ie. no more meaningful content; only comments and whitespace.
+
+    .. method:: strip()
+
+        `(void | fail Error) strip()`
+
+
+    .. method:: parseLastComment()
+
+        `(string | fail Error) parseLastComment()`
+
+        Accept many comments; return the last one.
+
+    .. method:: parseComment()
+
+        `(string | fail Error) parseComment()`
+
+        Because it's called from strip(), this among all accept functions does not strip on its own.
+
+    .. method:: fail(message)
+
+        `Error fail(string message)`
+
+
+    .. method:: assert2s2(test, a, b)
+
+        `(void | fail Error) assert2s2(int test, string a, string b)`
+
+
+    .. method:: assert2s3(test, a, b, c)
+
+        `(void | fail Error) assert2s3(int test, string a, string b, string c)`
+
+
+    .. method:: assert2s4(test, a, b, c, d)
+
+        `(void | fail Error) assert2s4(int test, string a, string b, string c, string d)`
+
+
+    .. method:: assert2s5(test, a, b, c, d, e)
+
+        `(void | fail Error) assert2s5(int test, string a, string b, string c, string d, string e)`
+
+
+.. class:: StackEntry
+
+    TODO: document
+
+    .. method:: advanceOneCharNonNewline(distance)
+
+        `void advanceOneCharNonNewline(size_t distance)`
+
+        Advance row/column by byte distance `distance`, known to represent one character that is not a \n.
+
+.. function:: advance(entry, fulltext, distance)
+
+    `StackEntry advance(StackEntry entry, string fulltext, size_t distance)`
+
+    Advance row/column by byte distance `distance`.
+
+.. function:: find(haystack, needle)
+
+    `int find(string haystack, string needle)`
+
+    TODO: document
+
+.. function:: isAlnum(ch)
+
+    `bool isAlnum(int ch)`
+
+    TODO: document
+
+.. function:: isAlpha(ch)
+
+    `bool isAlpha(int ch)`
+
+    TODO: document
+
+.. function:: isDigit(ch)
+
+    `bool isDigit(int ch)`
+
+    TODO: document
+
+.. function:: isHexDigit(digit)
+
+    `bool isHexDigit(string digit)`
+
+    TODO: document
+
+.. function:: isWhitespace(c)
+
+    `bool isWhitespace(char c)`
+
+    TODO: document
+
+.. function:: parseBinaryNumber(parser, negative)
+
+    `(:failure | (:success, int value)) parseBinaryNumber(Parser parser, bool negative)`
+
+    TODO: document
+
+.. function:: parseFloat(parser)
+
+    `(:failure | (:success, float value) | (:success, double value) | fail Error) parseFloat(Parser parser)`
+
+    TODO: document
+
+.. function:: parseHexNumber(parser, negative)
+
+    `(:failure | (:success, int value)) parseHexNumber(Parser parser, bool negative)`
+
+    TODO: document
+
+.. function:: parseNumber(parser)
+
+    `(:failure | (:success, int value) | fail Error) parseNumber(Parser parser)`
+
+    TODO: document
+
+.. function:: startsWith(haystack, needle)
+
+    `bool startsWith(string haystack, string needle)`
+
+    TODO: document
+
+.. function:: utf8Decode(ch)
+
+    `int utf8Decode(string ch)`
+
+    TODO: document
+
+.. function:: utf8NextLength(text)
+
+    `int utf8NextLength(string text)`
+
+    TODO: document

@@ -6,7 +6,31 @@ std.range.iota
 
 .. c:namespace:: std.range.iota
 
-Module entries: :class:`Iota`
+Module entries: :class:`IntIota`, :class:`Iota`
+
+.. class:: IntIota
+
+    TODO: document
+
+    .. method:: empty()
+
+        `bool empty()`
+
+
+    .. method:: front()
+
+        `int front()`
+
+
+    .. method:: next()
+
+        `IntIota next()`
+
+
+    .. method:: length()
+
+        `int length()`
+
 
 .. class:: Iota
 

@@ -6,7 +6,7 @@ std.math
 
 .. c:namespace:: std.math
 
-Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
 
 .. function:: abs(d)
 
@@ -54,6 +54,12 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan
 .. function:: max(a, b)
 
     `int max(int a, int b)`
+
+    Returns the maximum of `a` and `b`.
+
+.. function:: max(a, b)
+
+    `size_t max(size_t a, size_t b)`
 
     Returns the maximum of `a` and `b`.
 
