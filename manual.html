@@ -208,6 +208,13 @@ Higher-ranked operators take precedence over lower-ranked, with boolean operator
 This is because C’s order is stupid^W a legacy holdover from before it had boolean operators.</p>
 <p>Operator precedence can be clarified using parentheses: <code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">4)</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span></code>.</p>
 </section>
+<section id="ternary-if">
+<h3>Ternary If<a class="headerlink" href="#ternary-if" title="Permalink to this heading"></a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">if</span> <span class="pre">t</span> <span class="pre">else</span> <span class="pre">b</span></code> has the value of <code class="code docutils literal notranslate"><span class="pre">a</span></code> if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, else it has the value of <code class="code docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>Only the selected expression is evaluated. So if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, <code class="code docutils literal notranslate"><span class="pre">b</span></code> is never evaluated.</p>
+<p>This operator has a lower rank than any of the binary operators.</p>
+<p>The ternary operator syntax diverges from C because <code class="code docutils literal notranslate"><span class="pre">?</span></code> is already used for error propagation.</p>
+</section>
 </section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
