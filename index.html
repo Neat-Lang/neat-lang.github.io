@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>The Neat Language &#8212; Neat  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -36,7 +36,7 @@
   <section id="the-neat-language">
 <h1>The Neat Language<a class="headerlink" href="#the-neat-language" title="Permalink to this heading"></a></h1>
 <p>Neat is a C-like statically-typed native compiled language with automated reference counting, OOP and macros.
-This is its documentation.</p>
+Its syntax is heavily “inspired by” D.</p>
 <p>Have some example code! Here’s a program that prints the longest line in a file:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">longestline</span><span class="p">;</span><span class="w"></span>
 
@@ -60,13 +60,28 @@ This is its documentation.</p>
 <span class="kr">macro</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="kr">macro</span><span class="p">.</span><span class="n">listcomprehension</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
+<p><strong>Important notice</strong>: Before you jump in, please read the section <a class="reference internal" href="getstarted.html#good-and-bad-neat"><span class="std std-ref">Good and Bad Neat</span></a>!</p>
+</section>
+<section id="community">
+<h1>Community<a class="headerlink" href="#community" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><dl class="simple">
+<dt><a class="reference external" href="https://web.libera.chat/#neat">#neat on libera.chat</a> (formerly Freenode).</dt><dd><p>If you’re trying out the language, drop by and say hi!</p>
+</dd>
+</dl>
+</li>
+<li><p>TODO: I should probably make a forum or something.</p></li>
+</ul>
+</section>
+<section id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="getstarted.html#install-with-llvm">Install with LLVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getstarted.html#install-with-gcc">Install with GCC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getstarted.html#start-a-project">Start a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getstarted.html#good-and-bad-neat">Good and Bad Neat</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
@@ -96,17 +111,12 @@ This is its documentation.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="std.html">Standard Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="std/algorithm.html">std.algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="std/file.html">std.file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="std/json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/math.html">std.math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/math/matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/math/vector.html">std.math.vector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="std/process.html">std.process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/stdio.html">std.stdio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="std/string.html">std.string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/thread.html">std.thread</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/time.html">std.time</a></li>
 </ul>
@@ -132,7 +142,6 @@ This is its documentation.</p>
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
@@ -174,7 +183,7 @@ This is its documentation.</p>
       &copy;2021, @FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
