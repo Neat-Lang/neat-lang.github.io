@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>std.json &#8212; Neat  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -36,7 +36,7 @@
             
   <section id="id1">
 <h1>std.json<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>Module entries: <a class="reference internal" href="#JSONValue" title="JSONValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONValue</span></code></a>, <a class="reference internal" href="#jsonParseImpl" title="jsonParseImpl"><code class="xref py py-func docutils literal notranslate"><span class="pre">jsonParseImpl()</span></code></a>, <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a></p>
+<p>Module entries: <a class="reference internal" href="#JSONValue" title="JSONValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONValue</span></code></a>, <a class="reference internal" href="#jv" title="__jv"><code class="xref py py-func docutils literal notranslate"><span class="pre">__jv()</span></code></a>, <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="JSONValue">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">JSONValue</span></span><a class="headerlink" href="#JSONValue" title="Permalink to this definition"></a></dt>
@@ -108,10 +108,10 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="jsonParseImpl">
-<span class="sig-name descname"><span class="pre">jsonParseImpl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseImpl" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">(JSONValue</span> <span class="pre">|</span> <span class="pre">fail</span> <span class="pre">Error)</span> <span class="pre">jsonParseImpl(ParserImpl</span> <span class="pre">parser)</span></code></p>
-<p>For internal (re)use!</p>
+<dt class="sig sig-object py" id="jv">
+<span class="sig-name descname"><span class="pre">__jv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jv" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">__jv((bool</span> <span class="pre">|</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">string</span> <span class="pre">|</span> <span class="pre">JSONValue[]</span> <span class="pre">|</span> <span class="pre">(string</span> <span class="pre">key,</span> <span class="pre">JSONValue</span> <span class="pre">value)[]</span> <span class="pre">|</span> <span class="pre">JSONValue)</span> <span class="pre">arg)</span></code></p>
+<p>TODO: document</p>
 </dd></dl>
 
 <dl class="py function">
@@ -140,7 +140,6 @@
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
@@ -197,10 +196,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, @FeepingCreature.
+      &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

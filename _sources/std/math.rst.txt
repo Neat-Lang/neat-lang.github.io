@@ -59,7 +59,7 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan
 
 .. function:: max(a, b)
 
-    `size_t max(size_t a, size_t b)`
+    `long max(long a, long b)`
 
     Returns the maximum of `a` and `b`.
 
@@ -88,7 +88,7 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan
 
 .. function:: min(a, b)
 
-    `size_t min(size_t a, size_t b)`
+    `long min(long a, long b)`
 
     Returns the minimum of `a` and `b`.
 

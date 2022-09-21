@@ -11,6 +11,24 @@ Standard Library
 
    std/**
 
+.. rubric:: std.algorithm
+
+.. c:namespace:: std.algorithm
+
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`
+
+.. rubric:: std.file
+
+.. c:namespace:: std.file
+
+Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
+
+.. rubric:: std.json
+
+.. c:namespace:: std.json
+
+Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
+
 .. rubric:: std.math
 
 .. c:namespace:: std.math
@@ -29,6 +47,12 @@ Module entries: :class:`mat4x4`
 
 Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
 
+.. rubric:: std.process
+
+.. c:namespace:: std.process
+
+Module entries: :func:`getEnv`, :func:`readback`, :func:`system`
+
 .. rubric:: std.range.iota
 
 .. c:namespace:: std.range.iota
@@ -45,7 +69,13 @@ Module entries: :class:`Sha256`
 
 .. c:namespace:: std.stdio
 
-Module entries: :func:`print`
+Module entries: :func:`byLine`, :func:`print`
+
+.. rubric:: std.string
+
+.. c:namespace:: std.string
+
+Module entries: :func:`atoi`, :func:`cToString`, :func:`cToStringFree`, :func:`endsWith`, :func:`find`, :func:`itoa`, :func:`join`, :func:`replace`, :func:`slice`, :func:`split`, :func:`startsWith`, :func:`strip`, :func:`toHexString`, :func:`toStringz`
 
 .. rubric:: std.thread
 

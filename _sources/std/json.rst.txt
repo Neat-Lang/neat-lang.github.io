@@ -6,7 +6,7 @@ std.json
 
 .. c:namespace:: std.json
 
-Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
+Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
 
 .. class:: JSONValue
 
@@ -68,11 +68,11 @@ Module entries: :class:`JSONValue`, :func:`jsonParseImpl`, :func:`str`
 
         Given the value is an object, returns an array of string keys.
 
-.. function:: jsonParseImpl(parser)
+.. function:: __jv(arg)
 
-    `(JSONValue | fail Error) jsonParseImpl(ParserImpl parser)`
+    `JSONValue __jv((bool | int | string | JSONValue[] | (string key, JSONValue value)[] | JSONValue) arg)`
 
-    For internal (re)use!
+    TODO: document
 
 .. function:: str(jv)
 
