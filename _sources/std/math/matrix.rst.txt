@@ -99,8 +99,8 @@ Module entries: :class:`mat4x4`
 
         Create a translation matrix.
 
-    .. method:: ortho(left, right, bottom, top, near, far)
+    .. method:: ortho(left, right, bottom_, top, near, far)
 
-        `mat4x4 ortho(float left, float right, float bottom, float top, float near, float far)`
+        `mat4x4 ortho(float left, float right, float bottom_, float top, float near, float far)`
 
         Create an orthogonal projection matrix.

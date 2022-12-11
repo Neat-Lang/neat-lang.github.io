@@ -1,0 +1,15 @@
+.. _neat_runtime_array:
+.. highlight:: d
+
+neat.runtime.array
+------------------
+
+.. c:namespace:: neat.runtime.array
+
+Module entries: :func:`checkIndex`
+
+.. function:: checkIndex(index, length)
+
+    `size_t checkIndex(size_t index, size_t length)`
+
+    TODO: document

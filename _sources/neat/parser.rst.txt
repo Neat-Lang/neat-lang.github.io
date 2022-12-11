@@ -124,12 +124,12 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     .. method:: drop(length)
 
-        `void drop(size_t length)`
+        `void drop(int length)`
 
 
     .. method:: dropOneCharNonNewline(length)
 
-        `void dropOneCharNonNewline(size_t length)`
+        `void dropOneCharNonNewline(int length)`
 
 
     .. method:: peekUniChar()
@@ -202,13 +202,13 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     .. method:: advanceOneCharNonNewline(distance)
 
-        `void advanceOneCharNonNewline(size_t distance)`
+        `void advanceOneCharNonNewline(int distance)`
 
         Advance row/column by byte distance `distance`, known to represent one character that is not a \n.
 
 .. function:: advance(entry, fulltext, distance)
 
-    `StackEntry advance(StackEntry entry, string fulltext, size_t distance)`
+    `StackEntry advance(StackEntry entry, string fulltext, int distance)`
 
     Advance row/column by byte distance `distance`.
 
@@ -256,7 +256,7 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
 .. function:: parseFloat(parser)
 
-    `(:failure | (:success, float value) | (:success, double value) | fail Error) parseFloat(Parser parser)`
+    `(:failure | (:success, float) | (:success, double) | fail Error) parseFloat(Parser parser)`
 
     TODO: document
 
@@ -268,7 +268,7 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
 .. function:: parseNumber(parser)
 
-    `(:failure | (:success, int value) | fail Error) parseNumber(Parser parser)`
+    `(:failure | (:success, int) | fail Error) parseNumber(Parser parser)`
 
     TODO: document
 

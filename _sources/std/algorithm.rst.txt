@@ -6,7 +6,7 @@ std.algorithm
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`
 
 .. function:: all(left, right)
 
@@ -81,3 +81,13 @@ Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`,
     `T sort(T, U)(T array, U smaller)`
 
     TODO: document
+
+.. function:: splitter(range, element)
+
+    `auto splitter(R, E)(R range, E element)`
+
+    Given a range, returns a range of ranges consisting of the original range separated at element `element`.
+
+    Example::
+
+        assert([2, 3, 4, 5].splitter(4).map(a => a.array).array == [[2, 3], [5]]);

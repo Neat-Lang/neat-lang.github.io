@@ -6,11 +6,17 @@ neat.runtime
 
 .. c:namespace:: neat.runtime
 
-Module entries: :func:`assert`, :func:`atof`, :func:`atoi`, :func:`dtoa_hex`, :func:`ftoa`, :func:`itoa`, :func:`ltoa`, :func:`toStringz`
+Module entries: :func:`assert`, :func:`atoa`, :func:`atof`, :func:`atoi`, :func:`btoa`, :func:`ctoa`, :func:`dtoa_hex`, :func:`ftoa`, :func:`itoa`, :func:`ltoa`, :func:`ptoa`, :func:`toStringz`
 
 .. function:: assert(test)
 
     `void assert(int test)`
+
+    TODO: document
+
+.. function:: atoa(array)
+
+    `string atoa(T)(T[] array)`
 
     TODO: document
 
@@ -23,6 +29,18 @@ Module entries: :func:`assert`, :func:`atof`, :func:`atoi`, :func:`dtoa_hex`, :f
 .. function:: atoi(s)
 
     `int atoi(string s)`
+
+    TODO: document
+
+.. function:: btoa(b)
+
+    `string btoa(bool b)`
+
+    TODO: document
+
+.. function:: ctoa(c)
+
+    `string ctoa(char c)`
 
     TODO: document
 
@@ -47,6 +65,12 @@ Module entries: :func:`assert`, :func:`atof`, :func:`atoi`, :func:`dtoa_hex`, :f
 .. function:: ltoa(l)
 
     `string ltoa(long l)`
+
+    TODO: document
+
+.. function:: ptoa(ptr)
+
+    `string ptoa(void* ptr)`
 
     TODO: document
 

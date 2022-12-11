@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Standard Library" href="std.html" />
@@ -141,26 +142,18 @@ Private declarations cannot be seen when the module is imported.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">||</span> <span class="pre">b</span></code></p></td>
 <td><p>Boolean “or”</p></td>
-<td><p>0</p></td>
+<td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;&amp;</span> <span class="pre">b</span></code></p></td>
 <td><p>Boolean “and”</p></td>
-<td><p>1</p></td>
+<td><p>2</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;=</span> <span class="pre">b</span></code></p></td>
 <td><p>Comparison</p></td>
-<td><p>2</p></td>
+<td><p>3</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">..</span> <span class="pre">b</span></code></p></td>
 <td><p>Range</p></td>
-<td><p>3</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">b</span></code></p></td>
-<td><p>Left shift</p></td>
-<td><p>4</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;&gt;</span> <span class="pre">b</span></code></p></td>
-<td><p>Right shift</p></td>
 <td><p>4</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code></p></td>
@@ -187,13 +180,21 @@ Private declarations cannot be seen when the module is imported.</p>
 <td><p>Bitwise “or”</p></td>
 <td><p>7</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">b</span></code></p></td>
+<td><p>Left shift</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;&gt;</span> <span class="pre">b</span></code></p></td>
+<td><p>Right shift</p></td>
+<td><p>8</p></td>
+</tr>
 <tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">^</span> <span class="pre">b</span></code></p></td>
 <td><p>Bitwise “xor”</p></td>
-<td><p>8</p></td>
+<td><p>9</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span></code></p></td>
 <td><p>Bitwise “and”</p></td>
-<td><p>9</p></td>
+<td><p>10</p></td>
 </tr>
 </tbody>
 </table>
@@ -462,8 +463,10 @@ It consists of a pointer, a length and a reference to the array object.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">float)</span></code> is a tuple with two member types, <code class="code docutils literal notranslate"><span class="pre">int</span></code> and <code class="code docutils literal notranslate"><span class="pre">float</span></code>. Each member can have an independent value.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3.0f)</span></code> is an expression of type <code class="code docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">float)</span></code>.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">tuple[0]</span></code> is the first member of the tuple. The index value must be an int literal.</p>
-<p>Tuple members can be named: <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">i,</span> <span class="pre">float</span> <span class="pre">f)</span></code>. This allows accessing the member with <code class="code docutils literal notranslate"><span class="pre">value.i</span></code>.
-From a type system view, this is purely decorative.</p>
+<p>Tuple members can be named: <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">i,</span> <span class="pre">float</span> <span class="pre">f)</span></code>. This allows accessing the member with <code class="code docutils literal notranslate"><span class="pre">value.i</span></code>.</p>
+<p>When implicitly converting tuples, tuple fields without names implicitly convert to any name, but tuple
+fields with names only convert to other fields with the same name.</p>
+<p>For example, <code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> implicitly converts to <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">from,</span> <span class="pre">int</span> <span class="pre">to)</span></code>, but <code class="code docutils literal notranslate"><span class="pre">(min=2,</span> <span class="pre">max=3)</span></code> does not.</p>
 </section>
 <section id="sum-type">
 <h3>Sum type<a class="headerlink" href="#sum-type" title="Permalink to this heading"></a></h3>
@@ -748,7 +751,7 @@ to limit yourself to the functionality in <code class="code docutils literal not
       &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
