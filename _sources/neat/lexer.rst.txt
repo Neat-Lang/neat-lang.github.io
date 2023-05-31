@@ -1,0 +1,54 @@
+.. _neat_lexer:
+.. highlight:: d
+
+neat.lexer
+----------
+
+.. c:namespace:: neat.lexer
+
+Module entries: :class:`Token`, :func:`isAlnum`, :func:`isAlpha`, :func:`isNumeric`, :func:`isUtf8MbStart`, :func:`isWhitespace`, :func:`tokenize`
+
+.. class:: Token
+
+    TODO: document
+
+    .. method:: toString()
+
+        `string toString()`
+
+
+.. function:: isAlnum(ch)
+
+    `bool isAlnum(char ch)`
+
+    TODO: document
+
+.. function:: isAlpha(ch)
+
+    `bool isAlpha(char ch)`
+
+    TODO: document
+
+.. function:: isNumeric(ch)
+
+    `bool isNumeric(char ch)`
+
+    TODO: document
+
+.. function:: isUtf8MbStart(ch)
+
+    `bool isUtf8MbStart(char ch)`
+
+    TODO: document
+
+.. function:: isWhitespace(ch)
+
+    `bool isWhitespace(char ch)`
+
+    TODO: document
+
+.. function:: tokenize(text, filename, row, col)
+
+    `(Token[] | fail Error) tokenize(string text, string filename, int row, int col)`
+
+    TODO: document

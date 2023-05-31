@@ -1,0 +1,44 @@
+.. _std_container_binheap:
+.. highlight:: d
+
+std.container.binheap
+---------------------
+
+.. c:namespace:: std.container.binheap
+
+Module entries: :class:`BinHeapImpl`, :func:`binHeap`
+
+.. class:: BinHeapImpl
+
+    TODO: document
+
+    .. method:: this(heapier)
+
+        `this(this.heapier)`
+
+
+    .. method:: insert(t)
+
+        `void insert(T t)`
+
+
+    .. method:: extract()
+
+        `T extract()`
+
+
+    .. method:: empty()
+
+        `bool empty()`
+
+
+    .. method:: length()
+
+        `size_t length()`
+
+
+.. function:: binHeap(heapier)
+
+    `BinHeap!(T) binHeap(T, Heapier)(Heapier heapier)`
+
+    TODO: document

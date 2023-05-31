@@ -37,7 +37,15 @@
             
   <section id="id1">
 <h1>std.process<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>Module entries: <a class="reference internal" href="#getEnv" title="getEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">getEnv()</span></code></a>, <a class="reference internal" href="#readback" title="readback"><code class="xref py py-func docutils literal notranslate"><span class="pre">readback()</span></code></a>, <a class="reference internal" href="#system" title="system"><code class="xref py py-func docutils literal notranslate"><span class="pre">system()</span></code></a></p>
+<p>Module entries: <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>, <a class="reference internal" href="#getEnv" title="getEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">getEnv()</span></code></a>, <a class="reference internal" href="#readback" title="readback"><code class="xref py py-func docutils literal notranslate"><span class="pre">readback()</span></code></a>, <a class="reference internal" href="#system" title="system"><code class="xref py py-func docutils literal notranslate"><span class="pre">system()</span></code></a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="exec">
+<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exec" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">exec(string</span> <span class="pre">path,</span> <span class="pre">string[]</span> <span class="pre">args)</span></code></p>
+<p>Executes the binary found at <code class="code docutils literal notranslate"><span class="pre">path</span></code> with <code class="code docutils literal notranslate"><span class="pre">args</span></code>.
+Blocks until the binary returns.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="getEnv">
 <span class="sig-name descname"><span class="pre">getEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getEnv" title="Permalink to this definition"></a></dt>
@@ -84,6 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">The Neat Language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../std.html">Standard Library</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container/binheap.html">std.container.binheap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
@@ -138,7 +147,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="../_sources/std/process.rst.txt"

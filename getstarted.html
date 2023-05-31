@@ -49,37 +49,37 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <h2>Install with LLVM<a class="headerlink" href="#install-with-llvm" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Install required packages:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="p">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">xz</span><span class="p">-</span><span class="n">utils</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="n">llvm</span><span class="p">-</span><span class="mi">14</span><span class="p">-</span><span class="n">dev</span><span class="w"> </span><span class="n">clang</span><span class="p">-</span><span class="mi">14</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="p">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">xz</span><span class="p">-</span><span class="n">utils</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="n">llvm</span><span class="p">-</span><span class="mi">14</span><span class="p">-</span><span class="n">dev</span><span class="w"> </span><span class="n">clang</span><span class="p">-</span><span class="mi">14</span>
 </pre></div>
 </div>
 </li>
 <li><p>Download the latest release from <a class="reference external" href="https://github.com/neat-lang/neat/releases">https://github.com/neat-lang/neat/releases</a></p></li>
 <li><p>Unpack the archive:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span><span class="w"> </span><span class="n">xf</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">llvm</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">llvm</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span><span class="w"> </span><span class="n">xf</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">llvm</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span>
+<span class="n">cd</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">llvm</span>
 </pre></div>
 </div>
 </li>
 <li><p>Build the compiler:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
 <li><p>Symlink the compiler somewhere that’s in your path:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span><span class="w"> </span><span class="p">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="w"></span>
-<span class="n">ln</span><span class="w"> </span><span class="p">-</span><span class="n">s</span><span class="w"> </span><span class="s">&quot;$PWD&quot;</span><span class="p">/</span><span class="n">neat</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">neat</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span><span class="w"> </span><span class="p">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span>
+<span class="n">ln</span><span class="w"> </span><span class="p">-</span><span class="n">s</span><span class="w"> </span><span class="s">&quot;$PWD&quot;</span><span class="p">/</span><span class="n">neat</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">neat</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <ol class="arabic" start="5">
 <li><p>Test the compiler:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="n">EOF</span><span class="w"></span>
-<span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="n">EOF</span><span class="w"></span>
-<span class="n">neat</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="p">./</span><span class="n">hello</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="n">EOF</span>
+<span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="n">EOF</span>
+<span class="n">neat</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="p">./</span><span class="n">hello</span>
 </pre></div>
 </div>
 </li>
@@ -90,37 +90,37 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <h2>Install with GCC<a class="headerlink" href="#install-with-gcc" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Install required packages:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="p">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">xz</span><span class="p">-</span><span class="n">utils</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">gcc</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="p">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">xz</span><span class="p">-</span><span class="n">utils</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">gcc</span>
 </pre></div>
 </div>
 </li>
 <li><p>Download the latest release from <a class="reference external" href="https://github.com/neat-lang/neat/releases">https://github.com/neat-lang/neat/releases</a></p></li>
 <li><p>Unpack the archive:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span><span class="w"> </span><span class="n">xf</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">gcc</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span><span class="w"></span>
-<span class="n">cd</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">gcc</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span><span class="w"> </span><span class="n">xf</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">gcc</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span>
+<span class="n">cd</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">gcc</span>
 </pre></div>
 </div>
 </li>
 <li><p>Build the compiler:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">./</span><span class="n">build</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
 <li><p>Symlink the compiler somewhere that’s in your path:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span><span class="w"> </span><span class="p">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="w"></span>
-<span class="n">ln</span><span class="w"> </span><span class="p">-</span><span class="n">s</span><span class="w"> </span><span class="s">&quot;$PWD&quot;</span><span class="p">/</span><span class="n">neat</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">neat</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span><span class="w"> </span><span class="p">-</span><span class="n">p</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span>
+<span class="n">ln</span><span class="w"> </span><span class="p">-</span><span class="n">s</span><span class="w"> </span><span class="s">&quot;$PWD&quot;</span><span class="p">/</span><span class="n">neat</span><span class="w"> </span><span class="s">&quot;$HOME&quot;</span><span class="p">/.</span><span class="n">local</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">neat</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <ol class="arabic" start="5">
 <li><p>Test the compiler:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="n">EOF</span><span class="w"></span>
-<span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="n">EOF</span><span class="w"></span>
-<span class="n">neat</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="p">./</span><span class="n">hello</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="n">EOF</span>
+<span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="n">EOF</span>
+<span class="n">neat</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span><span class="w"> </span><span class="p">&amp;&amp;</span><span class="w"> </span><span class="p">./</span><span class="n">hello</span>
 </pre></div>
 </div>
 </li>
@@ -132,18 +132,18 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <section id="binary">
 <h3>Binary<a class="headerlink" href="#binary" title="Permalink to this heading"></a></h3>
 <p>Neat comes with a built-in package manager. To configure it, create a file <code class="code docutils literal notranslate"><span class="pre">package.json</span></code> in the project’s base folder:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;binary&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;binary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progname&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src/main.nt&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="s">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://github.com/example/package&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;binary&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;binary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progname&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;main&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src/main.nt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s">&quot;sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://github.com/example/package&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Run <code class="code docutils literal notranslate"><span class="pre">neat</span> <span class="pre">build</span></code> in a folder that contains a <code class="code docutils literal notranslate"><span class="pre">package.json</span></code> with type <code class="code docutils literal notranslate"><span class="pre">binary</span></code>, and Neat will attempt to build a binary.</p>
@@ -151,10 +151,10 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <section id="library">
 <h3>Library<a class="headerlink" href="#library" title="Permalink to this heading"></a></h3>
 <p>The format for library repos is significantly simpler:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;library&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;src&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;library&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -318,7 +318,7 @@ is in the compiler, that it is deliberate and optimal. Feel free to experiment w
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/getstarted.rst.txt"

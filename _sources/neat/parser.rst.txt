@@ -6,15 +6,15 @@ neat.parser
 
 .. c:namespace:: neat.parser
 
-Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`advance`, :func:`find`, :func:`isAlnum`, :func:`isAlpha`, :func:`isDigit`, :func:`isHexDigit`, :func:`isWhitespace`, :func:`parseBinaryNumber`, :func:`parseFloat`, :func:`parseHexNumber`, :func:`parseNumber`, :func:`startsWith`, :func:`utf8Decode`, :func:`utf8NextLength`
+Module entries: :class:`Loc`, :class:`ParserImpl`, :func:`find`, :func:`isDigit`, :func:`isHexDigit`, :func:`isWhitespace`, :func:`parseBinaryNumber`, :func:`parseFloat`, :func:`parseHexNumber`, :func:`parseNumber`, :func:`precomputeStripTargets`, :func:`startsWith`, :func:`utf8Decode`, :func:`utf8NextLength`
 
 .. class:: Loc
 
     TODO: document
 
-    .. method:: toBackendLoc()
+    .. method:: toBackendLoc(fileIdTable)
 
-        `BackendLocation toBackendLoc()`
+        `BackendLocation toBackendLoc(FileIdTable fileIdTable)`
 
 
     .. method:: location()
@@ -67,9 +67,9 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     TODO: document
 
-    .. method:: this(filename, fulltext)
+    .. method:: this(filename, fileId, fulltext, tokens)
 
-        `this(this.filename, this.fulltext)`
+        `this(this.filename, this.fileId, this.fulltext, this.tokens)`
 
 
     .. method:: loc()
@@ -79,7 +79,7 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     .. method:: from()
 
-        `(LocRange | fail Error) from()`
+        `LocRange from()`
 
 
     .. method:: to(from)
@@ -94,7 +94,7 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     .. method:: parseIdentifier()
 
-        `(string | fail Error) parseIdentifier()`
+        `string parseIdentifier()`
 
 
     .. method:: verify()
@@ -105,6 +105,46 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
     .. method:: text()
 
         `string text()`
+
+
+    .. method:: acceptToken(type)
+
+        `bool acceptToken(TokenType type)`
+
+
+    .. method:: acceptToken2(first, second)
+
+        `bool acceptToken2(TokenType first, TokenType second)`
+
+
+    .. method:: acceptToken3(first, second, third)
+
+        `bool acceptToken3(TokenType first, TokenType second, TokenType third)`
+
+
+    .. method:: acceptToken2Not(match, nomatch)
+
+        `bool acceptToken2Not(TokenType match, TokenType nomatch)`
+
+
+    .. method:: acceptToken2Not2(match, nomatch1, nomatch2)
+
+        `bool acceptToken2Not2(TokenType match, TokenType nomatch1, TokenType nomatch2)`
+
+
+    .. method:: acceptTokenStr(type)
+
+        `(string | :none) acceptTokenStr(TokenType type)`
+
+
+    .. method:: acceptIdentifier(identifier)
+
+        `bool acceptIdentifier(string identifier)`
+
+
+    .. method:: expectToken(type)
+
+        `(void | Error) expectToken(TokenType type)`
 
 
     .. method:: begin()
@@ -122,24 +162,19 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
         `void revert()`
 
 
-    .. method:: drop(length)
+    .. method:: peekToken(tokenType)
 
-        `void drop(int length)`
-
-
-    .. method:: dropOneCharNonNewline(length)
-
-        `void dropOneCharNonNewline(int length)`
+        `bool peekToken(TokenType tokenType)`
 
 
-    .. method:: peekUniChar()
+    .. method:: dropToken()
 
-        `string peekUniChar()`
+        `void dropToken()`
 
 
     .. method:: accept(match)
 
-        `(bool | fail Error) accept(string match)`
+        `bool accept(string match)`
 
 
     .. method:: hard_eof()
@@ -150,30 +185,29 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     .. method:: eof()
 
-        `(bool | fail Error) eof()`
+        `bool eof()`
 
         ie. no more meaningful content; only comments and whitespace.
 
     .. method:: strip()
 
-        `(void | fail Error) strip()`
+        `void strip()`
 
 
     .. method:: parseLastComment()
 
-        `(string | fail Error) parseLastComment()`
+        `string parseLastComment()`
 
         Accept many comments; return the last one.
-
-    .. method:: parseComment()
-
-        `(string | fail Error) parseComment()`
-
-        Because it's called from strip(), this among all accept functions does not strip on its own.
 
     .. method:: fail(message)
 
         `Error fail(string message)`
+
+
+    .. method:: parseNumber()
+
+        `(:failure | (:success, long, bool withBasePrefix) | fail Error) parseNumber()`
 
 
     .. method:: assert2s2(test, a, b)
@@ -196,37 +230,9 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
         `(void | fail Error) assert2s5(int test, string a, string b, string c, string d, string e)`
 
 
-.. class:: StackEntry
-
-    TODO: document
-
-    .. method:: advanceOneCharNonNewline(distance)
-
-        `void advanceOneCharNonNewline(int distance)`
-
-        Advance row/column by byte distance `distance`, known to represent one character that is not a \n.
-
-.. function:: advance(entry, fulltext, distance)
-
-    `StackEntry advance(StackEntry entry, string fulltext, int distance)`
-
-    Advance row/column by byte distance `distance`.
-
 .. function:: find(haystack, needle)
 
     `int find(string haystack, string needle)`
-
-    TODO: document
-
-.. function:: isAlnum(ch)
-
-    `bool isAlnum(int ch)`
-
-    TODO: document
-
-.. function:: isAlpha(ch)
-
-    `bool isAlpha(int ch)`
 
     TODO: document
 
@@ -238,7 +244,7 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
 .. function:: isHexDigit(digit)
 
-    `bool isHexDigit(string digit)`
+    `bool isHexDigit(char digit)`
 
     TODO: document
 
@@ -248,9 +254,9 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     TODO: document
 
-.. function:: parseBinaryNumber(parser, negative)
+.. function:: parseBinaryNumber(number, negative)
 
-    `(:failure | (:success, int value)) parseBinaryNumber(Parser parser, bool negative)`
+    `(:failure | (:success, long value)) parseBinaryNumber(string number, bool negative)`
 
     TODO: document
 
@@ -260,15 +266,21 @@ Module entries: :class:`Loc`, :class:`ParserImpl`, :class:`StackEntry`, :func:`a
 
     TODO: document
 
-.. function:: parseHexNumber(parser, negative)
+.. function:: parseHexNumber(number, negative)
 
-    `(:failure | (:success, int value)) parseHexNumber(Parser parser, bool negative)`
+    `(:failure | (:success, long value)) parseHexNumber(string number, bool negative)`
 
     TODO: document
 
 .. function:: parseNumber(parser)
 
-    `(:failure | (:success, int) | fail Error) parseNumber(Parser parser)`
+    `(:failure | (:success, long, bool withBasePrefix) | fail Error) parseNumber(Parser parser)`
+
+    TODO: document
+
+.. function:: precomputeStripTargets(tokens)
+
+    `int[] precomputeStripTargets(Token[] tokens)`
 
     TODO: document
 

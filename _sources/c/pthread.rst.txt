@@ -6,7 +6,11 @@ c.pthread
 
 .. c:namespace:: c.pthread
 
-Module entries: :class:`pthread_cond_t`, :class:`pthread_key_t`, :class:`pthread_mutex_t`, :class:`pthread_mutexattr_t`, :class:`pthread_t`
+Module entries: :class:`pthread_attr_t`, :class:`pthread_cond_t`, :class:`pthread_key_t`, :class:`pthread_mutex_t`, :class:`pthread_mutexattr_t`, :class:`pthread_t`
+
+.. class:: pthread_attr_t
+
+    TODO: document
 
 .. class:: pthread_cond_t
 

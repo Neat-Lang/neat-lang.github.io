@@ -46,10 +46,10 @@ quickly find how a feature works.</p>
 <p>All Neat source files are encoded as UTF-8.</p>
 <p>Comment syntax is as in C:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
-<span class="cm"> * This is a comment. It goes from /* to */</span><span class="p">.</span><span class="w"></span>
-<span class="w"> </span><span class="p">*/</span><span class="w"></span>
-<span class="c1">// This is also a comment. It goes to the end of the line.</span><span class="w"></span>
-<span class="cm">/* Comments can be /* nested. */</span><span class="w"> </span><span class="p">*/</span><span class="w"></span>
+<span class="cm"> * This is a comment. It goes from /* to */</span><span class="p">.</span>
+<span class="w"> </span><span class="p">*/</span>
+<span class="c1">// This is also a comment. It goes to the end of the line.</span>
+<span class="cm">/* Comments can be /* nested. */</span><span class="w"> </span><span class="p">*/</span>
 </pre></div>
 </div>
 <p>Comments may appear anywhere in a source file except inside identifiers or operators.</p>
@@ -60,7 +60,7 @@ quickly find how a feature works.</p>
 <p>A Neat source file has the extension <code class="code docutils literal notranslate"><span class="pre">.nt</span></code>. Each source file corresponds to a module.
 A module is a dot-separated list of packages, corresponding to folders, followed the filename.</p>
 <p>Every file must begin with the module declaration. For instance, a file <code class="code docutils literal notranslate"><span class="pre">src/hello/world.nt</span></code>:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">world</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">world</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -75,7 +75,7 @@ $ neat -Proot:src src/hello/world.nt
 <code class="code docutils literal notranslate"><span class="pre">hello.world</span></code>, because its name will be relative to <code class="code docutils literal notranslate"><span class="pre">src</span></code>.</p>
 <p>Packages cannot access modules in other packages. To allow a package access, explicitly
 list the packages that it has access to:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">$</span><span class="w"> </span><span class="n">neat</span><span class="w"> </span><span class="p">-</span><span class="n">Proot</span><span class="p">:</span><span class="n">src</span><span class="p">:</span><span class="n">dep1</span><span class="p">,</span><span class="n">dep2</span><span class="w"> </span><span class="p">-</span><span class="n">Pdep1</span><span class="p">:</span><span class="n">include</span><span class="p">/</span><span class="n">dep1</span><span class="w"> </span><span class="p">-</span><span class="n">Pdep2</span><span class="p">:</span><span class="n">include</span><span class="p">/</span><span class="n">dep2</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">$</span><span class="w"> </span><span class="n">neat</span><span class="w"> </span><span class="p">-</span><span class="n">Proot</span><span class="p">:</span><span class="n">src</span><span class="p">:</span><span class="n">dep1</span><span class="p">,</span><span class="n">dep2</span><span class="w"> </span><span class="p">-</span><span class="n">Pdep1</span><span class="p">:</span><span class="n">include</span><span class="p">/</span><span class="n">dep1</span><span class="w"> </span><span class="p">-</span><span class="n">Pdep2</span><span class="p">:</span><span class="n">include</span><span class="p">/</span><span class="n">dep2</span>
 </pre></div>
 </div>
 <p>This allows the modules from package <code class="code docutils literal notranslate"><span class="pre">root</span></code> in <code class="code docutils literal notranslate"><span class="pre">src/</span></code> to import the modules
@@ -88,16 +88,16 @@ an unrelated package is impossible.</p>
 <section id="import">
 <h3>Import<a class="headerlink" href="#import" title="Permalink to this heading"></a></h3>
 <p>A module can import another module:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">world</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">world</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Import is non-transitive, ie. symbols from modules imported by <code class="code docutils literal notranslate"><span class="pre">std.stdio</span></code> are invisible.</p>
 <p>Modules can be imported transitively:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
 
-<span class="k">public</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="w"></span>
+<span class="k">public</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Now all modules that import <code class="code docutils literal notranslate"><span class="pre">first</span></code> will also see the symbols in <code class="code docutils literal notranslate"><span class="pre">second</span></code>.</p>
@@ -113,7 +113,7 @@ Private declarations cannot be seen when the module is imported.</p>
 <h3>Extern(C)<a class="headerlink" href="#extern-c" title="Permalink to this heading"></a></h3>
 <p>A function can be declared as <code class="code docutils literal notranslate"><span class="pre">extern(C)</span></code>. This will ensure that it matches the calling convention of the platform’s native C compiler.</p>
 <p>For example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="nb">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="nb">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Note: instead of declaring lots of extern(C) functions manually, try using the
@@ -215,14 +215,14 @@ This is because C’s order is stupid^W a legacy holdover from before it had boo
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
 <p>A function is a series of statements operating on a list of parameters, culminating in a return value:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="n">functionName</span><span class="p">(</span><span class="n">ParameterType</span><span class="w"> </span><span class="n">parameterName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">statement</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">statement</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">statement</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="w">    </span><span class="n">ReturnType</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">functionName</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="n">functionName</span><span class="p">(</span><span class="n">ParameterType</span><span class="w"> </span><span class="n">parameterName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">;</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">;</span>
+<span class="w">    </span><span class="n">statement</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="w">    </span><span class="n">ReturnType</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">functionName</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>When a function is called with <code class="code docutils literal notranslate"><span class="pre">name(arg,</span> <span class="pre">arg)</span></code>, the arguments are passed to the parameters and
@@ -233,16 +233,16 @@ in the function body. This is called return type inference.</p>
 <section id="call">
 <h3>Call<a class="headerlink" href="#call" title="Permalink to this heading"></a></h3>
 <p>A function, class method or struct method can be called with a comma-separated list of arguments:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
 
-<span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
 
-<span class="k">class</span><span class="p">.</span><span class="n">method</span><span class="p">();</span><span class="w"></span>
+<span class="k">class</span><span class="p">.</span><span class="n">method</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>When a function does not have any parameters, the empty parens can be left out, and the function will be
 called implicitly:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">doWork</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">doWork</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>This also allows struct or class methods that look like properties.</p>
@@ -255,8 +255,8 @@ This allows easily defining global functions that can be called as if they are m
 <section id="named-arguments">
 <h4>Named Arguments<a class="headerlink" href="#named-arguments" title="Permalink to this heading"></a></h4>
 <p>The value of every parameter on a call may be assigned by name:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">twice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">twice</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">twice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">twice</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This feature does not allow reordering parameters! It is purely intended to improve call readability, and to
@@ -267,12 +267,12 @@ ensure that arguments are passed to the intended parameter.</p>
 <h3>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this heading"></a></h3>
 <p>Functions may be nested inside other functions. They remain valid while the surrounding function is running,
 and can access variables and parameters of the containing function, that were declared before them:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Note that calling the nested function after the surrounding function has returned will lead to a crash!</p>
@@ -280,8 +280,8 @@ and can access variables and parameters of the containing function, that were de
 <section id="main">
 <h3>main<a class="headerlink" href="#main" title="Permalink to this heading"></a></h3>
 <p>Every program must contain a function with this signature:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>This function will be called when the program is executed.</p>
@@ -292,14 +292,14 @@ and can access variables and parameters of the containing function, that were de
 <section id="variable-declaration">
 <h3>Variable declaration<a class="headerlink" href="#variable-declaration" title="Permalink to this heading"></a></h3>
 <p>A variable can be declared like so:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// a is 0</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// c is 0</span><span class="w"></span>
-<span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// a is 0</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// c is 0</span>
+<span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Instead of a type, you may write <code class="code docutils literal notranslate"><span class="pre">auto</span></code>:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Then the type of the variable is taken from the type of the initializer.</p>
@@ -308,9 +308,9 @@ and can access variables and parameters of the containing function, that were de
 <section id="variable-extraction-declaration">
 <h3>Variable extraction declaration<a class="headerlink" href="#variable-extraction-declaration" title="Permalink to this heading"></a></h3>
 <p>When an expression is a sumtype, a subset or a single type may be extracted as such:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">Error</span><span class="p">)</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"></span>
-<span class="c1">// `Error` will be returned if `foo` is not `int`.</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">&lt;-</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">Error</span><span class="p">)</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span>
+<span class="c1">// `Error` will be returned if `foo` is not `int`.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">&lt;-</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -322,10 +322,10 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 <section id="block-statement">
 <h3>Block statement<a class="headerlink" href="#block-statement" title="Permalink to this heading"></a></h3>
 <p>Multiple statements can be combined into one block:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Variables declared inside the block are not visible outside of it.</p>
@@ -333,17 +333,17 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 <section id="expression-statement">
 <h3>Expression statement<a class="headerlink" href="#expression-statement" title="Permalink to this heading"></a></h3>
 <p>Expressions can appear as statements. They are terminated with a semicolon:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="n">foo</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="p">;</span>
+<span class="n">foo</span><span class="p">();</span>
 </pre></div>
 </div>
 </section>
 <section id="assignment">
 <h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this heading"></a></h3>
 <p>Any reference may be assigned a new value:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
-<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Note that only mutable (<code class="code docutils literal notranslate"><span class="pre">mut</span></code>) variables or parameters can be reassigned. As this allows
@@ -352,19 +352,19 @@ some optimizations to reference counting, non-mutable variables should be prefer
 <section id="if-test">
 <h3>If test<a class="headerlink" href="#if-test" title="Permalink to this heading"></a></h3>
 <p>If a condition is true, execute one statement, else the other:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;2 + 2 = 4&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;sanity has deserted us&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;2 + 2 = 4&quot;</span><span class="p">);</span>
+<span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;sanity has deserted us&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The condition of the <code class="code docutils literal notranslate"><span class="pre">if</span></code> statement may be a variable declaration.
 In that case, the condition is true if the value of the variable is true.
 The variable will only be visible inside the <code class="code docutils literal notranslate"><span class="pre">if</span></code> block:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getFoo</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// do foo things here</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getFoo</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// do foo things here</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p><code class="code docutils literal notranslate"><span class="pre">nullable</span> <span class="pre">Class</span></code> types are true if the class is non-null. In that case, the type
@@ -374,29 +374,29 @@ types can be converted to <code class="code docutils literal notranslate"><span 
 <section id="while-loop">
 <h3>While loop<a class="headerlink" href="#while-loop" title="Permalink to this heading"></a></h3>
 <p>While a condition is true, execute a statement:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="for-loop">
 <h3>For loop<a class="headerlink" href="#for-loop" title="Permalink to this heading"></a></h3>
 <p>You can loop over a range expression:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="c1">// prints 2, then 3</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">ltoa</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="c1">// prints 2, then 3</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">ltoa</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The type of the loop variable may be left out.</p>
 <p>Array expressions are ranges. Array indexes can be iterated like:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>You can also use a C-style for loop:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>But this is rarely needed.</p>
@@ -471,24 +471,24 @@ fields with names only convert to other fields with the same name.</p>
 <section id="sum-type">
 <h3>Sum type<a class="headerlink" href="#sum-type" title="Permalink to this heading"></a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">float)</span></code> is either an int or a float value:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 
-<span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">:</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">);</span><span class="w"></span>
+<span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">case</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">:</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">);</span>
 
-<span class="n">a</span><span class="p">.</span><span class="k">case</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">itoa</span><span class="p">(</span><span class="n">i</span><span class="p">));</span><span class="w"></span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">ftoa</span><span class="p">(</span><span class="n">f</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="n">a</span><span class="p">.</span><span class="k">case</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">:</span>
+<span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">itoa</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="p">:</span>
+<span class="w">        </span><span class="n">print</span><span class="p">(</span><span class="n">ftoa</span><span class="p">(</span><span class="n">f</span><span class="p">));</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Members of a sumtype can be marked as “fail”, enabling error return:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="n">FileNotFound</span><span class="p">)</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">.</span><span class="n">readAll</span><span class="p">?.</span><span class="n">itoa</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">fail</span><span class="w"> </span><span class="n">FileNotFound</span><span class="p">)</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">.</span><span class="n">readAll</span><span class="p">?.</span><span class="n">itoa</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">()?;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">()?;</span>
 </pre></div>
 </div>
 <p>If foo returns a <code class="code docutils literal notranslate"><span class="pre">FileNotFound</span></code>, it will be automatically returned at the <code class="code docutils literal notranslate"><span class="pre">?</span></code>.</p>
@@ -496,15 +496,15 @@ fields with names only convert to other fields with the same name.</p>
 <section id="struct">
 <h3>Struct<a class="headerlink" href="#struct" title="Permalink to this heading"></a></h3>
 <p>A struct is a value type that combines various members and methods that operate on them:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>A method is a function defined in a struct (or class). It takes a reference to the struct value it is called
@@ -513,16 +513,16 @@ on as a hidden parameter called <code class="code docutils literal notranslate">
 <section id="class">
 <h3>Class<a class="headerlink" href="#class" title="Permalink to this heading"></a></h3>
 <p>A class is a <strong>reference type</strong> that combines various members and methods that operate on them:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Foo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Note that, as opposed to C++, the type <code class="code docutils literal notranslate"><span class="pre">Foo</span></code> designates a reference to the class. It is impossible
@@ -533,51 +533,57 @@ a class with <code class="code docutils literal notranslate"><span class="pre">n
 <p>Classes can be inherited with a subclass. An instance of the subclass can be implicitly converted to
 the parent class. When a method is called on an instance, the function that runs is that of the
 allocated class, not of the type of the reference:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// &quot;override&quot; must be specified, to indicate</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// that a parent method is being redefined.</span><span class="w"></span>
-<span class="w">    </span><span class="k">override</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// &quot;override&quot; must be specified, to indicate</span>
+<span class="w">    </span><span class="c1">// that a parent method is being redefined.</span>
+<span class="w">    </span><span class="k">override</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bar</span><span class="p">;</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">get</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bar</span><span class="p">;</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">get</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Classes can also inherit from interfaces, which are like “thin classes” that can only contain methods.
 In exchange, arbitrarily many interfaces can be inherited from:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">interface</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">interface</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="k">class</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parent</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">override</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parent</span><span class="p">,</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">override</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bar</span><span class="p">;</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">get</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bar</span><span class="p">;</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">get</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The type of an object can be tested with the <code class="code docutils literal notranslate"><span class="pre">instanceOf</span></code> property:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">instanceOf</span><span class="p">(</span><span class="n">Bar</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">instanceOf</span><span class="p">(</span><span class="n">Bar</span><span class="p">);</span>
 
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Bar</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">instanceOf</span><span class="p">(</span><span class="n">Bar</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Bar</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">instanceOf</span><span class="p">(</span><span class="n">Bar</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Return and parameter types follow <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">covariance and contravariance</a> on inheritance.</p>
 <p>A class type may be qualified as <code class="code docutils literal notranslate"><span class="pre">nullable</span></code>. In that case, the special value
 <code class="code docutils literal notranslate"><span class="pre">null</span></code> implicitly converts to a reference to the type. By default, class references are not
 nullable:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(!</span><span class="n">foo</span><span class="p">);</span><span class="w"></span>
-<span class="n">Foo</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span><span class="c1">// errors</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="k">assert</span><span class="p">(!</span><span class="n">foo</span><span class="p">);</span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span><span class="w"> </span><span class="c1">// errors</span>
+</pre></div>
+</div>
+<p>As a special treat, the <code class="code docutils literal notranslate"><span class="pre">case</span></code> expression allows treating a nullable class as a sumtype
+of a non-nullable class and <code class="code docutils literal notranslate"><span class="pre">null</span></code>:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Foo</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span>
+<span class="n">Foo</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="kc">null</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -592,7 +598,7 @@ typed entries, such as <code class="code docutils literal notranslate"><span cla
 <section id="typeof">
 <h3><code class="code docutils literal notranslate"><span class="pre">typeof</span></code><a class="headerlink" href="#typeof" title="Permalink to this heading"></a></h3>
 <p>Given an expression, the type of the expression can be used as a type with <code class="code docutils literal notranslate"><span class="pre">typeof</span></code>:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">typeof</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">typeof</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span>
 </pre></div>
 </div>
 <p>Since <code class="code docutils literal notranslate"><span class="pre">auto</span></code> exists, this is mostly used for return and parameter types.</p>
@@ -601,12 +607,12 @@ typed entries, such as <code class="code docutils literal notranslate"><span cla
 <section id="unittest">
 <h2>Unittest<a class="headerlink" href="#unittest" title="Permalink to this heading"></a></h2>
 <p>Unittest blocks will be compiled and run when the compiler is called with <code class="code docutils literal notranslate"><span class="pre">-unittest</span></code>:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="k">unittest</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">unittest</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -614,12 +620,12 @@ typed entries, such as <code class="code docutils literal notranslate"><span cla
 <h2>Templates<a class="headerlink" href="#templates" title="Permalink to this heading"></a></h2>
 <p>A template is a wrapper around a declaration that allows parameterizing it.
 The syntax is:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Here, <code class="code docutils literal notranslate"><span class="pre">T</span></code> is the “template parameter”.</p>
@@ -642,16 +648,16 @@ parameters. This behavior is a placeholder.</p>
 <p>A lambda is a templated nested function reference. They can be assigned to a value. When called, they
 are implicitly instantiated.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="k">auto</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Every lambda has a unique type. Because of this, they cannot be stored in data structures.
 Their primary purpose is being passed to templated functions:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">0</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">array</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">0</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">/</span><span class="w"> </span><span class="mi">2</span><span class="p">).</span><span class="n">array</span><span class="p">;</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span>
 </pre></div>
 </div>
 </section>
@@ -752,7 +758,7 @@ to limit yourself to the functionality in <code class="code docutils literal not
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/manual.rst.txt"

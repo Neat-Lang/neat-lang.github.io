@@ -39,26 +39,26 @@
 <p>Neat is a C-like statically-typed native compiled language with automated reference counting, OOP and macros.
 Its syntax is heavily “inspired by” D.</p>
 <p>Have some example code! Here’s a program that prints the longest line in a file:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">longestline</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">longestline</span><span class="p">;</span>
 
-<span class="kr">macro</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="kr">macro</span><span class="p">.</span><span class="n">listcomprehension</span><span class="p">;</span><span class="w"></span>
+<span class="kr">macro</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="kr">macro</span><span class="p">.</span><span class="n">listcomprehension</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">file</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="nb">string</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">file</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="nb">string</span><span class="p">;</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">readText</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">string</span><span class="w"> </span><span class="n">longestLine</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="n">line</span><span class="w"></span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">)];</span><span class="w"></span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">longestLine</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">$</span><span class="w"> </span><span class="n">neat</span><span class="w"> </span><span class="n">longestline</span><span class="p">.</span><span class="n">nt</span><span class="w"></span>
-<span class="p">...</span><span class="w"></span>
-<span class="p">$</span><span class="w"> </span><span class="p">./</span><span class="n">longestline</span><span class="w"> </span><span class="n">longestline</span><span class="p">.</span><span class="n">nt</span><span class="w"></span>
-<span class="kr">macro</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="kr">macro</span><span class="p">.</span><span class="n">listcomprehension</span><span class="p">;</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">readText</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="nb">string</span><span class="w"> </span><span class="n">longestLine</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">argmax</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="n">line</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">)];</span>
+<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">longestLine</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+<span class="p">$</span><span class="w"> </span><span class="n">neat</span><span class="w"> </span><span class="n">longestline</span><span class="p">.</span><span class="n">nt</span>
+<span class="p">...</span>
+<span class="p">$</span><span class="w"> </span><span class="p">./</span><span class="n">longestline</span><span class="w"> </span><span class="n">longestline</span><span class="p">.</span><span class="n">nt</span>
+<span class="kr">macro</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="kr">macro</span><span class="p">.</span><span class="n">listcomprehension</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>Important notice</strong>: Before you jump in, please read the section <a class="reference internal" href="getstarted.html#good-and-bad-neat"><span class="std std-ref">Good and Bad Neat</span></a>!</p>
@@ -71,7 +71,7 @@ Its syntax is heavily “inspired by” D.</p>
 </dd>
 </dl>
 </li>
-<li><p>https://github.com/Neat-Lang/neat/discussions.</p></li>
+<li><p>TODO: I should probably make a forum or something.</p></li>
 </ul>
 </section>
 <section id="contents">
@@ -113,6 +113,7 @@ Its syntax is heavily “inspired by” D.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="std.html">Standard Library</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="std/algorithm.html">std.algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="std/container/binheap.html">std.container.binheap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="std/math.html">std.math</a></li>
@@ -190,7 +191,7 @@ Its syntax is heavily “inspired by” D.</p>
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/index.rst.txt"

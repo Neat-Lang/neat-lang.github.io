@@ -33,6 +33,12 @@ Module entries: :class:`Stopwatch`, :class:`Time`
         The number of seconds accumulated on the stopwatch.
         Note that the stopwatch must be stopped to access this property.
 
+    .. method:: reset()
+
+        `void reset()`
+
+        Reset the stopwatch to its initial state.
+
     .. method:: start()
 
         `void start()`

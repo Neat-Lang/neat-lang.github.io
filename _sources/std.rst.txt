@@ -17,6 +17,12 @@ Standard Library
 
 Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`
 
+.. rubric:: std.container.binheap
+
+.. c:namespace:: std.container.binheap
+
+Module entries: :class:`BinHeapImpl`, :func:`binHeap`
+
 .. rubric:: std.file
 
 .. c:namespace:: std.file
@@ -27,7 +33,7 @@ Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`
 
 .. c:namespace:: std.json
 
-Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
+Module entries: :class:`JSONValue`, :func:`__jv`, :func:`toString`
 
 .. rubric:: std.math
 
@@ -51,7 +57,7 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
 
 .. c:namespace:: std.process
 
-Module entries: :func:`getEnv`, :func:`readback`, :func:`system`
+Module entries: :func:`exec`, :func:`getEnv`, :func:`readback`, :func:`system`
 
 .. rubric:: std.range.iota
 

@@ -17,7 +17,7 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="std.file" href="file.html" />
+    <link rel="next" title="std.container.binheap" href="container/binheap.html" />
     <link rel="prev" title="Standard Library" href="../std.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -44,7 +44,7 @@
 <dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">all(T,</span> <span class="pre">U)(T</span> <span class="pre">left,</span> <span class="pre">U</span> <span class="pre">right)</span></code></p>
 <p>Returns true if all values in the range fulfill the condition.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">all</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">all</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -55,7 +55,7 @@
 <dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">any(T,</span> <span class="pre">U)(T</span> <span class="pre">left,</span> <span class="pre">U</span> <span class="pre">right)</span></code></p>
 <p>Returns true if any value in the range fulfills the condition.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">any</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">any</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -66,7 +66,7 @@
 <dd><p><code class="code docutils literal notranslate"><span class="pre">typeof(range.front)[]</span> <span class="pre">array(T)(T</span> <span class="pre">range)</span></code></p>
 <p>Converts a range into an array.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -77,7 +77,7 @@
 <dd><p><code class="code docutils literal notranslate"><span class="pre">auto</span> <span class="pre">cumulativeFold(R,</span> <span class="pre">S,</span> <span class="pre">L)(R</span> <span class="pre">range,</span> <span class="pre">S</span> <span class="pre">seed,</span> <span class="pre">L</span> <span class="pre">lambda)</span></code></p>
 <p>Applies a lambda repeatedly to an initial value and a value from a range, yielding the result at every step.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">6</span><span class="p">).</span><span class="n">cumulativeFold</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">]);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">6</span><span class="p">).</span><span class="n">cumulativeFold</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">]);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -88,9 +88,9 @@
 <dd><p><code class="code docutils literal notranslate"><span class="pre">auto</span> <span class="pre">filter(T,</span> <span class="pre">U)(T</span> <span class="pre">left,</span> <span class="pre">U</span> <span class="pre">right)</span></code></p>
 <p>Filters a range by a condition.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">).</span><span class="n">array</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">10</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">).</span><span class="n">array</span><span class="p">;</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">]);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">]);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -103,10 +103,10 @@
 <p>If the input range is <code class="code docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code>,
 the output range is <code class="code docutils literal notranslate"><span class="pre">[lambda(x),</span> <span class="pre">lambda(y),</span> <span class="pre">lambda(z)]</span></code>.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 
-<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]);</span><span class="w"></span>
+<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -124,7 +124,7 @@ the output range is <code class="code docutils literal notranslate"><span class=
 <dd><p><code class="code docutils literal notranslate"><span class="pre">auto</span> <span class="pre">splitter(R,</span> <span class="pre">E)(R</span> <span class="pre">range,</span> <span class="pre">E</span> <span class="pre">element)</span></code></p>
 <p>Given a range, returns a range of ranges consisting of the original range separated at element <code class="code docutils literal notranslate"><span class="pre">element</span></code>.</p>
 <p>Example:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">].</span><span class="n">splitter</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">array</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]]);</span><span class="w"></span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">].</span><span class="n">splitter</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">array</span><span class="p">).</span><span class="n">array</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">]]);</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -154,6 +154,7 @@ the output range is <code class="code docutils literal notranslate"><span class=
 <li class="toctree-l1"><a class="reference internal" href="../manual.html">The Neat Language</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../std.html">Standard Library</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">std.algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container/binheap.html">std.container.binheap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
@@ -176,7 +177,7 @@ the output range is <code class="code docutils literal notranslate"><span class=
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="../std.html">Standard Library</a><ul>
       <li>Previous: <a href="../std.html" title="previous chapter">Standard Library</a></li>
-      <li>Next: <a href="file.html" title="next chapter">std.file</a></li>
+      <li>Next: <a href="container/binheap.html" title="next chapter">std.container.binheap</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -208,7 +209,7 @@ the output range is <code class="code docutils literal notranslate"><span class=
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="../_sources/std/algorithm.rst.txt"

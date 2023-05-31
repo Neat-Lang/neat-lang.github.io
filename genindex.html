@@ -86,6 +86,20 @@
       </ul></li>
       <li><a href="neat/parser.html#ParserImpl.accept">accept() (ParserImpl method)</a>
 </li>
+      <li><a href="neat/parser.html#ParserImpl.acceptIdentifier">acceptIdentifier() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptToken">acceptToken() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptToken2">acceptToken2() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptToken2Not">acceptToken2Not() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptToken2Not2">acceptToken2Not2() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptToken3">acceptToken3() (ParserImpl method)</a>
+</li>
+      <li><a href="neat/parser.html#ParserImpl.acceptTokenStr">acceptTokenStr() (ParserImpl method)</a>
+</li>
       <li>
     acos()
 
@@ -96,15 +110,6 @@
       <li><a href="std/thread.html#Semaphore.acquire">acquire() (Semaphore method)</a>
 </li>
       <li><a href="std/thread.html#ThreadPool.addTask">addTask() (ThreadPool method)</a>
-</li>
-      <li>
-    advance()
-
-      <ul>
-        <li><a href="neat/parser.html#advance">built-in function</a>
-</li>
-      </ul></li>
-      <li><a href="neat/parser.html#StackEntry.advanceOneCharNonNewline">advanceOneCharNonNewline() (StackEntry method)</a>
 </li>
       <li>
     all()
@@ -136,6 +141,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="std/json.html#JSONValue.array">array() (JSONValue method)</a>
+</li>
       <li>
     assert()
 
@@ -197,6 +204,13 @@
         <li><a href="neat/runtime.html#atoi">built-in function</a>, <a href="std/string.html#atoi">[1]</a>
 </li>
       </ul></li>
+      <li>
+    atol()
+
+      <ul>
+        <li><a href="neat/runtime.html#atol">built-in function</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -211,6 +225,17 @@
 </li>
       </ul></li>
       <li><a href="neat/parser.html#ParserImpl.begin">begin() (ParserImpl method)</a>
+</li>
+      <li>
+    binHeap()
+
+      <ul>
+        <li><a href="std/container/binheap.html#binHeap">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="std/container/binheap.html#BinHeapImpl">BinHeapImpl (built-in class)</a>
+</li>
+      <li><a href="std/json.html#JSONValue.boolean">boolean() (JSONValue method)</a>
 </li>
       <li><a href="std/thread.html#CondVar.broadcast">broadcast() (CondVar method)</a>
 </li>
@@ -231,8 +256,6 @@
 </li>
         <li><a href="std/math.html#acos">acos()</a>
 </li>
-        <li><a href="neat/parser.html#advance">advance()</a>
-</li>
         <li><a href="std/algorithm.html#all">all()</a>
 </li>
         <li><a href="std/math/vector.html#angle">angle()</a>
@@ -251,7 +274,11 @@
 </li>
         <li><a href="neat/runtime.html#atoi">atoi()</a>, <a href="std/string.html#atoi">[1]</a>
 </li>
+        <li><a href="neat/runtime.html#atol">atol()</a>
+</li>
         <li><a href="std/file.html#basename">basename()</a>
+</li>
+        <li><a href="std/container/binheap.html#binHeap">binHeap()</a>
 </li>
         <li><a href="neat/runtime.html#btoa">btoa()</a>
 </li>
@@ -271,11 +298,15 @@
 </li>
         <li><a href="std/algorithm.html#cumulativeFold">cumulativeFold()</a>
 </li>
+        <li><a href="neat/runtime.html#die">die()</a>
+</li>
         <li><a href="std/file.html#dirname">dirname()</a>
 </li>
         <li><a href="neat/runtime.html#dtoa_hex">dtoa_hex()</a>
 </li>
         <li><a href="std/string.html#endsWith">endsWith()</a>
+</li>
+        <li><a href="std/process.html#exec">exec()</a>
 </li>
         <li><a href="std/file.html#exists">exists()</a>
 </li>
@@ -289,15 +320,19 @@
 </li>
         <li><a href="std/process.html#getEnv">getEnv()</a>
 </li>
-        <li><a href="neat/parser.html#isAlnum">isAlnum()</a>
+        <li><a href="neat/lexer.html#isAlnum">isAlnum()</a>
 </li>
-        <li><a href="neat/parser.html#isAlpha">isAlpha()</a>
+        <li><a href="neat/lexer.html#isAlpha">isAlpha()</a>
 </li>
         <li><a href="neat/parser.html#isDigit">isDigit()</a>
 </li>
         <li><a href="neat/parser.html#isHexDigit">isHexDigit()</a>
 </li>
-        <li><a href="neat/parser.html#isWhitespace">isWhitespace()</a>
+        <li><a href="neat/lexer.html#isNumeric">isNumeric()</a>
+</li>
+        <li><a href="neat/lexer.html#isUtf8MbStart">isUtf8MbStart()</a>
+</li>
+        <li><a href="neat/lexer.html#isWhitespace">isWhitespace()</a>, <a href="neat/parser.html#isWhitespace">[1]</a>
 </li>
         <li><a href="neat/runtime.html#itoa">itoa()</a>, <a href="std/string.html#itoa">[1]</a>
 </li>
@@ -326,6 +361,8 @@
         <li><a href="neat/parser.html#parseNumber">parseNumber()</a>
 </li>
         <li><a href="std/math.html#pow">pow()</a>
+</li>
+        <li><a href="neat/parser.html#precomputeStripTargets">precomputeStripTargets()</a>
 </li>
         <li><a href="std/stdio.html#print">print()</a>
 </li>
@@ -357,8 +394,6 @@
 </li>
         <li><a href="neat/parser.html#startsWith">startsWith()</a>, <a href="std/string.html#startsWith">[1]</a>
 </li>
-        <li><a href="std/json.html#str">str()</a>
-</li>
         <li><a href="std/string.html#strip">strip()</a>
 </li>
         <li><a href="std/process.html#system">system()</a>
@@ -366,6 +401,10 @@
         <li><a href="std/math.html#tan">tan()</a>
 </li>
         <li><a href="std/string.html#toHexString">toHexString()</a>
+</li>
+        <li><a href="neat/lexer.html#tokenize">tokenize()</a>
+</li>
+        <li><a href="std/json.html#toString">toString()</a>
 </li>
         <li><a href="neat/runtime.html#toStringz">toStringz()</a>, <a href="std/string.html#toStringz">[1]</a>
 </li>
@@ -457,17 +496,22 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    die()
+
+      <ul>
+        <li><a href="neat/runtime.html#die">built-in function</a>
+</li>
+      </ul></li>
+      <li>
     dirname()
 
       <ul>
         <li><a href="std/file.html#dirname">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="neat/parser.html#ParserImpl.drop">drop() (ParserImpl method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="neat/parser.html#ParserImpl.dropOneCharNonNewline">dropOneCharNonNewline() (ParserImpl method)</a>
+      <li><a href="neat/parser.html#ParserImpl.dropToken">dropToken() (ParserImpl method)</a>
 </li>
       <li>
     dtoa_hex()
@@ -482,9 +526,11 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="std/range/iota.html#IntIota.empty">empty() (IntIota method)</a>
+      <li><a href="std/container/binheap.html#BinHeapImpl.empty">empty() (BinHeapImpl method)</a>
 
       <ul>
+        <li><a href="std/range/iota.html#IntIota.empty">(IntIota method)</a>
+</li>
         <li><a href="std/range/iota.html#Iota.empty">(Iota method)</a>
 </li>
       </ul></li>
@@ -495,10 +541,17 @@
         <li><a href="std/string.html#endsWith">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="neat/parser.html#ParserImpl.eof">eof() (ParserImpl method)</a>
 </li>
+      <li>
+    exec()
+
+      <ul>
+        <li><a href="std/process.html#exec">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     exists()
 
@@ -513,6 +566,10 @@
         <li><a href="std/math.html#exp">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/parser.html#ParserImpl.expectToken">expectToken() (ParserImpl method)</a>
+</li>
+      <li><a href="std/container/binheap.html#BinHeapImpl.extract">extract() (BinHeapImpl method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -603,6 +660,10 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/math/matrix.html#mat4x4.identity">identity() (mat4x4 method)</a>
 </li>
+      <li><a href="std/container/binheap.html#BinHeapImpl.insert">insert() (BinHeapImpl method)</a>
+</li>
+      <li><a href="std/json.html#JSONValue.integer">integer() (JSONValue method)</a>
+</li>
       <li><a href="std/range/iota.html#IntIota">IntIota (built-in class)</a>
 </li>
       <li><a href="std/range/iota.html#Iota">Iota (built-in class)</a>
@@ -611,16 +672,18 @@
     isAlnum()
 
       <ul>
-        <li><a href="neat/parser.html#isAlnum">built-in function</a>
+        <li><a href="neat/lexer.html#isAlnum">built-in function</a>
 </li>
       </ul></li>
       <li>
     isAlpha()
 
       <ul>
-        <li><a href="neat/parser.html#isAlpha">built-in function</a>
+        <li><a href="neat/lexer.html#isAlpha">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="std/json.html#JSONValue.isArray">isArray() (JSONValue method)</a>
+</li>
       <li>
     isDigit()
 
@@ -637,13 +700,27 @@
         <li><a href="neat/parser.html#isHexDigit">built-in function</a>
 </li>
       </ul></li>
+      <li>
+    isNumeric()
+
+      <ul>
+        <li><a href="neat/lexer.html#isNumeric">built-in function</a>
+</li>
+      </ul></li>
       <li><a href="std/json.html#JSONValue.isObject">isObject() (JSONValue method)</a>
 </li>
+      <li>
+    isUtf8MbStart()
+
+      <ul>
+        <li><a href="neat/lexer.html#isUtf8MbStart">built-in function</a>
+</li>
+      </ul></li>
       <li>
     isWhitespace()
 
       <ul>
-        <li><a href="neat/parser.html#isWhitespace">built-in function</a>
+        <li><a href="neat/lexer.html#isWhitespace">built-in function</a>, <a href="neat/parser.html#isWhitespace">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -691,9 +768,11 @@
         <li><a href="std/math/vector.html#length">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="std/range/iota.html#IntIota.length">length() (IntIota method)</a>
+      <li><a href="std/container/binheap.html#BinHeapImpl.length">length() (BinHeapImpl method)</a>
 
       <ul>
+        <li><a href="std/range/iota.html#IntIota.length">(IntIota method)</a>
+</li>
         <li><a href="std/range/iota.html#Iota.length">(Iota method)</a>
 </li>
       </ul></li>
@@ -812,8 +891,6 @@
         <li><a href="neat/parser.html#parseBinaryNumber">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="neat/parser.html#ParserImpl.parseComment">parseComment() (ParserImpl method)</a>
-</li>
       <li>
     parseFloat()
 
@@ -839,17 +916,26 @@
         <li><a href="neat/parser.html#parseNumber">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="neat/parser.html#ParserImpl.parseNumber">parseNumber() (ParserImpl method)</a>
+</li>
       <li><a href="neat/parser.html#ParserImpl">ParserImpl (built-in class)</a>
 </li>
-      <li><a href="neat/parser.html#ParserImpl.peekUniChar">peekUniChar() (ParserImpl method)</a>
+      <li><a href="neat/parser.html#ParserImpl.peekToken">peekToken() (ParserImpl method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pow()
 
       <ul>
         <li><a href="std/math.html#pow">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    precomputeStripTargets()
+
+      <ul>
+        <li><a href="neat/parser.html#precomputeStripTargets">built-in function</a>
 </li>
       </ul></li>
       <li>
@@ -859,6 +945,8 @@
         <li><a href="std/stdio.html#print">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="c/pthread.html#pthread_attr_t">pthread_attr_t (built-in class)</a>
+</li>
       <li><a href="c/pthread.html#pthread_cond_t">pthread_cond_t (built-in class)</a>
 </li>
       <li><a href="c/pthread.html#pthread_key_t">pthread_key_t (built-in class)</a>
@@ -928,6 +1016,8 @@
         <li><a href="std/string.html#replace">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="std/time.html#Stopwatch.reset">reset() (Stopwatch method)</a>
+</li>
       <li><a href="neat/parser.html#ParserImpl.revert">revert() (ParserImpl method)</a>
 </li>
       <li><a href="std/math/matrix.html#mat4x4.rotateX">rotateX() (mat4x4 method)</a>
@@ -1020,8 +1110,6 @@
         <li><a href="std/math.html#sqrt">built-in function</a>
 </li>
       </ul></li>
-      <li><a href="neat/parser.html#StackEntry">StackEntry (built-in class)</a>
-</li>
       <li><a href="std/time.html#Stopwatch.start">start() (Stopwatch method)</a>
 </li>
       <li>
@@ -1037,13 +1125,8 @@
 </li>
       <li><a href="std/time.html#Stopwatch">Stopwatch (built-in class)</a>
 </li>
-      <li>
-    str()
-
-      <ul>
-        <li><a href="std/json.html#str">built-in function</a>
+      <li><a href="std/json.html#JSONValue.str">str() (JSONValue method)</a>
 </li>
-      </ul></li>
       <li>
     strip()
 
@@ -1077,9 +1160,11 @@
 </li>
       <li><a href="neat/parser.html#ParserImpl.text">text() (ParserImpl method)</a>
 </li>
-      <li><a href="std/thread.html#CondVar.this">this() (CondVar method)</a>
+      <li><a href="std/container/binheap.html#BinHeapImpl.this">this() (BinHeapImpl method)</a>
 
       <ul>
+        <li><a href="std/thread.html#CondVar.this">(CondVar method)</a>
+</li>
         <li><a href="std/thread.html#Mutex.this">(Mutex method)</a>
 </li>
         <li><a href="neat/parser.html#ParserImpl.this">(ParserImpl method)</a>
@@ -1097,12 +1182,12 @@
         <li><a href="std/thread.html#Waitable.this">(Waitable method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/thread.html#ThreadLocal">ThreadLocal (built-in class)</a>
 </li>
       <li><a href="std/thread.html#ThreadPool">ThreadPool (built-in class)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/time.html#Time">Time (built-in class)</a>
 </li>
       <li><a href="c/sys/time.html#timeval">timeval (built-in class)</a>
@@ -1118,6 +1203,24 @@
         <li><a href="std/string.html#toHexString">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="neat/lexer.html#Token">Token (built-in class)</a>
+</li>
+      <li>
+    tokenize()
+
+      <ul>
+        <li><a href="neat/lexer.html#tokenize">built-in function</a>
+</li>
+      </ul></li>
+      <li>
+    toString()
+
+      <ul>
+        <li><a href="std/json.html#toString">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="neat/lexer.html#Token.toString">toString() (Token method)</a>
+</li>
       <li>
     toStringz()
 
@@ -1276,7 +1379,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

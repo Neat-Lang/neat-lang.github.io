@@ -6,7 +6,7 @@ std.json
 
 .. c:namespace:: std.json
 
-Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
+Module entries: :class:`JSONValue`, :func:`__jv`, :func:`toString`
 
 .. class:: JSONValue
 
@@ -15,10 +15,8 @@ Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
     Example::
 
         auto value = JSONValue([("Hello", JSONValue("World"))]);
-        assert(value.str == "{\"Hello\": \"World\"}");
-        assert(JSONValue.parse("{\"Hello\": \"World\"}").str == "{\"Hello\": \"World\"}");
-        // TODO
-        // auto value = JSONValue({ "Hello": "World" });
+        assert(value.toString == "{\"Hello\": \"World\"}");
+        assert(JSONValue.parse("{\"Hello\": \"World\"}").toString == "{\"Hello\": \"World\"}");
 
     .. method:: parse(str)
 
@@ -32,11 +30,41 @@ Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
 
         Load a JSON value from a file.
 
+    .. method:: integer()
+
+        `int integer()`
+
+        Interprets a JSON value as an integer.
+
+    .. method:: str()
+
+        `string str()`
+
+        Interprets a JSON value as a string.
+
+    .. method:: boolean()
+
+        `bool boolean()`
+
+        Interprets a JSON value as a boolean.
+
+    .. method:: array()
+
+        `JSONValue[] array()`
+
+        Interprets a JSON value as an array.
+
     .. method:: object()
 
         `(string key, JSONValue value)[] object()`
 
         Interprets a JSON value as an object.
+
+    .. method:: isArray()
+
+        `bool isArray()`
+
+        Returns true if the JSON value is an array.
 
     .. method:: isObject()
 
@@ -74,8 +102,8 @@ Module entries: :class:`JSONValue`, :func:`__jv`, :func:`str`
 
     TODO: document
 
-.. function:: str(jv)
+.. function:: toString(jv)
 
-    `string str(JSONValue jv)`
+    `string toString(JSONValue jv)`
 
     Converts a JSON value to a string.

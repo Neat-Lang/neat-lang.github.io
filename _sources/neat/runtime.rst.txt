@@ -6,7 +6,7 @@ neat.runtime
 
 .. c:namespace:: neat.runtime
 
-Module entries: :func:`assert`, :func:`atoa`, :func:`atof`, :func:`atoi`, :func:`btoa`, :func:`ctoa`, :func:`dtoa_hex`, :func:`ftoa`, :func:`itoa`, :func:`ltoa`, :func:`ptoa`, :func:`toStringz`
+Module entries: :func:`assert`, :func:`atoa`, :func:`atof`, :func:`atoi`, :func:`atol`, :func:`btoa`, :func:`ctoa`, :func:`die`, :func:`dtoa_hex`, :func:`ftoa`, :func:`itoa`, :func:`ltoa`, :func:`ptoa`, :func:`toStringz`
 
 .. function:: assert(test)
 
@@ -32,6 +32,12 @@ Module entries: :func:`assert`, :func:`atoa`, :func:`atof`, :func:`atoi`, :func:
 
     TODO: document
 
+.. function:: atol(s)
+
+    `long atol(string s)`
+
+    TODO: document
+
 .. function:: btoa(b)
 
     `string btoa(bool b)`
@@ -41,6 +47,12 @@ Module entries: :func:`assert`, :func:`atoa`, :func:`atof`, :func:`atoi`, :func:
 .. function:: ctoa(c)
 
     `string ctoa(char c)`
+
+    TODO: document
+
+.. function:: die()
+
+    `bottom die()`
 
     TODO: document
 
