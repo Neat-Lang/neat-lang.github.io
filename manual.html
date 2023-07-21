@@ -468,6 +468,10 @@ It consists of a pointer, a length and a reference to the array object.</p>
 fields with names only convert to other fields with the same name.</p>
 <p>For example, <code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> implicitly converts to <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">from,</span> <span class="pre">int</span> <span class="pre">to)</span></code>, but <code class="code docutils literal notranslate"><span class="pre">(min=2,</span> <span class="pre">max=3)</span></code> does not.</p>
 </section>
+<section id="pointers">
+<h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
+<p>Don’t use pointers.</p>
+</section>
 <section id="sum-type">
 <h3>Sum type<a class="headerlink" href="#sum-type" title="Permalink to this heading"></a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">float)</span></code> is either an int or a float value:</p>
@@ -492,6 +496,14 @@ fields with names only convert to other fields with the same name.</p>
 </pre></div>
 </div>
 <p>If foo returns a <code class="code docutils literal notranslate"><span class="pre">FileNotFound</span></code>, it will be automatically returned at the <code class="code docutils literal notranslate"><span class="pre">?</span></code>.</p>
+</section>
+<section id="symbol-identifier">
+<h3>Symbol Identifier<a class="headerlink" href="#symbol-identifier" title="Permalink to this heading"></a></h3>
+<p>A symbol identifier takes the form <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
+<p>It is both a type and an expression. The type <code class="code docutils literal notranslate"><span class="pre">:name</span></code> has one value, which is also <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
+<p>This feature can be used to “type-tag” entries in sumtypes, to differentiate identically
+typed entries, such as <code class="code docutils literal notranslate"><span class="pre">(:centimeters,</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">:meters,</span> <span class="pre">int)</span></code>.</p>
+<p>It is also used to construct “value-less” sumtype entries, such as <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">:none)</span></code>.</p>
 </section>
 <section id="struct">
 <h3>Struct<a class="headerlink" href="#struct" title="Permalink to this heading"></a></h3>
@@ -529,7 +541,8 @@ on as a hidden parameter called <code class="code docutils literal notranslate">
 to hold a class by value.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">this</span></code> is a special method without return value that designates the constructor of the class. When instantiating
 a class with <code class="code docutils literal notranslate"><span class="pre">new</span> <span class="pre">Class(args)</span></code>, <code class="code docutils literal notranslate"><span class="pre">this(args)</span></code> is called.</p>
-<p>The parameter <code class="code docutils literal notranslate"><span class="pre">this.a</span></code> indicates that the argument is directly assigned to the member <code class="code docutils literal notranslate"><span class="pre">a</span></code>, rather than passed to the method as a parameter.</p>
+<p>The parameter <code class="code docutils literal notranslate"><span class="pre">this.a</span></code> indicates that the argument is directly assigned to the member <code class="code docutils literal notranslate"><span class="pre">a</span></code>,
+rather than passed to the method as a parameter.</p>
 <p>Classes can be inherited with a subclass. An instance of the subclass can be implicitly converted to
 the parent class. When a method is called on an instance, the function that runs is that of the
 allocated class, not of the type of the reference:</p>
@@ -565,6 +578,15 @@ In exchange, arbitrarily many interfaces can be inherited from:</p>
 <span class="k">assert</span><span class="p">(</span><span class="n">foo</span><span class="p">.</span><span class="n">get</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>In a subclass constructor, you can use the syntax <code class="code docutils literal notranslate"><span class="pre">super()</span></code> to call the constructor of the parent class.</p>
+<p>You can also use the keyword <code class="code docutils literal notranslate"><span class="pre">super</span></code> in the parameter list to insert an implicit super constructor call:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Foo</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">(</span><span class="k">super</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The type of an object can be tested with the <code class="code docutils literal notranslate"><span class="pre">instanceOf</span></code> property:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">nullable</span><span class="w"> </span><span class="n">Bar</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">foo</span><span class="p">.</span><span class="n">instanceOf</span><span class="p">(</span><span class="n">Bar</span><span class="p">);</span>
 
@@ -587,13 +609,22 @@ of a non-nullable class and <code class="code docutils literal notranslate"><spa
 </pre></div>
 </div>
 </section>
-<section id="symbol-identifier">
-<h3>Symbol Identifier<a class="headerlink" href="#symbol-identifier" title="Permalink to this heading"></a></h3>
-<p>A symbol identifier takes the form <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
-<p>It is both a type and an expression. The type <code class="code docutils literal notranslate"><span class="pre">:name</span></code> has one value, which is also <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
-<p>This feature can be used to “type-tag” entries in sumtypes, to differentiate identically
-typed entries, such as <code class="code docutils literal notranslate"><span class="pre">(:centimeters,</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">:meters,</span> <span class="pre">int)</span></code>.</p>
-<p>It is also used to construct “value-less” sumtype entries, such as <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">:none)</span></code>.</p>
+<section id="function-and-delegate">
+<h3>Function and Delegate<a class="headerlink" href="#function-and-delegate" title="Permalink to this heading"></a></h3>
+<p>You can take the address of a function using the <code class="code docutils literal notranslate"><span class="pre">&amp;</span></code> operator. The type of
+the expression is <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">function(T)</span></code>.</p>
+<p>When you take the address of a class method, the type will be <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">delegate(T)</span></code>.
+A <code class="code docutils literal notranslate"><span class="pre">delegate</span></code> is a “fat function pointer” that carries a pointer to the context,
+ie. the object.</p>
+<p>You can also take the address of a nested function with <code class="code docutils literal notranslate"><span class="pre">&amp;</span></code>, but then the type
+will be <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">delegate!(T)</span></code>, a “noncopyable delegate”. It cannot be used anywhere
+where a reference would have to be taken. As the delegate carries a pointer to
+the stackframe, this is necessary to protect the developer from use-after-return
+bugs.</p>
+<p>A nested function can be heap-allocated using the syntax <code class="code docutils literal notranslate"><span class="pre">new</span> <span class="pre">&amp;fun</span></code>. <code class="code docutils literal notranslate"><span class="pre">new</span></code> will
+make a copy of the surrounding stackframe for the function. In that case,
+the type will be <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">delegate(T)</span></code> and the allocated stackframe will be reference
+counted.</p>
 </section>
 <section id="typeof">
 <h3><code class="code docutils literal notranslate"><span class="pre">typeof</span></code><a class="headerlink" href="#typeof" title="Permalink to this heading"></a></h3>
@@ -660,6 +691,9 @@ Their primary purpose is being passed to templated functions:</p>
 <span class="k">assert</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]);</span>
 </pre></div>
 </div>
+<p>The compiler will try to prevent you from returning a lambda from the function where it was defined.
+To enable this, lambdas cannot be assigned to class fields, or in general put in any location where
+the compiler could lose track of where the lambda is.</p>
 </section>
 <section id="macros">
 <h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>

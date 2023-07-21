@@ -225,7 +225,7 @@ and keeps a queue of tasks, which are distributed over threads as they become av
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadPool.waitComplete">
 <span class="sig-name descname"><span class="pre">waitComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.waitComplete" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitComplete(void</span> <span class="pre">delegate(float)</span> <span class="pre">progress)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitComplete(void</span> <span class="pre">delegate!(float)</span> <span class="pre">progress)</span></code></p>
 <p>Returns when all queued tasks have completed.
 The callback will be invoked with a number between 0 and 1, indicating progress.
 Intended for standalone tools that want to present a progress bar.</p>
@@ -269,21 +269,21 @@ for the outcome of an operation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.update" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">update(T</span> <span class="pre">delegate(T)</span> <span class="pre">action)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">update(T</span> <span class="pre">delegate!(T)</span> <span class="pre">action)</span></code></p>
 <p>Provide an action that updates the stored value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.waitFor">
 <span class="sig-name descname"><span class="pre">waitFor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitFor" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitFor(bool</span> <span class="pre">delegate(T)</span> <span class="pre">condition)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitFor(bool</span> <span class="pre">delegate!(T)</span> <span class="pre">condition)</span></code></p>
 <p>Wait for the stored value to fulfill the condition.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.waitReact">
 <span class="sig-name descname"><span class="pre">waitReact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">react</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitReact" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitReact(bool</span> <span class="pre">delegate(T)</span> <span class="pre">condition,</span> <span class="pre">T</span> <span class="pre">delegate(T)</span> <span class="pre">react)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitReact(bool</span> <span class="pre">delegate!(T)</span> <span class="pre">condition,</span> <span class="pre">T</span> <span class="pre">delegate!(T)</span> <span class="pre">react)</span></code></p>
 <p>Wait for the stored value to fulfill the condition, then modify it.</p>
 </dd></dl>
 

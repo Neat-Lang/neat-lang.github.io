@@ -6,7 +6,7 @@ std.file
 
 .. c:namespace:: std.file
 
-Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
+Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`rename`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
 
 .. function:: basename(path)
 
@@ -63,6 +63,12 @@ Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`
     `void remove(string path)`
 
     Delete the given file from the filesystem.
+
+.. function:: rename(source, dest)
+
+    `void rename(string source, string dest)`
+
+    Change the name or location of a file.
 
 .. function:: withoutExtension(s)
 

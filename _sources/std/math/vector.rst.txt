@@ -6,7 +6,7 @@ std.math.vector
 
 .. c:namespace:: std.math.vector
 
-Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
+Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`length`, :func:`normal`
 
 .. function:: angle(a, b)
 
@@ -19,6 +19,12 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
     `vec3f cross(vec3f a, vec3f b)`
 
     Compute the cross product of two vectors.
+
+.. function:: length(v)
+
+    `float length(vec2f v)`
+
+    Return the length of the vector.
 
 .. function:: length(v)
 

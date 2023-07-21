@@ -27,7 +27,7 @@ Module entries: :class:`BinHeapImpl`, :func:`binHeap`
 
 .. c:namespace:: std.file
 
-Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
+Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`rename`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
 
 .. rubric:: std.json
 
@@ -51,7 +51,7 @@ Module entries: :class:`mat4x4`
 
 .. c:namespace:: std.math.vector
 
-Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`normal`
+Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`length`, :func:`normal`
 
 .. rubric:: std.process
 

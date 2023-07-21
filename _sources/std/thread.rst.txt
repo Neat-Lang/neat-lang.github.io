@@ -171,7 +171,7 @@ Module entries: :class:`CondVar`, :class:`Mutex`, :class:`Semaphore`, :class:`Ta
 
     .. method:: waitComplete(progress)
 
-        `void waitComplete(void delegate(float) progress)`
+        `void waitComplete(void delegate!(float) progress)`
 
         Returns when all queued tasks have completed.
         The callback will be invoked with a number between 0 and 1, indicating progress.
@@ -208,18 +208,18 @@ Module entries: :class:`CondVar`, :class:`Mutex`, :class:`Semaphore`, :class:`Ta
 
     .. method:: update(action)
 
-        `void update(T delegate(T) action)`
+        `void update(T delegate!(T) action)`
 
         Provide an action that updates the stored value.
 
     .. method:: waitFor(condition)
 
-        `void waitFor(bool delegate(T) condition)`
+        `void waitFor(bool delegate!(T) condition)`
 
         Wait for the stored value to fulfill the condition.
 
     .. method:: waitReact(condition, react)
 
-        `void waitReact(bool delegate(T) condition, T delegate(T) react)`
+        `void waitReact(bool delegate!(T) condition, T delegate!(T) react)`
 
         Wait for the stored value to fulfill the condition, then modify it.
