@@ -450,13 +450,29 @@ types can be converted to <code class="code docutils literal notranslate"><span 
 </section>
 <section id="array">
 <h3>Array<a class="headerlink" href="#array" title="Permalink to this heading"></a></h3>
-<p><code class="code docutils literal notranslate"><span class="pre">T[]</span></code> is an “array of T”, what some languages call a slice.
+<p>The type <code class="code docutils literal notranslate"><span class="pre">T[]</span></code> is an “array of T”, which some languages call a slice.
 It consists of a pointer, a length and a reference to the array object.</p>
-<p><code class="code docutils literal notranslate"><span class="pre">T.length</span></code> is the length of the array.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">[2]</span></code> is an array of ints (<code class="code docutils literal notranslate"><span class="pre">int[]</span></code>), allocated on the heap.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">array</span> <span class="pre">~</span> <span class="pre">array</span></code> is the concatenation of two arrays.</p>
+<p>Concatenation is the only way to add elements to the array. The values in an array
+cannot be directly modified! In other words, arrays are immutable by default.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">array.length</span></code> is the length of the array.</p>
 <p>Appending to an array in a loop will follow a doubling strategy. It should be reasonably efficient.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">array[2]</span></code> is the third element (base-0) of the array.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">array.dup</span></code> creates a copy of the array. The copy will be mutable.</p>
+</section>
+<section id="mutable-array">
+<h3>Mutable Array<a class="headerlink" href="#mutable-array" title="Permalink to this heading"></a></h3>
+<p>The type <code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">mut[]</span></code> is a “mutable array of T”. It differs from normal arrays in that elements
+can be freely reassigned.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">array.freeze</span></code> converts <code class="code docutils literal notranslate"><span class="pre">array</span></code> to an immutable array. Unless <code class="code docutils literal notranslate"><span class="pre">array</span></code> has exactly one
+reference, this operation is forbidden; using the <code class="code docutils literal notranslate"><span class="pre">array</span></code> variable after this expression
+has been evaluated is forbidden. (The compiler does not at present enforce this, but it
+will in the future.)</p>
+<p><code class="code docutils literal notranslate"><span class="pre">T[]</span></code> and <code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">mut[]</span></code> are separated because in my experience these types occupy fundamentally
+different roles in a program. If you pass an array to a function, you get the
+assurance that it won’t be modified. Likewise if you are a class, and somebody gives you an
+array that you store in a class member, the value of that array will not change on you.</p>
 </section>
 <section id="tuple">
 <h3>Tuple<a class="headerlink" href="#tuple" title="Permalink to this heading"></a></h3>
@@ -659,13 +675,14 @@ The syntax is:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here, <code class="code docutils literal notranslate"><span class="pre">T</span></code> is the “template parameter”.</p>
+<p>Here, <code class="code docutils literal notranslate"><span class="pre">T</span></code> is the “template parameter”. Multiple template parameters can be used.</p>
 <p>The symbol in the template must be <em>eponymous</em>, ie. have the same name as the template. To call it,
 instantiate the template: <code class="code docutils literal notranslate"><span class="pre">max!int(2,</span> <span class="pre">3)</span></code> or <code class="code docutils literal notranslate"><span class="pre">max!float(2.5,</span> <span class="pre">3)</span></code>. Here, <code class="code docutils literal notranslate"><span class="pre">max!int</span></code> is “the function <code class="code docutils literal notranslate"><span class="pre">max</span></code>
 in the version of the template <code class="code docutils literal notranslate"><span class="pre">max</span></code> where <code class="code docutils literal notranslate"><span class="pre">T</span></code> is <code class="code docutils literal notranslate"><span class="pre">int</span></code>.”</p>
 <p>Multiple parameters are passed in parentheses: <code class="code docutils literal notranslate"><span class="pre">templ!(int,</span> <span class="pre">float)</span></code>.</p>
-<p>If the template is called directly, the types of the parameters will be used as template
-parameters. This behavior is a placeholder.</p>
+<p>If the template is called directly, without explicitly instantiating it, the compiler will
+try to unify the arguments passed with the template arguments available in order to infer their types.
+If only some template arguments are given in the instantiation, the compiler will try to infer the rest.</p>
 </section>
 <section id="ranges">
 <h2>Ranges<a class="headerlink" href="#ranges" title="Permalink to this heading"></a></h2>
