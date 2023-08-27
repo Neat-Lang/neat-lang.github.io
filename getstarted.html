@@ -225,16 +225,13 @@ fashion, I’ll be much more amenable to a bug report to make it fast. (So long 
 <p>Pointers are in the language for one thing and one thing only: interacting with C APIs. They do <strong>not</strong> participate in
 reference counting. If you absolutely have to use pointers, make sure that the reference you are passing a pointer to
 outlives the pointer value.</p>
-<p>How do you modify state from a called function? Pass a “natural” reference type, ie. classes or arrays. Or just
+<p>How do you modify state from a called function? Pass a “natural” reference type, ie. an object. Or just
 return the new value.</p>
 </section>
-<section id="closures-are-dynamic">
-<h3>Closures are dynamic<a class="headerlink" href="#closures-are-dynamic" title="Permalink to this heading"></a></h3>
-<p>There is zero escape analysis. There is no closure allocation. Also, delegates don’t participate in reference counting.
-As with pointers, if you pass a closure to a function, whether as a delegate or as a lambda, ensure that the function’s
-use of that closure does not outlive the calling stack frame.</p>
-<p>If you want to implement something like a timer task, keep in mind that subclasses can be declared inside a function,
-and just subclass <code class="code docutils literal notranslate"><span class="pre">TimerTask</span></code> locally.</p>
+<section id="closures-are-a-bit-fishy">
+<h3>Closures are a bit fishy<a class="headerlink" href="#closures-are-a-bit-fishy" title="Permalink to this heading"></a></h3>
+<p>I’ve tried to allow closures to mostly avoid refcounting. The result is its own special little corner of the language.
+If a closure does a weird thing, try heap-allocating it or raise a bug.</p>
 </section>
 <section id="neat-base-is-the-key-to-macros">
 <h3><code class="code docutils literal notranslate"><span class="pre">neat.base</span></code> is the key to macros<a class="headerlink" href="#neat-base-is-the-key-to-macros" title="Permalink to this heading"></a></h3>
@@ -283,15 +280,7 @@ is in the compiler, that it is deliberate and optimal. Feel free to experiment w
 <li class="toctree-l1"><a class="reference external" href="https://github.com/neat-lang/neat/">Neat on Github 🔗</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">The Neat Language</a></li>
-      <li>Next: <a href="intro.html" title="next chapter">Introduction</a></li>
-  </ul></li>
-</ul>
-</div>
+
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -302,14 +291,6 @@ is in the compiler, that it is deliberate and optimal. Feel free to experiment w
     </div>
 </div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>

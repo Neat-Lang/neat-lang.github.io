@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>The Neat Programming Language &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="the-neat-programming-language">
+<h1>The Neat Programming Language<a class="headerlink" href="#the-neat-programming-language" title="Permalink to this heading"></a></h1>
+<a class="reference external image-reference" href="https://github.com/neat-lang/neat/blob/master/LICENSE"><img alt="https://img.shields.io/badge/license-BSD-blue.svg" src="https://img.shields.io/badge/license-BSD-blue.svg" /></a>
+<img alt="https://img.shields.io/badge/platform-Linux%2064--bit-brightgreen.svg" src="https://img.shields.io/badge/platform-Linux%2064--bit-brightgreen.svg" /><section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://neat-lang.github.io">Documentation</a></p>
+<p><a class="reference external" href="https://github.com/neat-lang/neat">Github</a></p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>To set up Neat on Ubuntu 22.04 from source, follow these steps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>update
+apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ca-certificates<span class="w"> </span>clang-15<span class="w"> </span>curl<span class="w"> </span>file<span class="w"> </span>gcc<span class="w"> </span>git<span class="w"> </span>llvm-15<span class="w"> </span>llvm-15-dev<span class="w"> </span>unzip
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/neat-lang/neat
+<span class="nb">cd</span><span class="w"> </span>neat
+./build.sh
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/build:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>Note that copying the binary to <code class="code docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> will <em>not</em> work at present,
+as <code class="code docutils literal notranslate"><span class="pre">neat</span></code> looks for configuration and compiler source relative to the binary.</p>
+</section>
+<section id="sample">
+<h2>Sample<a class="headerlink" href="#sample" title="Permalink to this heading"></a></h2>
+<p>To run a sample:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>neat<span class="w"> </span>demos/longestline.nt
+./longestline<span class="w"> </span>demos/longestline.nt
+</pre></div>
+</div>
+<p>Check the other files in <code class="code docutils literal notranslate"><span class="pre">demos/</span></code> as well, but note that they may need various <code class="code docutils literal notranslate"><span class="pre">-dev</span></code> packages installed.</p>
+</section>
+<section id="help-things-stopped-working">
+<h2>Help, things stopped working!<a class="headerlink" href="#help-things-stopped-working" title="Permalink to this heading"></a></h2>
+<p>If compiles are randomly failing with linker errors or weird problems, delete the <code class="code docutils literal notranslate"><span class="pre">.obj/</span></code> folder,
+which caches compilation artifacts.</p>
+<p>This should not happen, and yet…</p>
+</section>
+</section>
+
+
+          </div>
+          
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;@FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/dconf_23.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
