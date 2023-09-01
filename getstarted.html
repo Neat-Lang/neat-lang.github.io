@@ -39,7 +39,7 @@
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
 <p>The Neat compiler is at the moment only tested on 64-bit x86 Linux. However, it <em>should</em> work on other 64-bit platforms,
 and be able to be ported to 32-bit platforms with little effort.</p>
-<p>There are two available versions, depending on backend: LLVM 14 or GCC based. Note that both versions will require gcc
+<p>There are two available versions, depending on backend: LLVM 15 or GCC based. Note that both versions will require gcc
 to be installed for certain macros to work. Also, while the LLVM backend release may use the gcc backend, the gcc backend
 release cannot use LLVM, because it will not be built against it.</p>
 <p>The primary question, thus, is which backend you expect to use “by default.” However, to my knowledge, aside the inherent
@@ -49,7 +49,9 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <h2>Install with LLVM<a class="headerlink" href="#install-with-llvm" title="Permalink to this heading"></a></h2>
 <ol class="arabic">
 <li><p>Install required packages:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="p">-</span><span class="n">get</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">xz</span><span class="p">-</span><span class="n">utils</span><span class="w"> </span><span class="n">wget</span><span class="w"> </span><span class="n">gcc</span><span class="w"> </span><span class="n">llvm</span><span class="p">-</span><span class="mi">14</span><span class="p">-</span><span class="n">dev</span><span class="w"> </span><span class="n">clang</span><span class="p">-</span><span class="mi">14</span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span>apt-get install -y --no-install-recommends \
+  ca-certificates clang-15 curl file gcc git \
+  llvm-15 llvm-15-dev xz-utils unzip
 </pre></div>
 </div>
 </li>
