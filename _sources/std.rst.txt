@@ -17,6 +17,12 @@ Standard Library
 
 Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`
 
+.. rubric:: std.argparse
+
+.. c:namespace:: std.argparse
+
+Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class:`GccArgParser`, :class:`UnixArgParser`
+
 .. rubric:: std.container.binheap
 
 .. c:namespace:: std.container.binheap

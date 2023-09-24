@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>std.argparse &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="std.container.binheap" href="container/binheap.html" />
+    <link rel="prev" title="std.algorithm" href="algorithm.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="id1">
+<h1>std.argparse<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Module entries: <a class="reference internal" href="#ArgInfo" title="ArgInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArgInfo</span></code></a>, <a class="reference internal" href="#ArgParser" title="ArgParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArgParser</span></code></a>, <a class="reference internal" href="#ArgResult" title="ArgResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArgResult</span></code></a>, <a class="reference internal" href="#GccArgParser" title="GccArgParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">GccArgParser</span></code></a>, <a class="reference internal" href="#UnixArgParser" title="UnixArgParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnixArgParser</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ArgInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArgInfo</span></span><a class="headerlink" href="#ArgInfo" title="Permalink to this definition"></a></dt>
+<dd><p>Information about a defined command-line argument.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgInfo.longOrShort">
+<span class="sig-name descname"><span class="pre">longOrShort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArgInfo.longOrShort" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">longOrShort()</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ArgParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArgParser</span></span><a class="headerlink" href="#ArgParser" title="Permalink to this definition"></a></dt>
+<dd><p>Parse command-line arguments and return matched arguments or errors.</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;help&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print this help page&quot;</span><span class="p">);</span>
+
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="p">.</span><span class="n">empty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;help&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Print this help page&quot;</span><span class="p">);</span>
+
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;foo&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">intArg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Foo arg&quot;</span><span class="p">);</span>
+
+<span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-f&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">ArgResult</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&quot;Flag &#39;-f&#39; missing parameter&quot;</span><span class="p">);</span>
+
+<span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;--foo&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">ArgResult</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&quot;Flag &#39;--foo&#39; missing parameter&quot;</span><span class="p">);</span>
+
+<span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">ArgResult</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&quot;Flag &#39;-f&#39; expected integer parameter&quot;</span><span class="p">);</span>
+
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">has</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="p">.</span><span class="n">empty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-fb&quot;</span><span class="p">]).</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="p">.</span><span class="n">empty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GccArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">noArg</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+
+<span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-fb&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">ArgResult</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s">&quot;Flag &#39;-f&#39; expected no parameter&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">extra</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GccArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;L&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">multiArgs</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;-L-lpthreads&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">getMultiple</span><span class="p">(</span><span class="s">&quot;L&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;-lpthreads&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UnixArgParser</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">blaAction</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">ArgResult</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arg</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;bla&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">foundArgs</span><span class="p">[</span><span class="s">&quot;bla&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// arg consumed</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// no match</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="p">&amp;</span><span class="n">blaAction</span><span class="p">);</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;bla&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;bla&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="p">.</span><span class="n">empty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgParser.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgParser.add" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">add(string</span> <span class="pre">shortname,</span> <span class="pre">string</span> <span class="pre">longname,</span> <span class="pre">ArgKind</span> <span class="pre">kind,</span> <span class="pre">(string</span> <span class="pre">|</span> <span class="pre">:hidden)</span> <span class="pre">description)</span></code></p>
+<p>Add a command-line argument.
+Typical usage: <a href="#id2"><span class="problematic" id="id3">`</span></a>add(“h”, “help”, :noArg, “Print this help page.”);</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">add(string</span> <span class="pre">name,</span> <span class="pre">ArgKind</span> <span class="pre">kind,</span> <span class="pre">(string</span> <span class="pre">|</span> <span class="pre">:hidden)</span> <span class="pre">description)</span></code></p>
+<p>Add a command-line argument without a short form.
+Typical usage: <a href="#id4"><span class="problematic" id="id5">`</span></a>add(“help”, :noArg, “Print this help page.”);</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">add(int</span> <span class="pre">delegate(string,</span> <span class="pre">string[],</span> <span class="pre">ArgResult)</span> <span class="pre">dg)</span></code></p>
+<p>Add a special rule. The callback will be invoked with the current
+argument, the remaining arguments, and the result object to fill out.
+It is expected to return the number of arguments consumed, including
+the current argument.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgParser.parse" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(ArgResult</span> <span class="pre">|</span> <span class="pre">fail</span> <span class="pre">string)</span> <span class="pre">parse(string[]</span> <span class="pre">args)</span></code></p>
+<p>Parse a list of command-line arguments. If a string is returned,
+the command-line arguments did not match the defined arguments.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ArgResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArgResult</span></span><a class="headerlink" href="#ArgResult" title="Permalink to this definition"></a></dt>
+<dd><p>The result of successfully parsing command-line arguments.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgResult.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgResult.this" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this(this.parser)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgResult.has">
+<span class="sig-name descname"><span class="pre">has</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgResult.has" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">has(string</span> <span class="pre">arg)</span></code></p>
+<p>Returns whether an argument was matched.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgResult.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgResult.get" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">get(string</span> <span class="pre">arg)</span></code></p>
+<p>Returns the parameter of a matched argument that took a parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgResult.getMultiple">
+<span class="sig-name descname"><span class="pre">getMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgResult.getMultiple" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string[]</span> <span class="pre">getMultiple(string</span> <span class="pre">arg)</span></code></p>
+<p>Returns all parameters of an argument that could match multiple times.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArgResult.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgResult.set" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">set(string</span> <span class="pre">arg,</span> <span class="pre">string</span> <span class="pre">value)</span></code></p>
+<p>Helper to manually set an argument to a value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="GccArgParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GccArgParser</span></span><a class="headerlink" href="#GccArgParser" title="Permalink to this definition"></a></dt>
+<dd><p>GCC style:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">--foo</span> <span class="pre">bar</span></code>, <code class="code docutils literal notranslate"><span class="pre">--foo=bar</span></code>, <code class="code docutils literal notranslate"><span class="pre">-foo=bar</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-fx</span></code> is <code class="code docutils literal notranslate"><span class="pre">--foo=x</span></code></p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="GccArgParser.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GccArgParser.this" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="GccArgParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#GccArgParser.parse" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(ArgResult</span> <span class="pre">|</span> <span class="pre">fail</span> <span class="pre">string)</span> <span class="pre">parse(string[]</span> <span class="pre">args)</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="UnixArgParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnixArgParser</span></span><a class="headerlink" href="#UnixArgParser" title="Permalink to this definition"></a></dt>
+<dd><p>UNIX style:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">--foo</span> <span class="pre">bar</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">-fx</span></code> is <code class="code docutils literal notranslate"><span class="pre">-f,</span> <span class="pre">-x</span></code></p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="UnixArgParser.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#UnixArgParser.this" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="UnixArgParser.parse">
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#UnixArgParser.parse" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(ArgResult</span> <span class="pre">|</span> <span class="pre">fail</span> <span class="pre">string)</span> <span class="pre">parse(string[]</span> <span class="pre">args)</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Neat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manual.html">The Neat Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../std.html">Standard Library</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">std.argparse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="container/binheap.html">std.container.binheap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/matrix.html">std.math.matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thread.html">std.thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">std.time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neat-lang/neat/">Neat on Github 🔗</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;@FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/std/argparse.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

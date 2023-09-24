@@ -1,0 +1,227 @@
+.. _std_argparse:
+.. highlight:: d
+
+std.argparse
+------------
+
+.. c:namespace:: std.argparse
+
+Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class:`GccArgParser`, :class:`UnixArgParser`
+
+.. class:: ArgInfo
+
+    Information about a defined command-line argument.
+
+    .. method:: longOrShort()
+
+        `string longOrShort()`
+
+
+.. class:: ArgParser
+
+    Parse command-line arguments and return matched arguments or errors.
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        parser.add("h", "help", :noArg, "Print this help page");
+
+        with (parser.parse(null)
+            .case(string: assert(false)))
+        {
+            assert(remaining.empty);
+        }
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        parser.add("h", "help", :noArg, "Print this help page");
+
+        with (parser.parse(["foo"])
+            .case(string: assert(false)))
+        {
+            assert(remaining == ["foo"]);
+        }
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        parser.add("f", "foo", :intArg, "Foo arg");
+
+        parser.parse(["-f"])
+            .case(ArgResult: assert(false))
+            .assertEqual("Flag '-f' missing parameter");
+
+        parser.parse(["--foo"])
+            .case(ArgResult: assert(false))
+            .assertEqual("Flag '--foo' missing parameter");
+
+        parser.parse(["-f", "x"])
+            .case(ArgResult: assert(false))
+            .assertEqual("Flag '-f' expected integer parameter");
+
+        with (parser.parse(["-f", "5"])
+            .case(string: assert(false)))
+        {
+            assert(has("foo"));
+            assert(remaining.empty);
+        }
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        parser.add("f", "foo", :noArg, :hidden);
+        parser.add("b", "bar", :noArg, :hidden);
+
+        with (parser.parse(["-fb"]).case(string s: assert(false))) {
+            assert(get("foo") == "");
+            assert(get("bar") == "");
+            assert(remaining.empty);
+        }
+
+    Example::
+
+        auto parser = new GccArgParser;
+        parser.add("f", "foo", :noArg, :hidden);
+        parser.add("b", "bar", :noArg, :hidden);
+
+        parser.parse(["-fb"])
+            .case(ArgResult: assert(false))
+            .assertEqual("Flag '-f' expected no parameter");
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        with (parser.parse(["foo", "--", "bar"])
+            .case(string s: assert(false)))
+        {
+            assert(remaining == ["foo"]);
+            assert(extra == ["bar"]);
+        }
+
+    Example::
+
+        auto parser = new GccArgParser;
+        parser.add("L", :multiArgs, :hidden);
+        with (parser.parse(["-L-lpthreads"])
+            .case(string s: assert(false)))
+        {
+            assert(getMultiple("L") == ["-lpthreads"]);
+        }
+
+    Example::
+
+        auto parser = new UnixArgParser;
+        int blaAction(string arg, string[] args, ArgResult result) {
+            if (arg == "bla") {
+                result.foundArgs["bla"] = "";
+                // arg consumed
+                return 1;
+            }
+            // no match
+            return 0;
+        }
+        parser.add(new &blaAction);
+        with (parser.parse(["bla"])
+            .case(string: assert(false)))
+        {
+            assert(get("bla") == "");
+            assert(remaining.empty);
+        }
+
+    .. method:: add(shortname, longname, kind, description)
+
+        `void add(string shortname, string longname, ArgKind kind, (string | :hidden) description)`
+
+        Add a command-line argument.
+        Typical usage: `add("h", "help", :noArg, "Print this help page.");
+
+    .. method:: add(name, kind, description)
+
+        `void add(string name, ArgKind kind, (string | :hidden) description)`
+
+        Add a command-line argument without a short form.
+        Typical usage: `add("help", :noArg, "Print this help page.");
+
+    .. method:: add(dg)
+
+        `void add(int delegate(string, string[], ArgResult) dg)`
+
+        Add a special rule. The callback will be invoked with the current
+        argument, the remaining arguments, and the result object to fill out.
+        It is expected to return the number of arguments consumed, including
+        the current argument.
+
+    .. method:: parse(args)
+
+        `(ArgResult | fail string) parse(string[] args)`
+
+        Parse a list of command-line arguments. If a string is returned,
+        the command-line arguments did not match the defined arguments.
+
+.. class:: ArgResult
+
+    The result of successfully parsing command-line arguments.
+
+    .. method:: this(parser)
+
+        `this(this.parser)`
+
+
+    .. method:: has(arg)
+
+        `bool has(string arg)`
+
+        Returns whether an argument was matched.
+
+    .. method:: get(arg)
+
+        `string get(string arg)`
+
+        Returns the parameter of a matched argument that took a parameter.
+
+    .. method:: getMultiple(arg)
+
+        `string[] getMultiple(string arg)`
+
+        Returns all parameters of an argument that could match multiple times.
+
+    .. method:: set(arg, value)
+
+        `void set(string arg, string value)`
+
+        Helper to manually set an argument to a value.
+
+.. class:: GccArgParser
+
+    GCC style:
+
+    * `--foo bar`, `--foo=bar`, `-foo=bar`
+    * `-fx` is `--foo=x`
+
+    .. method:: this()
+
+        `this()`
+
+
+    .. method:: parse(args)
+
+        `(ArgResult | fail string) parse(string[] args)`
+
+
+.. class:: UnixArgParser
+
+    UNIX style:
+
+    * `--foo bar`
+    * `-fx` is `-f, -x`
+
+    .. method:: this()
+
+        `this()`
+
+
+    .. method:: parse(args)
+
+        `(ArgResult | fail string) parse(string[] args)`
+
