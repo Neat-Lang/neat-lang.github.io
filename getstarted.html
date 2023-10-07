@@ -45,14 +45,15 @@ differences of LLVM’s and gcc’s backend, both Neat backends are equally capa
 <p>The installation instructions assume, and are tested with, Ubuntu 22.04. Take required steps as equivalent for your system.</p>
 <section id="install-with-llvm">
 <h2>Install with LLVM<a class="headerlink" href="#install-with-llvm" title="Permalink to this heading"></a></h2>
-<ol class="arabic">
-<li><p>Install required packages:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span>apt-get install -y --no-install-recommends \
-  ca-certificates clang-15 curl file gcc git \
-  llvm-15 llvm-15-dev xz-utils unzip
+<ol class="arabic simple">
+<li><p>Install required packages:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ca-certificates<span class="w"> </span>clang-15<span class="w"> </span>curl<span class="w"> </span>file<span class="w"> </span>gcc<span class="w"> </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>llvm-15<span class="w"> </span>llvm-15-dev<span class="w"> </span>xz-utils<span class="w"> </span>unzip
 </pre></div>
 </div>
-</li>
+<ol class="arabic" start="2">
 <li><p>Download the latest release from <a class="reference external" href="https://github.com/neat-lang/neat/releases">https://github.com/neat-lang/neat/releases</a></p></li>
 <li><p>Unpack the archive:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span><span class="w"> </span><span class="n">xf</span><span class="w"> </span><span class="n">neat</span><span class="p">-</span><span class="n">v</span><span class="p">*-</span><span class="n">llvm</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>breakelse: When Compiler Developers Get Bored &#8212; Neat  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/jquery.js?v=5d32c60e"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="breakelse-when-compiler-developers-get-bored">
+<h1><code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>: When Compiler Developers Get Bored<a class="headerlink" href="#breakelse-when-compiler-developers-get-bored" title="Permalink to this heading"></a></h1>
+<p>Good morning, internet! In programming languages, it’s a common issue that we want to both <em>test</em> a value
+and <em>use</em> the value.</p>
+<p>For example:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">associativeArray</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">associativeArray</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>I’ve been trying to find a better way to do this for my programming language, <a class="reference external" href="https://neat-lang.github.io">Neat</a>,
+for a while now. In <a class="reference external" href="https://dlang.org">D</a>, the language that Neat inherits most of its syntax from, we can both
+declare a value and test it for <a class="reference external" href="https://en.wikipedia.org/wiki/Truthiness">truthiness</a> with this syntax:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">function</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>But many types, such as associative-array values, don’t have a convenient truthiness state associated with them,
+and in a static language we can’t just return nil.</p>
+<p>Anyway, since <a class="reference external" href="https://soatok.blog/b/">soatok</a> and
+<a class="reference external" href="https://xeiaso.net/blog/">Xe</a> I feel it’s become difficult to be taken seriously in the tech industry if your
+blog doesn’t have interjections from characters with furry icons.
+Because I’m not exactly great at theory of mind, or at guessing what a reader
+would already know, I
+asked around on IRC and got <a class="reference external" href="https://gurkenglas.com">gurkenglas</a> and another participant to play the role of
+character with the furry icon.
+Thanks a bunch! Say hello!</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_neutral.png" src="_images/gurkenglas_neutral.png" />
+<p>hello! is it okay if i just guess what words like “auto” and “soatok” mean?</p>
+</div></blockquote>
+<p>As the helpful audience surrogate, ask whenever something is unclear!
+In this case, <code class="code docutils literal notranslate"><span class="pre">auto</span></code> is a keyword that Neat takes from D that just means “the variable has the type of its initializer”.
+soatok, of <a class="reference external" href="https://soatok.blog/b/">Dhole Moments</a>,
+is heavily responsible for popularizing the mix of furry and technical content
+that this article is riffing off of, though the particular
+format is mostly borrowed from <a class="reference external" href="https://xeiaso.net/blog/">Xe Iaso</a>.</p>
+<p>Our second participant asked only to be represented by a shoebill. Sadly-</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p>Hi!</p>
+</div></blockquote>
+<p>- Stable Diffusion was not … <em>entirely</em> up to the job of a shoebill furry avatar.
+It had to go to other animals to find a reference for the elongated skull shape.
+So we will graciously ignore the dog snout on a bird.</p>
+<p>Okay, format now established, let’s get to the actual topic. A related question that’s been driving me for a while
+is… what exactly is the correct return type of <code class="code docutils literal notranslate"><span class="pre">find</span></code>? Traditionally in C-likes, we’re returning -1 if the element
+was not found, but that’s terrible for many reasons.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_suggesting.png" src="_images/gurkenglas_suggesting.png" />
+<p>well of course you pass it a continuation</p>
+</div></blockquote>
+<p>Oy, we’re still writing C-likes here. No silly buggers with lambdas. No, the actual problem is that <code class="code docutils literal notranslate"><span class="pre">-1</span></code>,
+or <code class="code docutils literal notranslate"><span class="pre">0xffff_ffff</span></code>, is an entirely valid position for your element to appear in the array.
+Well, if the array takes up literally the entire available memory.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_suggesting.png" src="_images/gurkenglas_suggesting.png" />
+<p>Well what if you</p>
+</div></blockquote>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="nb">string</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">readText</span><span class="p">;</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">eat</span><span class="p">(</span><span class="s">&quot;(.*)\n&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>I mean, sure.</p>
+<p>But then you have the exact same issue: <code class="code docutils literal notranslate"><span class="pre">eat</span></code> has to return a data type that both describes “a line of text” and
+“the possibility that no more line can be found”.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<p>I think the better C way is to use output pointer parameters, you do <code class="code docutils literal notranslate"><span class="pre">if</span> <span class="pre">(find(query,</span> <span class="pre">&amp;output))</span></code>…
+So it returns a boolean if it found the thing, and writes the result in the pointer.</p>
+</div></blockquote>
+<p>Yep, that works, and I do have tuple return values. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> In fact, for a while I was
+resigned to having a special return type from <code class="code docutils literal notranslate"><span class="pre">find</span></code> that <code class="code docutils literal notranslate"><span class="pre">if</span></code> could split up into success indicator and result value.
+I think I’ve found a better way, and I will go into it later.</p>
+<p>This challenge turns up everywhere in API design. In D, for instance, we’d write <code class="code docutils literal notranslate"><span class="pre">if</span> <span class="pre">(auto</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">key</span> <span class="pre">in</span> <span class="pre">assocArray)</span></code>,
+but then D just sets value to a pointer, a naturally nullable type. And even though if we’re in the <code class="code docutils literal notranslate"><span class="pre">if</span></code>, we know the
+pointer can never be <code class="code docutils literal notranslate"><span class="pre">null</span></code>, we have to carry its pointerness around with us for no reason.</p>
+<p>Some languages solve this problem by allowing every value to be <code class="code docutils literal notranslate"><span class="pre">null</span></code>, or <code class="code docutils literal notranslate"><span class="pre">nil</span></code>, or <code class="code docutils literal notranslate"><span class="pre">None</span></code>.
+Those languages are bad and after this paragraph I will speak no more of them, but they did bring us
+a relevant innovation: the conditional-access operator, <code class="code docutils literal notranslate"><span class="pre">?.</span></code>.
+See, if every type can be <code class="code docutils literal notranslate"><span class="pre">null</span></code>, you can just say “well, if the value is <code class="code docutils literal notranslate"><span class="pre">null</span></code>, we keep it <code class="code docutils literal notranslate"><span class="pre">null</span></code>; otherwise,
+we perform an operation.”</p>
+<p>That’s cool! But at the end of the chain, you will still need to terminate your chain in a type
+that can have either a value or <code class="code docutils literal notranslate"><span class="pre">null</span></code>. And because we want to be able to both test if the operation succeeds,
+and use the resulting value, that just puts us back where we started.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_aghast.png" src="_images/shoebill_aghast.png" />
+<p>So okay hold on, I guess <code class="code docutils literal notranslate"><span class="pre">null</span></code> is reserved for the did-not-work-out thing, so if we get <code class="code docutils literal notranslate"><span class="pre">null</span></code>,
+can’t we just declare that the operation failed and there’s no value to do anything with,
+and if we get anything non-<code class="code docutils literal notranslate"><span class="pre">null</span></code>, we both know it succeeded and have a value to play with?</p>
+</div></blockquote>
+<p>Grrr! Okay, a bit more about why I dislike making every type nullable then. Remember, you asked for this lecture.</p>
+<span class="rant-gets-smaller">
+Types should describe the domain of a value. A language where every type can be implicitly nullable is in effect
+<span>
+saying that literally no operation can be trusted. In a way, the whole point of a typesystem is to make conversion
+<span>
+failures visible early. A language where everything may be null doesn't just say that every operation can fail -
+<span>
+even the ones that clearly don't - it also destroys your ability to do anything about it. You either ignore the
+<span>
+possibility of null until it comes up - and the language has to let you do that - or you check every value on every
+<span>
+access. This teaches programmers that "defensive programming" is "just conditional-operator all the things", thus
+<span>
+ironically destroying their ability to notice when a real issue happens. Instead of moving the errors earlier,
+<span>
+we've moved them later - possibly much later! This defeats the entire reason we decided to have a strong typesystem
+<span>
+in the first place! In conclusion, null is the billion dollar mistake and I will have no part of it.
+<span>
+Non-nullable pointers by default, yo.
+</span></span></span></span></span></span></span></span></span></span><blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p>Right, we want to signal failure with a value that doesn’t clobber anything else, but we don’t want every point of
+code to have “oh, and it could be Something Else, better watch out for that” going on.</p>
+</div></blockquote>
+<p>Yep, exactly. And that’s why I’m not adding conditional access operators.</p>
+<hr class="docutils" />
+<p>Anyway, for a while I considered having special handling for a return type of <code class="code docutils literal notranslate"><span class="pre">(size_t</span> <span class="pre">|</span> <span class="pre">:else)</span> <span class="pre">find()</span></code>.
+That is, <code class="code docutils literal notranslate"><span class="pre">if</span></code> would see that there was a possibility of an <code class="code docutils literal notranslate"><span class="pre">:else</span></code> return type, and use this opportunity to jump
+to the <code class="code docutils literal notranslate"><span class="pre">else</span></code> block instead of declaring a variable. But-</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<p>…</p>
+</div></blockquote>
+<p>Huh, I was sure you’d have questions about that syntax.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<p>i’m a Haskell programmer,
+i know what a <a class="reference external" href="https://en.wikipedia.org/wiki/Tagged_union">sumtype</a> is.
+keep going</p>
+</div></blockquote>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_aghast.png" src="_images/shoebill_aghast.png" />
+<p>Okay, if you’re too good for it, I’ll ask! What’s all this bar-colon-stuff? <code class="code docutils literal notranslate"><span class="pre">|</span></code>, <code class="code docutils literal notranslate"><span class="pre">:this</span></code></p>
+</div></blockquote>
+<p>Whew, good. Okay, so there’s two things here. First, <code class="code docutils literal notranslate"><span class="pre">(A</span> <span class="pre">|</span> <span class="pre">B)</span></code> is a sumtype.
+It’s a type syntax for “a type that can be either A or B”. It’s like a union, but it also stores which
+field of the union is set.</p>
+<p>Then, <code class="code docutils literal notranslate"><span class="pre">:token</span></code> is just a unique value that’s only equal to itself.
+Basically, it’s a keyword value. You can write <code class="code docutils literal notranslate"><span class="pre">:token</span> <span class="pre">VAR</span> <span class="pre">=</span> <span class="pre">:token;</span></code> and that’s the only value that
+variable can ever have. (You can reassign it, but only if the value you assign is also <code class="code docutils literal notranslate"><span class="pre">:token</span></code>.)</p>
+<p>The point is that it acts as an ad-hoc marker for a possible outcome in the sumtype without taking up space of its own.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p>Right, like Lisp <code class="code docutils literal notranslate"><span class="pre">'symbols</span></code>.</p>
+</div></blockquote>
+<p>Yes, exactly!</p>
+<p>But - the basic problem with this return type for <code class="code docutils literal notranslate"><span class="pre">find</span></code> is that it cannot easily be chained.
+(That is, you cannot keep working with the maybe-missing value.)
+With <code class="code docutils literal notranslate"><span class="pre">find</span></code>, the operation that we test for is usually the last in a chain.
+With a language where every value is nullable, we can just keep chaining with <code class="code docutils literal notranslate"><span class="pre">?.</span></code> and <code class="code docutils literal notranslate"><span class="pre">?()</span></code>.</p>
+<p>But let’s take a slightly different API above.</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">eatLine</span><span class="p">().</span><span class="n">strip</span><span class="p">())</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Well, what exactly is the parameter type of <code class="code docutils literal notranslate"><span class="pre">strip</span></code> here?
+If <code class="code docutils literal notranslate"><span class="pre">eatLine</span></code> returned a <code class="code docutils literal notranslate"><span class="pre">string</span></code>, then <code class="code docutils literal notranslate"><span class="pre">strip</span></code> would make sense, but we’d lose the “maybe no line was found” check.
+If eatLine returned <code class="code docutils literal notranslate"><span class="pre">(string</span> <span class="pre">|</span> <span class="pre">:else)</span></code>, the variable assignment would work, but the strip call wouldn’t.
+And sure, we could write</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">eatLine</span><span class="p">().</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">strip</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>But that’s looking a lot more unwieldy than <code class="code docutils literal notranslate"><span class="pre">eatLine()?.strip()</span></code> did.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p>Okay hold on and let me try to parse that. You read a line from wherever and…  What’s <code class="code docutils literal notranslate"><span class="pre">case</span></code> again?</p>
+</div></blockquote>
+<p>Okay, so if we have <code class="code docutils literal notranslate"><span class="pre">eatLine()</span></code> typed as <code class="code docutils literal notranslate"><span class="pre">(string</span> <span class="pre">|</span> <span class="pre">:else)</span></code>, that expresses
+“we can either parse a line or not, for whatever reason”. This sumtype effectively tells <code class="code docutils literal notranslate"><span class="pre">if</span></code>:
+“You can either declare a string variable, or don’t bother entering the <code class="code docutils literal notranslate"><span class="pre">if</span></code> block.”</p>
+<p>Then, <code class="code docutils literal notranslate"><span class="pre">case</span></code> lets us react to only one case of the sumtype. For instance, <code class="code docutils literal notranslate"><span class="pre">case(string</span> <span class="pre">s:</span> <span class="pre">X)</span></code> replaces
+the string half of the sumtype with <code class="code docutils literal notranslate"><span class="pre">X</span></code>, whatever its type; <code class="code docutils literal notranslate"><span class="pre">:else</span></code> remains unchanged.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<p>So you want to do a sequence of stuff where you can fail at any line, and you don’t want the
+annoying extra work of manually threading the failure case everywhere. This sounds a lot like one use case for
+Haskell monads when I was trying to figure those out.</p>
+</div></blockquote>
+<p>Hah! I was waiting for somebody to bring those up.</p>
+<p>It sure seems like the problem is one of syntax, right? In fact, you can even think of <code class="code docutils literal notranslate"><span class="pre">null</span></code> as something like
+the <code class="code docutils literal notranslate"><span class="pre">Maybe</span></code> monad, with the conditional-access operations being curried versions of <code class="code docutils literal notranslate"><span class="pre">apply</span></code>… Ahem.</p>
+<p>So if you’re saying that <code class="code docutils literal notranslate"><span class="pre">eatLine</span></code> returns a conditional type, that may have a failure case, then we
+want to take the success case only and apply <code class="code docutils literal notranslate"><span class="pre">strip</span></code> to it, and then package things back up into a
+conditional type that we can finally feed into the <code class="code docutils literal notranslate"><span class="pre">if</span></code>.</p>
+<p>However, I think that’s a bad idea, or at least not as good as it could be, for reasons that have to do with the
+fundamental difference between imperative and expression languages. But before I go into those, a diversion!</p>
+<p>Let’s ask a seemingly-unrelated question. If you’re in a loop, you can break out of that loop or continue
+from the beginning. Why exactly can you not break out of an if body?</p>
+<p>For instance, say we had a keyword <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">breakelse</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// breakelse jumps here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It should do exactly what <code class="code docutils literal notranslate"><span class="pre">break</span></code> does in a loop: jump to the end of the current loop block.
+It just seems a weird omission.</p>
+<p>I mean, stop me if you’ve seen code like this before:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">(</span><span class="n">var2</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+</pre></div>
+</div>
+<p>That’s a blatant failure to keep functions flat, but there doesn’t seem to be another way to do it
+if we want to avoid making every type nullable. And it forces us to introduce a lot of variables that we
+don’t care about beyond one operation.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_looking.png" src="_images/gurkenglas_looking.png" />
+<p>i’ve seen it. does each of them have their own else block?</p>
+</div></blockquote>
+<p>Usually, they just fall back down to the initial <code class="code docutils literal notranslate"><span class="pre">if</span></code> block and then the function continues.</p>
+<p>Anyway, you see my thinking, right? It seems what would help us is some way to “early abort” from the if condition.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_neutral.png" src="_images/gurkenglas_neutral.png" />
+<p>You seem to be reinventing exceptions.</p>
+</div></blockquote>
+<p>Exceptions are actually a good analogue for the data flow here. We have a <code class="code docutils literal notranslate"><span class="pre">try</span></code> block, the <code class="code docutils literal notranslate"><span class="pre">if</span></code>, that wants to do
+a lot of operations, some of which will fail, but which are all conveyed into the same error-recovery block, the <code class="code docutils literal notranslate"><span class="pre">else</span></code>.
+However, exceptions are expensive.</p>
+<p>What we really want is a way to write code like this:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">var2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">(</span><span class="n">var</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">var2</span><span class="p">)</span><span class="w"> </span><span class="n">breakelse</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">var3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">(</span><span class="n">var2</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(!</span><span class="n">var3</span><span class="p">)</span><span class="w"> </span><span class="n">breakelse</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>But <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> doesn’t actually seem to be very useful for that! In fact, that
+example doesn’t even work because of the nested ifs.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<p>Right, usually <code class="code docutils literal notranslate"><span class="pre">break</span></code> is guarded by <code class="code docutils literal notranslate"><span class="pre">if</span></code>, but if <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> breaks from an <code class="code docutils literal notranslate"><span class="pre">if</span></code>,
+then it’s going to be a useless op by default…</p>
+</div></blockquote>
+<p>The thing is that in this example, you are seeing that keyword at its very worst, most ill-placed.
+I’ve been introducing it for this, but it’s not actually really intended to appear free-standing in a function.
+It’s intended to appear in the if <em>expression,</em> and it’s intended to allow us to abort it early.</p>
+<p>If we just go all the way to our goal and chain these operations into one expression:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">op</span><span class="p">.</span><span class="k">case</span><span class="p">(:</span><span class="k">else</span><span class="p">:</span><span class="w"> </span><span class="n">breakelse</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">op2</span><span class="p">.</span><span class="k">case</span><span class="p">(:</span><span class="k">else</span><span class="p">:</span><span class="w"> </span><span class="n">breakelse</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">op3</span><span class="p">.</span><span class="k">case</span><span class="p">(:</span><span class="k">else</span><span class="p">:</span><span class="w"> </span><span class="n">breakelse</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>(Yes, <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> is an expression. All nonlocal exits are expressions.)</p>
+<p>So while it didn’t work very well in the long block form, once we shift it into the if expression,
+it reveals its true purpose.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_idea.png" src="_images/gurkenglas_idea.png" />
+<p>you sure are smuggling lots of Haskell patterns into your readership</p>
+</div></blockquote>
+<p>It is sort of similar to <a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/do_notation">do notation</a>, isn’t it.</p>
+<p>But this is where I finally circle all the way back to <code class="code docutils literal notranslate"><span class="pre">Maybe</span></code>, <code class="code docutils literal notranslate"><span class="pre">Option</span></code>, <code class="code docutils literal notranslate"><span class="pre">Nullable</span></code>, <code class="code docutils literal notranslate"><span class="pre">null</span></code> and all its variants.
+These constructs all have some version of the same fundamental issue that they force you into two different modes of access.
+You have “normal operations” - <code class="code docutils literal notranslate"><span class="pre">a.b.c</span></code> - and you have “propagating operations” - <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">?.b</span> <span class="pre">?.c</span></code>, or
+<code class="code docutils literal notranslate"><span class="pre">a.apply(&amp;.b).apply(&amp;.c)</span></code>, or whatever the syntax is in Haskell for applying a function to the contents
+of a monad.
+Only at the end of the chain we admit what we really cared about - “did the operation succeed, and what was its value?”</p>
+<p>So the payoff is on a typesystem level. if we continue in the test, past the <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> and into the if block,
+we can just assume that the type is the successful one - if it wasn’t, we’d have left early. We <em>don’t</em> have to
+carry <code class="code docutils literal notranslate"><span class="pre">:else</span></code> with us all the way: we can <em>immediately</em> say: “if this is <code class="code docutils literal notranslate"><span class="pre">:else</span></code>, we are not interested
+in entering the <code class="code docutils literal notranslate"><span class="pre">if</span></code> block” and drop it from the type of the expression chain right then and there.</p>
+<p>Because we’re an imperative language, we don’t just have types <em>or</em> clever syntax. We can use explicit control flow,
+imperative languages’ secret superpower, to make our lives easier.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<p>are you sure this doesn’t end up as expensive as exceptions? it seems to be as powerful.</p>
+</div></blockquote>
+<p>The nice thing is that at the compiler level this is literally a goto. At the hardware level
+we really are just jumping to the error handling block, ie. past the if. Natively,
+it really is as cheap as <code class="code docutils literal notranslate"><span class="pre">if</span></code>/<code class="code docutils literal notranslate"><span class="pre">else</span></code>.</p>
+<p>Let’s look at another example. Earlier we had this code:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eatLine</span><span class="p">().</span><span class="k">case</span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">s</span><span class="p">:</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">strip</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>So <code class="code docutils literal notranslate"><span class="pre">if</span></code> recognizes that the resulting type has an <code class="code docutils literal notranslate"><span class="pre">:else</span></code> case and goes to <code class="code docutils literal notranslate"><span class="pre">else</span></code> if it is set.</p>
+<p>But what if we reversed it?</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eatLine</span><span class="p">().</span><span class="k">case</span><span class="p">(:</span><span class="k">else</span><span class="p">:</span><span class="w"> </span><span class="n">breakelse</span><span class="p">))</span>
+</pre></div>
+</div>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<p>So let me try to follow what’s going on in the second example…</p>
+<p>You try to read a line, and are ready to assign to a variable, you have the <code class="code docutils literal notranslate"><span class="pre">.case</span></code> doing a partial match,
+and it is set to match the <code class="code docutils literal notranslate"><span class="pre">:else</span></code> variant, which means no string obtained,
+and then you go for the <code class="code docutils literal notranslate"><span class="pre">if</span></code>-statement-busting <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> magic.</p>
+<p>And otherwise you got the assuredly not-<code class="code docutils literal notranslate"><span class="pre">:else</span></code> line ready for stuff being done to it in the <code class="code docutils literal notranslate"><span class="pre">if</span></code> statement body.</p>
+</div></blockquote>
+<p>Yep, exactly! And because the type of <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>, just like every nonlocal exit, is <code class="code docutils literal notranslate"><span class="pre">bottom</span></code>,
+this drops the <code class="code docutils literal notranslate"><span class="pre">:else</span></code> type out of the sumtype, leaving only <code class="code docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p><code class="code docutils literal notranslate"><span class="pre">bottom</span></code> was the weird “this never evaluates” type that you never write in your code but you use to describe
+stuff when you want everything to fit in a type system framework, right?</p>
+</div></blockquote>
+<p>Yep! And because <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> goes somewhere … “else”, heh, when you look at it as an expression,
+its value can never be computed. (The same thing happens with <code class="code docutils literal notranslate"><span class="pre">break</span></code>, <code class="code docutils literal notranslate"><span class="pre">continue</span></code> and <code class="code docutils literal notranslate"><span class="pre">return</span></code>.)</p>
+<p>And here’s the kicker: the type of that expression, after the closing parenthesis, is just <code class="code docutils literal notranslate"><span class="pre">string</span></code>!</p>
+<p>In other words, as soon as we see the possibility that the result could be <code class="code docutils literal notranslate"><span class="pre">:else</span></code>,
+we leave the if condition right then and there. And <code class="code docutils literal notranslate"><span class="pre">if</span></code> doesn’t even have to do anything: if it gets a value,
+it just declares a variable - the value is just <code class="code docutils literal notranslate"><span class="pre">string</span></code>, because <code class="code docutils literal notranslate"><span class="pre">string</span></code> is the only value that
+remains in the expression locally.</p>
+<p>And because the type is <code class="code docutils literal notranslate"><span class="pre">string</span></code>, we can just call <code class="code docutils literal notranslate"><span class="pre">strip()</span></code> on it directly!</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eatLine</span><span class="p">().</span><span class="k">case</span><span class="p">(:</span><span class="k">else</span><span class="p">:</span><span class="w"> </span><span class="n">breakelse</span><span class="p">).</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Of course, this syntax is pretty ugly, so let’s just steal the <code class="code docutils literal notranslate"><span class="pre">?</span></code> from the dynamic languages, overloading it
+to represent <code class="code docutils literal notranslate"><span class="pre">.case(:else:</span> <span class="pre">breakelse)</span></code>:</p>
+<div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">eatLine</span><span class="p">()?.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Huh! Suddenly it became very simple.</p>
+<p>Note that while this <em>looks</em> like conditional access, it’s actually a completely different operation.
+The conditional access operator, written out, works like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>op -- ?.op2 -- ?.op3
+</pre></div>
+</div>
+<p>Ie. <code class="code docutils literal notranslate"><span class="pre">?.member</span></code> is one operation.</p>
+<p>Whereas <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> works like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>op -- ? -- .op2 -- ? -- .op3 -- ?
+</pre></div>
+</div>
+<p>That is, <code class="code docutils literal notranslate"><span class="pre">?</span></code> is a separate operation, and the member access just sees the plain type.</p>
+<blockquote class="xe-quote">
+<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<p>So are you looking for idiomatic high-level code to have spelled-out <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>’s or mostly just do
+things with a <code class="code docutils literal notranslate"><span class="pre">?</span></code>, with <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> being an implied lower-level mechanism for the <code class="code docutils literal notranslate"><span class="pre">?</span></code>?</p>
+</div></blockquote>
+<p>Honestly? I don’t know.</p>
+<hr class="docutils" />
+<p>See, the cool and also scary thing about being a compiler writer is that I can no longer be stopped.
+This feature took about 130 lines of code in the Neat compiler. Now it’s in a release and you can use it!
+There are literally no checks on my power!</p>
+<p>Is this a good idea? Honestly, I went into it expecting to hate it.
+It’s a bit “too slick”, you know? And I am very sure that I will regret the keywords I
+decided on. Also, I’d already overloaded <code class="code docutils literal notranslate"><span class="pre">?</span></code> to automatically return error types, so it’s
+becoming a bit magical.</p>
+<p>But after poking around with it for a bit, I think it may conceivably, possibly, be a good idea.
+In concept.</p>
+<p>You’ll just have to
+<a class="reference external" href="https://github.com/Neat-Lang/neat/releases">download the compiler</a> and try it out!
+Let’s find out if it’s any good together.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Out-pointers are a declaration of surrender for language designers.
+You already have a way to return data! It’s the return value!</p>
+</aside>
+</aside>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Neat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">The Neat Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="std.html">Standard Library</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/neat-lang/neat/">Neat on Github 🔗</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;@FeepingCreature.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/breakelse.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
