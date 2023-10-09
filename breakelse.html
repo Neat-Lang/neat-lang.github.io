@@ -63,7 +63,7 @@ asked around on IRC and got <a class="reference external" href="https://gurkengl
 character with the furry icon.
 Thanks a bunch! Say hello!</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_neutral.png" src="_images/gurkenglas_neutral.png" />
+<div><img alt="gurkenglas is neutral" src="_images/gurkenglas_neutral.png" />
 <p>hello! is it okay if i just guess what words like “auto” and “soatok” mean?</p>
 </div></blockquote>
 <p>As the helpful audience surrogate, ask whenever something is unclear!
@@ -74,7 +74,7 @@ that this article is riffing off of, though the particular
 format is mostly borrowed from <a class="reference external" href="https://xeiaso.net/blog/">Xe Iaso</a>.</p>
 <p>Our second participant asked only to be represented by a shoebill. Sadly-</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p>Hi!</p>
 </div></blockquote>
 <p>- Stable Diffusion was not … <em>entirely</em> up to the job of a shoebill furry avatar.
@@ -84,14 +84,14 @@ So we will graciously ignore the dog snout on a bird.</p>
 is… what exactly is the correct return type of <code class="code docutils literal notranslate"><span class="pre">find</span></code>? Traditionally in C-likes, we’re returning -1 if the element
 was not found, but that’s terrible for many reasons.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_suggesting.png" src="_images/gurkenglas_suggesting.png" />
+<div><img alt="gurkenglas is suggesting" src="_images/gurkenglas_suggesting.png" />
 <p>well of course you pass it a continuation</p>
 </div></blockquote>
 <p>Oy, we’re still writing C-likes here. No silly buggers with lambdas. No, the actual problem is that <code class="code docutils literal notranslate"><span class="pre">-1</span></code>,
 or <code class="code docutils literal notranslate"><span class="pre">0xffff_ffff</span></code>, is an entirely valid position for your element to appear in the array.
 Well, if the array takes up literally the entire available memory.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_suggesting.png" src="_images/gurkenglas_suggesting.png" />
+<div><img alt="gurkenglas is suggesting" src="_images/gurkenglas_suggesting.png" />
 <p>Well what if you</p>
 </div></blockquote>
 <div class="highlight-D notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="nb">string</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">readText</span><span class="p">;</span>
@@ -105,7 +105,7 @@ Well, if the array takes up literally the entire available memory.</p>
 <p>But then you have the exact same issue: <code class="code docutils literal notranslate"><span class="pre">eat</span></code> has to return a data type that both describes “a line of text” and
 “the possibility that no more line can be found”.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<div><img alt="shoebill is considering" src="_images/shoebill_considering.png" />
 <p>I think the better C way is to use output pointer parameters, you do <code class="code docutils literal notranslate"><span class="pre">if</span> <span class="pre">(find(query,</span> <span class="pre">&amp;output))</span></code>…
 So it returns a boolean if it found the thing, and writes the result in the pointer.</p>
 </div></blockquote>
@@ -124,7 +124,7 @@ we perform an operation.”</p>
 that can have either a value or <code class="code docutils literal notranslate"><span class="pre">null</span></code>. And because we want to be able to both test if the operation succeeds,
 and use the resulting value, that just puts us back where we started.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_aghast.png" src="_images/shoebill_aghast.png" />
+<div><img alt="shoebill is aghast" src="_images/shoebill_aghast.png" />
 <p>So okay hold on, I guess <code class="code docutils literal notranslate"><span class="pre">null</span></code> is reserved for the did-not-work-out thing, so if we get <code class="code docutils literal notranslate"><span class="pre">null</span></code>,
 can’t we just declare that the operation failed and there’s no value to do anything with,
 and if we get anything non-<code class="code docutils literal notranslate"><span class="pre">null</span></code>, we both know it succeeded and have a value to play with?</p>
@@ -151,7 +151,7 @@ in the first place! In conclusion, null is the billion dollar mistake and I will
 <span>
 Non-nullable pointers by default, yo.
 </span></span></span></span></span></span></span></span></span></span><blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p>Right, we want to signal failure with a value that doesn’t clobber anything else, but we don’t want every point of
 code to have “oh, and it could be Something Else, better watch out for that” going on.</p>
 </div></blockquote>
@@ -161,18 +161,18 @@ code to have “oh, and it could be Something Else, better watch out for that”
 That is, <code class="code docutils literal notranslate"><span class="pre">if</span></code> would see that there was a possibility of an <code class="code docutils literal notranslate"><span class="pre">:else</span></code> return type, and use this opportunity to jump
 to the <code class="code docutils literal notranslate"><span class="pre">else</span></code> block instead of declaring a variable. But-</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<div><img alt="gurkenglas is unimpressed" src="_images/gurkenglas_unimpressed.png" />
 <p>…</p>
 </div></blockquote>
 <p>Huh, I was sure you’d have questions about that syntax.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<div><img alt="gurkenglas is unimpressed" src="_images/gurkenglas_unimpressed.png" />
 <p>i’m a Haskell programmer,
 i know what a <a class="reference external" href="https://en.wikipedia.org/wiki/Tagged_union">sumtype</a> is.
 keep going</p>
 </div></blockquote>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_aghast.png" src="_images/shoebill_aghast.png" />
+<div><img alt="shoebill is aghast" src="_images/shoebill_aghast.png" />
 <p>Okay, if you’re too good for it, I’ll ask! What’s all this bar-colon-stuff? <code class="code docutils literal notranslate"><span class="pre">|</span></code>, <code class="code docutils literal notranslate"><span class="pre">:this</span></code></p>
 </div></blockquote>
 <p>Whew, good. Okay, so there’s two things here. First, <code class="code docutils literal notranslate"><span class="pre">(A</span> <span class="pre">|</span> <span class="pre">B)</span></code> is a sumtype.
@@ -183,7 +183,7 @@ Basically, it’s a keyword value. You can write <code class="code docutils lite
 variable can ever have. (You can reassign it, but only if the value you assign is also <code class="code docutils literal notranslate"><span class="pre">:token</span></code>.)</p>
 <p>The point is that it acts as an ad-hoc marker for a possible outcome in the sumtype without taking up space of its own.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p>Right, like Lisp <code class="code docutils literal notranslate"><span class="pre">'symbols</span></code>.</p>
 </div></blockquote>
 <p>Yes, exactly!</p>
@@ -206,7 +206,7 @@ And sure, we could write</p>
 </div>
 <p>But that’s looking a lot more unwieldy than <code class="code docutils literal notranslate"><span class="pre">eatLine()?.strip()</span></code> did.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p>Okay hold on and let me try to parse that. You read a line from wherever and…  What’s <code class="code docutils literal notranslate"><span class="pre">case</span></code> again?</p>
 </div></blockquote>
 <p>Okay, so if we have <code class="code docutils literal notranslate"><span class="pre">eatLine()</span></code> typed as <code class="code docutils literal notranslate"><span class="pre">(string</span> <span class="pre">|</span> <span class="pre">:else)</span></code>, that expresses
@@ -215,7 +215,7 @@ And sure, we could write</p>
 <p>Then, <code class="code docutils literal notranslate"><span class="pre">case</span></code> lets us react to only one case of the sumtype. For instance, <code class="code docutils literal notranslate"><span class="pre">case(string</span> <span class="pre">s:</span> <span class="pre">X)</span></code> replaces
 the string half of the sumtype with <code class="code docutils literal notranslate"><span class="pre">X</span></code>, whatever its type; <code class="code docutils literal notranslate"><span class="pre">:else</span></code> remains unchanged.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<div><img alt="shoebill is considering" src="_images/shoebill_considering.png" />
 <p>So you want to do a sequence of stuff where you can fail at any line, and you don’t want the
 annoying extra work of manually threading the failure case everywhere. This sounds a lot like one use case for
 Haskell monads when I was trying to figure those out.</p>
@@ -258,13 +258,13 @@ It just seems a weird omission.</p>
 if we want to avoid making every type nullable. And it forces us to introduce a lot of variables that we
 don’t care about beyond one operation.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_looking.png" src="_images/gurkenglas_looking.png" />
+<div><img alt="gurkenglas is looking" src="_images/gurkenglas_looking.png" />
 <p>i’ve seen it. does each of them have their own else block?</p>
 </div></blockquote>
 <p>Usually, they just fall back down to the initial <code class="code docutils literal notranslate"><span class="pre">if</span></code> block and then the function continues.</p>
 <p>Anyway, you see my thinking, right? It seems what would help us is some way to “early abort” from the if condition.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_neutral.png" src="_images/gurkenglas_neutral.png" />
+<div><img alt="gurkenglas is neutral" src="_images/gurkenglas_neutral.png" />
 <p>You seem to be reinventing exceptions.</p>
 </div></blockquote>
 <p>Exceptions are actually a good analogue for the data flow here. We have a <code class="code docutils literal notranslate"><span class="pre">try</span></code> block, the <code class="code docutils literal notranslate"><span class="pre">if</span></code>, that wants to do
@@ -284,7 +284,7 @@ However, exceptions are expensive.</p>
 <p>But <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> doesn’t actually seem to be very useful for that! In fact, that
 example doesn’t even work because of the nested ifs.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<div><img alt="shoebill is considering" src="_images/shoebill_considering.png" />
 <p>Right, usually <code class="code docutils literal notranslate"><span class="pre">break</span></code> is guarded by <code class="code docutils literal notranslate"><span class="pre">if</span></code>, but if <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> breaks from an <code class="code docutils literal notranslate"><span class="pre">if</span></code>,
 then it’s going to be a useless op by default…</p>
 </div></blockquote>
@@ -306,7 +306,7 @@ It’s intended to appear in the if <em>expression,</em> and it’s intended to 
 <p>So while it didn’t work very well in the long block form, once we shift it into the if expression,
 it reveals its true purpose.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_idea.png" src="_images/gurkenglas_idea.png" />
+<div><img alt="gurkenglas is idea" src="_images/gurkenglas_idea.png" />
 <p>you sure are smuggling lots of Haskell patterns into your readership</p>
 </div></blockquote>
 <p>It is sort of similar to <a class="reference external" href="https://en.wikibooks.org/wiki/Haskell/do_notation">do notation</a>, isn’t it.</p>
@@ -323,7 +323,7 @@ in entering the <code class="code docutils literal notranslate"><span class="pre
 <p>Because we’re an imperative language, we don’t just have types <em>or</em> clever syntax. We can use explicit control flow,
 imperative languages’ secret superpower, to make our lives easier.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/gurkenglas_unimpressed.png" src="_images/gurkenglas_unimpressed.png" />
+<div><img alt="gurkenglas is unimpressed" src="_images/gurkenglas_unimpressed.png" />
 <p>are you sure this doesn’t end up as expensive as exceptions? it seems to be as powerful.</p>
 </div></blockquote>
 <p>The nice thing is that at the compiler level this is literally a goto. At the hardware level
@@ -339,7 +339,7 @@ it really is as cheap as <code class="code docutils literal notranslate"><span c
 </pre></div>
 </div>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_considering.png" src="_images/shoebill_considering.png" />
+<div><img alt="shoebill is considering" src="_images/shoebill_considering.png" />
 <p>So let me try to follow what’s going on in the second example…</p>
 <p>You try to read a line, and are ready to assign to a variable, you have the <code class="code docutils literal notranslate"><span class="pre">.case</span></code> doing a partial match,
 and it is set to match the <code class="code docutils literal notranslate"><span class="pre">:else</span></code> variant, which means no string obtained,
@@ -349,7 +349,7 @@ and then you go for the <code class="code docutils literal notranslate"><span cl
 <p>Yep, exactly! And because the type of <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>, just like every nonlocal exit, is <code class="code docutils literal notranslate"><span class="pre">bottom</span></code>,
 this drops the <code class="code docutils literal notranslate"><span class="pre">:else</span></code> type out of the sumtype, leaving only <code class="code docutils literal notranslate"><span class="pre">string</span></code>.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p><code class="code docutils literal notranslate"><span class="pre">bottom</span></code> was the weird “this never evaluates” type that you never write in your code but you use to describe
 stuff when you want everything to fit in a type system framework, right?</p>
 </div></blockquote>
@@ -382,7 +382,7 @@ The conditional access operator, written out, works like this:</p>
 </div>
 <p>That is, <code class="code docutils literal notranslate"><span class="pre">?</span></code> is a separate operation, and the member access just sees the plain type.</p>
 <blockquote class="xe-quote">
-<div><img alt="_images/shoebill_neutral.png" src="_images/shoebill_neutral.png" />
+<div><img alt="shoebill is neutral" src="_images/shoebill_neutral.png" />
 <p>So are you looking for idiomatic high-level code to have spelled-out <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>’s or mostly just do
 things with a <code class="code docutils literal notranslate"><span class="pre">?</span></code>, with <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> being an implied lower-level mechanism for the <code class="code docutils literal notranslate"><span class="pre">?</span></code>?</p>
 </div></blockquote>
