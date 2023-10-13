@@ -207,7 +207,60 @@ This is because C’s order is stupid^W a legacy holdover from before it had boo
 <p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">if</span> <span class="pre">t</span> <span class="pre">else</span> <span class="pre">b</span></code> has the value of <code class="code docutils literal notranslate"><span class="pre">a</span></code> if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, else it has the value of <code class="code docutils literal notranslate"><span class="pre">b</span></code>.</p>
 <p>Only the selected expression is evaluated. So if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, <code class="code docutils literal notranslate"><span class="pre">b</span></code> is never evaluated.</p>
 <p>This operator has a lower rank than any of the binary operators.</p>
+<p>The ternary operator can be shortened to <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">else</span> <span class="pre">b</span></code>. In that case, <code class="code docutils literal notranslate"><span class="pre">a</span></code> is always taken unless
+the expression branches to <code class="code docutils literal notranslate"><span class="pre">b</span></code> via <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>.</p>
 <p>The ternary operator syntax diverges from C because <code class="code docutils literal notranslate"><span class="pre">?</span></code> is already used for error propagation.</p>
+</section>
+<section id="control-flow-expressions">
+<h3>Control flow expressions<a class="headerlink" href="#control-flow-expressions" title="Permalink to this heading"></a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">break</span></code> is an expression that, when evaluated, transfers control flow to after the current loop.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">continue</span></code> is an expression that, when evaluated, transfers control flow to the next pass
+of the current loop.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">return</span></code>, or <code class="code docutils literal notranslate"><span class="pre">return</span> <span class="pre">x</span></code>, is an expression that, when evaluated, transfers control flow out of
+the current function. If a parameter <code class="code docutils literal notranslate"><span class="pre">x</span></code> is given, the current function call evaluates to
+<code class="code docutils literal notranslate"><span class="pre">x</span></code>; else it evaluates to <code class="code docutils literal notranslate"><span class="pre">void</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">breakelse</span></code> is an expression that, when evaluated, transfers control flow to the <code class="code docutils literal notranslate"><span class="pre">else</span></code> block
+of the surrounding <code class="code docutils literal notranslate"><span class="pre">if</span></code> statement, or causes the <code class="code docutils literal notranslate"><span class="pre">else</span></code> expression of the surrounding ternary <code class="code docutils literal notranslate"><span class="pre">if</span></code>
+to be used. If the <code class="code docutils literal notranslate"><span class="pre">if</span></code> statement has no <code class="code docutils literal notranslate"><span class="pre">else</span></code> block, it continues after the <code class="code docutils literal notranslate"><span class="pre">if</span></code> block.</p>
+<p>Since these expressions exit the local scope (they’re “non-local control flow primitives”),
+they are all typed <code class="code docutils literal notranslate"><span class="pre">bottom</span></code> - their <em>local</em> value is empty.</p>
+</section>
+<section id="error-propagation-operator">
+<h3>Error propagation operator<a class="headerlink" href="#error-propagation-operator" title="Permalink to this heading"></a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">x?</span></code> is the error propagation operator. Its behavior depends on the type of <code class="code docutils literal notranslate"><span class="pre">x</span></code>:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>if <code class="code docutils literal notranslate"><span class="pre">x</span></code> is a sumtype:</dt><dd><ul>
+<li><p>all types marked <code class="code docutils literal notranslate"><span class="pre">fail</span></code> are returned from the current function</p></li>
+<li><p>if it contains an <code class="code docutils literal notranslate"><span class="pre">:else</span></code> type, it is mapped to <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code></p></li>
+<li><p>if it contains a <code class="code docutils literal notranslate"><span class="pre">nullptr_t</span></code> type, it is mapped to <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>if <code class="code docutils literal notranslate"><span class="pre">x</span></code> is a <code class="code docutils literal notranslate"><span class="pre">nullable</span> <span class="pre">T</span></code>, it is treated as a sumtype of <code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">|</span> <span class="pre">nullptr_t</span></code>.
+The <code class="code docutils literal notranslate"><span class="pre">nullptr_t</span></code> is then mapped to <code class="code docutils literal notranslate"><span class="pre">breakelse</span></code>.</p></li>
+</ul>
+<p>The member types <code class="code docutils literal notranslate"><span class="pre">nullptr_t</span></code> and <code class="code docutils literal notranslate"><span class="pre">:else</span></code> are thus interpreted as “not error, not success”:
+they are “expected failures” that exit the current <code class="code docutils literal notranslate"><span class="pre">if</span></code> test but not the function.
+For instance, when reading data from a file, an I/O error would be a <code class="code docutils literal notranslate"><span class="pre">fail</span></code> member,
+but reaching the end of the file would be communicated by <code class="code docutils literal notranslate"><span class="pre">:else</span></code>.</p>
+<p>Since <code class="code docutils literal notranslate"><span class="pre">?</span></code> maps certain types to control flow expressions, which are typed <code class="code docutils literal notranslate"><span class="pre">bottom</span></code>,
+they are removed from the sumtype. As such, <code class="code docutils literal notranslate"><span class="pre">?</span></code> leaves only successful types behind.</p>
+<p>Note that when a sumtype contains both <code class="code docutils literal notranslate"><span class="pre">fail</span></code> types <em>and</em> a nullable class, the first application
+of <code class="code docutils literal notranslate"><span class="pre">?</span></code> will only get rid of the <code class="code docutils literal notranslate"><span class="pre">fail</span></code> types: you may require two <code class="code docutils literal notranslate"><span class="pre">?</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="nb">string</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">readText</span><span class="p">()??</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">die</span><span class="p">;</span>
+
+<span class="n">nullable</span><span class="w"> </span><span class="n">Class</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">obj</span><span class="p">?.</span><span class="n">field</span><span class="p">?)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="n">readBlock</span><span class="p">?</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="functions">
