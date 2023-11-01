@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>std.sha256 &#8212; Neat  documentation</title>
+    <title>std.error &#8212; Neat  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -15,8 +15,8 @@
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="std.socket" href="socket.html" />
-    <link rel="prev" title="std.range.iota" href="range/iota.html" />
+    <link rel="next" title="std.file" href="file.html" />
+    <link rel="prev" title="std.container.binheap" href="container/binheap.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,35 +34,22 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>std.sha256<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>Module entries: <a class="reference internal" href="#Sha256" title="Sha256"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sha256</span></code></a></p>
+<h1>std.error<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Module entries: <a class="reference internal" href="#Error" title="Error"><code class="xref py py-class docutils literal notranslate"><span class="pre">Error</span></code></a></p>
 <dl class="py class">
-<dt class="sig sig-object py" id="Sha256">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Sha256</span></span><a class="headerlink" href="#Sha256" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the SHA-256 hash of a piece of data.</p>
+<dt class="sig sig-object py" id="Error">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#Error" title="Permalink to this definition"></a></dt>
+<dd><p>TODO: document</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="Sha256.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Sha256.this" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
-<p>Create a new instance.</p>
+<dt class="sig sig-object py" id="Error.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Error.this" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this(this.message,</span> <span class="pre">this.range)</span></code></p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="Sha256.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Sha256.update" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">update(ubyte[]</span> <span class="pre">data)</span></code></p>
-<p>Update the hash for a block of data.</p>
-<p>The result for calling update multiple times is
-the same as if update had been called once with all
-data.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Sha256.finalize">
-<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Sha256.finalize" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">ubyte[]</span> <span class="pre">finalize()</span></code></p>
-<p>Return the hash value.</p>
-<p><code class="code docutils literal notranslate"><span class="pre">update</span></code> must not be called past this point.</p>
+<dt class="sig sig-object py" id="Error.toString">
+<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Error.toString" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">toString()</span></code></p>
 </dd></dl>
 
 </dd></dl>
@@ -94,7 +81,7 @@ data.</p>
 <li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="argparse.html">std.argparse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="container/binheap.html">std.container.binheap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error.html">std.error</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">std.error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="json.html">std.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="json/stream.html">std.json.stream</a></li>
@@ -103,7 +90,7 @@ data.</p>
 <li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">std.sha256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="socket.html">std.socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
@@ -137,7 +124,7 @@ data.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
-      <a href="../_sources/std/sha256.rst.txt"
+      <a href="../_sources/std/error.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

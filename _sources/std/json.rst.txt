@@ -6,7 +6,7 @@ std.json
 
 .. c:namespace:: std.json
 
-Module entries: :class:`JSONValue`, :func:`__jv`, :func:`toString`
+Module entries: :class:`JSONValue`, :func:`__jv`
 
 .. class:: JSONValue
 
@@ -96,14 +96,14 @@ Module entries: :class:`JSONValue`, :func:`__jv`, :func:`toString`
 
         Given the value is an object, returns an array of string keys.
 
+    .. method:: toString()
+
+        `string toString()`
+
+        Converts a JSON value to a string.
+
 .. function:: __jv(arg)
 
-    `JSONValue __jv((bool | int | string | JSONValue[] | (string key, JSONValue value)[] | JSONValue) arg)`
+    `JSONValue __jv((bool | int | JSONValue[] | string | (string key, JSONValue value)[] | JSONValue) arg)`
 
     TODO: document
-
-.. function:: toString(jv)
-
-    `string toString(JSONValue jv)`
-
-    Converts a JSON value to a string.

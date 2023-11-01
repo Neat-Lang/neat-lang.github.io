@@ -1,0 +1,37 @@
+.. _std_socket:
+.. highlight:: d
+
+std.socket
+----------
+
+.. c:namespace:: std.socket
+
+Module entries: :class:`SocketError`, :func:`connect`, :func:`errnoStr`, :class:`hostent`, :class:`in_addr`, :class:`sockaddr_in`
+
+.. class:: SocketError
+
+    TODO: document
+
+.. function:: connect(host, port)
+
+    `(Socket | fail SocketError) connect(string host, short port)`
+
+    TODO: document
+
+.. function:: errnoStr()
+
+    `string errnoStr()`
+
+    TODO: document
+
+.. class:: hostent
+
+    TODO: document
+
+.. class:: in_addr
+
+    TODO: document
+
+.. class:: sockaddr_in
+
+    TODO: document

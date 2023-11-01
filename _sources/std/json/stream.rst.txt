@@ -1,0 +1,188 @@
+.. _std_json_stream:
+.. highlight:: d
+
+std.json.stream
+---------------
+
+.. c:namespace:: std.json.stream
+
+Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, :class:`JsonValueSink`, :class:`JsonValueSource`, :func:`decode`, :func:`encode`, :func:`toString`
+
+.. class:: DecodeError
+
+    This error represents a problem while decoding JSON.
+
+    .. method:: toString()
+
+        `string toString()`
+
+
+.. class:: JsonLexer
+
+    Convert byte data into a stream of JSON tokens.
+    The data arrives as a stream of byte arrays, usually representing
+    read or receive calls.
+
+    Example::
+
+        auto source = new StringSource("{\"a\": 3, \"b\": [4, 5, 6], \"c\": \"Hello World\"}");
+        auto source = new JsonLexer(source);
+        mut JsonToken[] tokens;
+        // while (auto token = source.get? else break) {
+        while (true) {
+            auto token = source.get.case(:else: break, Error: assert(false));
+            tokens ~= token;
+        }
+        assert(tokens == [
+            :objectStart,
+                "a", :colon, 3, :comma,
+                "b", :colon, :arrayStart,
+                    4, :comma, 5, :comma, 6,
+                :arrayEnd, :comma,
+                "c", :colon, "Hello World",
+            :objectEnd,
+        ]);
+
+    .. method:: this(source)
+
+        `this(this.source)`
+
+
+    .. method:: get()
+
+        `(JsonToken | :else | fail Error) get()`
+
+
+.. class:: JsonPrinter
+
+    Convert a stream of JSON tokens into byte data.
+    Note that the produced byte blocks are not very efficient; you will
+    probably want to feed them through a flushable buffer sink before
+    putting them in a socket.
+
+    Example::
+
+        JsonToken[] tokens = [
+            :objectStart,
+                "a", :colon, 3, :comma,
+                "b", :colon, :arrayStart,
+                    4, :comma, 5, :comma, 6,
+                :arrayEnd, :comma,
+                "c", :colon, "Hello World",
+            :objectEnd,
+        ];
+
+        auto stringSink = new StringSink;
+        auto jsonSink = new JsonPrinter(stringSink);
+        for (token in tokens) jsonSink.put(token).case(Error: assert(false));
+        // TODO: assert(stringSink.content == `{"a":3,"b":[4,5,6],"c":"Hello World"}`);
+        assert(stringSink.content == "{\"a\":3,\"b\":[4,5,6],\"c\":\"Hello World\"}");
+
+    .. method:: this(sink)
+
+        `this(this.sink)`
+
+
+    .. method:: put(token)
+
+        `(void | fail Error) put(JsonToken token)`
+
+
+.. class:: JsonValueSink
+
+    Convert a stream of JSON tokens into a JSON value.
+
+    .. method:: this()
+
+        `this()`
+
+
+    .. method:: put(token)
+
+        `(void | fail Error) put(JsonToken token)`
+
+
+.. class:: JsonValueSource
+
+    Convert a JSON value into a stream of JSON tokens.
+
+    Example::
+
+        auto value = JSONValue({"a": 3, "b": [4, 5, 6], "c": "Hello World"});
+        auto source = new JsonValueSource(value);
+        mut JsonToken[] tokens;
+        // while (auto token = source.get? else break) {
+        while (true) {
+            auto token = source.get.case(:else: break, Error: assert(false));
+            tokens ~= token;
+        }
+        assert(tokens == [
+            :objectStart,
+                "a", :colon, 3, :comma,
+                "b", :colon, :arrayStart,
+                    4, :comma, 5, :comma, 6,
+                :arrayEnd, :comma,
+                "c", :colon, "Hello World",
+            :objectEnd,
+        ]);
+
+    .. method:: this(value)
+
+        `this(JSONValue value)`
+
+
+    .. method:: head()
+
+        `StackEntry head()`
+
+
+    .. method:: pop()
+
+        `void pop()`
+
+
+    .. method:: get()
+
+        `(JsonToken | :else | fail Error) get()`
+
+
+.. function:: decode(source)
+
+    `(T | fail Error) decode(T)(Source!(JsonToken) source)`
+
+    Decode a value from a JSON token stream.
+
+.. function:: encode(value, sink)
+
+    `(void | fail Error) encode(T)(T value, Sink!(JsonToken) sink)`
+
+    Encode a value as a JSON token stream.
+
+    Example::
+
+        auto sink = new JsonValueSink;
+        5.encode(sink).case(Error: assert(false));
+        assert(sink.value == JSONValue(5));
+
+    Example::
+
+        auto sink = new JsonValueSink;
+        [2, 3].encode(sink).case(Error: assert(false));
+        assert(sink.value == JSONValue([2, 3]));
+
+    Example::
+
+        struct S {
+            int a;
+            string[] b;
+            bool c;
+        }
+        auto sink = new JsonValueSink;
+        S(2, ["foo", "bar"], false).encode(sink).case(Error: assert(false));
+        assert(sink.value == JSONValue({"a": 2, "b": ["foo", "bar"], "c": false}));
+
+.. function:: toString(token)
+
+    `string toString(JsonToken token)`
+
+    ///

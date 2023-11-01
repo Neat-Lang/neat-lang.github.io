@@ -15,7 +15,7 @@
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="std.math" href="math.html" />
+    <link rel="next" title="std.json.stream" href="json/stream.html" />
     <link rel="prev" title="std.file" href="file.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -35,7 +35,7 @@
             
   <section id="id1">
 <h1>std.json<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
-<p>Module entries: <a class="reference internal" href="#JSONValue" title="JSONValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONValue</span></code></a>, <a class="reference internal" href="#jv" title="__jv"><code class="xref py py-func docutils literal notranslate"><span class="pre">__jv()</span></code></a>, <a class="reference internal" href="#toString" title="toString"><code class="xref py py-func docutils literal notranslate"><span class="pre">toString()</span></code></a></p>
+<p>Module entries: <a class="reference internal" href="#JSONValue" title="JSONValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONValue</span></code></a>, <a class="reference internal" href="#jv" title="__jv"><code class="xref py py-func docutils literal notranslate"><span class="pre">__jv()</span></code></a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="JSONValue">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">JSONValue</span></span><a class="headerlink" href="#JSONValue" title="Permalink to this definition"></a></dt>
@@ -137,20 +137,20 @@
 <p>Given the value is an object, returns an array of string keys.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="JSONValue.toString">
+<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#JSONValue.toString" title="Permalink to this definition"></a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">toString()</span></code></p>
+<p>Converts a JSON value to a string.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="jv">
 <span class="sig-name descname"><span class="pre">__jv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jv" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">__jv((bool</span> <span class="pre">|</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">string</span> <span class="pre">|</span> <span class="pre">JSONValue[]</span> <span class="pre">|</span> <span class="pre">(string</span> <span class="pre">key,</span> <span class="pre">JSONValue</span> <span class="pre">value)[]</span> <span class="pre">|</span> <span class="pre">JSONValue)</span> <span class="pre">arg)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">JSONValue</span> <span class="pre">__jv((bool</span> <span class="pre">|</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">JSONValue[]</span> <span class="pre">|</span> <span class="pre">string</span> <span class="pre">|</span> <span class="pre">(string</span> <span class="pre">key,</span> <span class="pre">JSONValue</span> <span class="pre">value)[]</span> <span class="pre">|</span> <span class="pre">JSONValue)</span> <span class="pre">arg)</span></code></p>
 <p>TODO: document</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="toString">
-<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#toString" title="Permalink to this definition"></a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">toString(JSONValue</span> <span class="pre">jv)</span></code></p>
-<p>Converts a JSON value to a string.</p>
 </dd></dl>
 
 </section>
@@ -180,14 +180,17 @@
 <li class="toctree-l2"><a class="reference internal" href="algorithm.html">std.algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="argparse.html">std.argparse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="container/binheap.html">std.container.binheap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">std.error</a></li>
 <li class="toctree-l2"><a class="reference internal" href="file.html">std.file</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">std.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json/stream.html">std.json.stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.html">std.socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thread.html">std.thread</a></li>

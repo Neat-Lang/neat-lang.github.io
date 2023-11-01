@@ -29,6 +29,12 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
 Module entries: :class:`BinHeapImpl`, :func:`binHeap`
 
+.. rubric:: std.error
+
+.. c:namespace:: std.error
+
+Module entries: :class:`Error`
+
 .. rubric:: std.file
 
 .. c:namespace:: std.file
@@ -39,7 +45,13 @@ Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`
 
 .. c:namespace:: std.json
 
-Module entries: :class:`JSONValue`, :func:`__jv`, :func:`toString`
+Module entries: :class:`JSONValue`, :func:`__jv`
+
+.. rubric:: std.json.stream
+
+.. c:namespace:: std.json.stream
+
+Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, :class:`JsonValueSink`, :class:`JsonValueSource`, :func:`decode`, :func:`encode`, :func:`toString`
 
 .. rubric:: std.math
 
@@ -76,6 +88,12 @@ Module entries: :class:`IntIota`, :class:`Iota`
 .. c:namespace:: std.sha256
 
 Module entries: :class:`Sha256`
+
+.. rubric:: std.socket
+
+.. c:namespace:: std.socket
+
+Module entries: :class:`SocketError`, :func:`connect`, :func:`errnoStr`, :class:`hostent`, :class:`in_addr`, :class:`sockaddr_in`
 
 .. rubric:: std.stdio
 

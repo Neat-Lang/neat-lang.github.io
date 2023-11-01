@@ -200,6 +200,8 @@
 </li>
         <li><a href="std/stdio.html#byLine">byLine()</a>
 </li>
+        <li><a href="std/socket.html#connect">connect()</a>
+</li>
         <li><a href="std/math.html#cos">cos()</a>
 </li>
         <li><a href="std/math/vector.html#cross">cross()</a>
@@ -210,9 +212,15 @@
 </li>
         <li><a href="std/algorithm.html#cumulativeFold">cumulativeFold()</a>
 </li>
+        <li><a href="std/json/stream.html#decode">decode()</a>
+</li>
         <li><a href="std/file.html#dirname">dirname()</a>
 </li>
+        <li><a href="std/json/stream.html#encode">encode()</a>
+</li>
         <li><a href="std/string.html#endsWith">endsWith()</a>
+</li>
+        <li><a href="std/socket.html#errnoStr">errnoStr()</a>
 </li>
         <li><a href="std/process.html#exec">exec()</a>
 </li>
@@ -282,7 +290,7 @@
 </li>
         <li><a href="std/string.html#toHexString">toHexString()</a>
 </li>
-        <li><a href="std/json.html#toString">toString()</a>
+        <li><a href="std/json/stream.html#toString">toString()</a>
 </li>
         <li><a href="std/string.html#toStringz">toStringz()</a>
 </li>
@@ -310,6 +318,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/thread.html#CondVar">CondVar (built-in class)</a>
 </li>
+      <li>
+    connect()
+
+      <ul>
+        <li><a href="std/socket.html#connect">built-in function</a>
+</li>
+      </ul></li>
       <li>
     cos()
 
@@ -354,6 +369,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    decode()
+
+      <ul>
+        <li><a href="std/json/stream.html#decode">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="std/json/stream.html#DecodeError">DecodeError (built-in class)</a>
+</li>
+      <li>
     dirname()
 
       <ul>
@@ -375,6 +401,13 @@
 </li>
       </ul></li>
       <li>
+    encode()
+
+      <ul>
+        <li><a href="std/json/stream.html#encode">built-in function</a>
+</li>
+      </ul></li>
+      <li>
     endsWith()
 
       <ul>
@@ -382,14 +415,23 @@
 </li>
       </ul></li>
       <li>
+    errnoStr()
+
+      <ul>
+        <li><a href="std/socket.html#errnoStr">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="std/error.html#Error">Error (built-in class)</a>
+</li>
+      <li>
     exec()
 
       <ul>
         <li><a href="std/process.html#exec">built-in function</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     exists()
 
@@ -447,7 +489,11 @@
       <li><a href="std/argparse.html#ArgResult.get">get() (ArgResult method)</a>
 
       <ul>
+        <li><a href="std/json/stream.html#JsonLexer.get">(JsonLexer method)</a>
+</li>
         <li><a href="std/json.html#JSONValue.get">(JSONValue method)</a>
+</li>
+        <li><a href="std/json/stream.html#JsonValueSource.get">(JsonValueSource method)</a>
 </li>
         <li><a href="std/thread.html#ThreadLocal.get">(ThreadLocal method)</a>
 </li>
@@ -478,12 +524,20 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="std/json/stream.html#JsonValueSource.head">head() (JsonValueSource method)</a>
+</li>
+      <li><a href="std/socket.html#hostent">hostent (built-in class)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="std/math/matrix.html#mat4x4.identity">identity() (mat4x4 method)</a>
+</li>
+      <li><a href="std/socket.html#in_addr">in_addr (built-in class)</a>
 </li>
       <li><a href="std/container/binheap.html#BinHeapImpl.insert">insert() (BinHeapImpl method)</a>
 </li>
@@ -519,9 +573,17 @@
         <li><a href="std/string.html#join">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="std/json/stream.html#JsonLexer">JsonLexer (built-in class)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="std/json/stream.html#JsonPrinter">JsonPrinter (built-in class)</a>
+</li>
       <li><a href="std/json.html#JSONValue">JSONValue (built-in class)</a>
+</li>
+      <li><a href="std/json/stream.html#JsonValueSink">JsonValueSink (built-in class)</a>
+</li>
+      <li><a href="std/json/stream.html#JsonValueSource">JsonValueSource (built-in class)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -655,6 +717,8 @@
         <li><a href="std/argparse.html#UnixArgParser.parse">(UnixArgParser method)</a>
 </li>
       </ul></li>
+      <li><a href="std/json/stream.html#JsonValueSource.pop">pop() (JsonValueSource method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
@@ -669,6 +733,12 @@
 
       <ul>
         <li><a href="std/stdio.html#print">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="std/json/stream.html#JsonPrinter.put">put() (JsonPrinter method)</a>
+
+      <ul>
+        <li><a href="std/json/stream.html#JsonValueSink.put">(JsonValueSink method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -792,6 +862,10 @@
         <li><a href="std/string.html#slice">built-in function</a>
 </li>
       </ul></li>
+      <li><a href="std/socket.html#sockaddr_in">sockaddr_in (built-in class)</a>
+</li>
+      <li><a href="std/socket.html#SocketError">SocketError (built-in class)</a>
+</li>
       <li>
     sort()
 
@@ -877,7 +951,17 @@
 </li>
         <li><a href="std/thread.html#CondVar.this">(CondVar method)</a>
 </li>
+        <li><a href="std/error.html#Error.this">(Error method)</a>
+</li>
         <li><a href="std/argparse.html#GccArgParser.this">(GccArgParser method)</a>
+</li>
+        <li><a href="std/json/stream.html#JsonLexer.this">(JsonLexer method)</a>
+</li>
+        <li><a href="std/json/stream.html#JsonPrinter.this">(JsonPrinter method)</a>
+</li>
+        <li><a href="std/json/stream.html#JsonValueSink.this">(JsonValueSink method)</a>
+</li>
+        <li><a href="std/json/stream.html#JsonValueSource.this">(JsonValueSource method)</a>
 </li>
         <li><a href="std/thread.html#Mutex.this">(Mutex method)</a>
 </li>
@@ -915,7 +999,15 @@
     toString()
 
       <ul>
-        <li><a href="std/json.html#toString">built-in function</a>
+        <li><a href="std/json/stream.html#toString">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="std/json/stream.html#DecodeError.toString">toString() (DecodeError method)</a>
+
+      <ul>
+        <li><a href="std/error.html#Error.toString">(Error method)</a>
+</li>
+        <li><a href="std/json.html#JSONValue.toString">(JSONValue method)</a>
 </li>
       </ul></li>
       <li>

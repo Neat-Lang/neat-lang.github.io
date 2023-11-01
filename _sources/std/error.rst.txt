@@ -1,0 +1,23 @@
+.. _std_error:
+.. highlight:: d
+
+std.error
+---------
+
+.. c:namespace:: std.error
+
+Module entries: :class:`Error`
+
+.. class:: Error
+
+    TODO: document
+
+    .. method:: this(message, range)
+
+        `this(this.message, this.range)`
+
+
+    .. method:: toString()
+
+        `string toString()`
+
