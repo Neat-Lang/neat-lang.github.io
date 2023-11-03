@@ -25,7 +25,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
     Example::
 
-        auto source = new StringSource("{\"a\": 3, \"b\": [4, 5, 6], \"c\": \"Hello World\"}");
+        auto source = new StringSource(`{"a": 3, "b": [4, 5, 6], "c": "Hello World"}`);
         auto source = new JsonLexer(source);
         mut JsonToken[] tokens;
         // while (auto token = source.get? else break) {
@@ -75,8 +75,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         auto stringSink = new StringSink;
         auto jsonSink = new JsonPrinter(stringSink);
         for (token in tokens) jsonSink.put(token).case(Error: assert(false));
-        // TODO: assert(stringSink.content == `{"a":3,"b":[4,5,6],"c":"Hello World"}`);
-        assert(stringSink.content == "{\"a\":3,\"b\":[4,5,6],\"c\":\"Hello World\"}");
+        assert(stringSink.content == `{"a":3,"b":[4,5,6],"c":"Hello World"}`);
 
     .. method:: this(sink)
 
@@ -91,6 +90,11 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 .. class:: JsonValueSink
 
     Convert a stream of JSON tokens into a JSON value.
+
+    .. method:: done()
+
+        `bool done()`
+
 
     .. method:: this()
 
@@ -165,12 +169,13 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         assert(JSONValue([2, 3, 4]).source.decode!(int[]) == [2, 3, 4]);
         assert(JSONValue(["foo", "bar"]).source.decode!(string[]) == ["foo", "bar"]);
 
-        assert("5".source.decode!int == 5);
-        assert("true".source.decode!bool == true);
-        assert("\"foo\"".source.decode!string == "foo");
-        assert("[]".source.decode!(int[]) == []);
-        assert("[2, 3, 4]".source.decode!(int[]) == [2, 3, 4]);
-        assert("[\"foo\", \"bar\"]".source.decode!(string[]) == ["foo", "bar"]);
+        assert(`5`.source.decode!int == 5);
+        assert(`true`.source.decode!bool == true);
+        assert(`"foo"`.source.decode!string == "foo");
+        assert(`[]`.source.decode!(int[]) == []);
+        assert(`[2, 3, 4]`.source.decode!(int[]) == [2, 3, 4]);
+        assert(`["foo", "bar"]`.source.decode!(string[]) == ["foo", "bar"]);
+        assert(`{"a": 3}`.source.decode!JSONValue == JSONValue({"a": 3}));
 
         struct S {
             int a;
@@ -179,7 +184,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
             string toString() => "S($a, $b, $c)";
         }
         assert(JSONValue({"a": 2, "b": ["foo", "bar"], "c": false}).source.decode!S == S(2, ["foo", "bar"], false));
-        assert("{\"a\": 2, \"b\": [\"foo\", \"bar\"], \"c\": false}".source.decode!S == S(2, ["foo", "bar"], false));
+        assert(`{"a": 2, "b": ["foo", "bar"], "c": false}`.source.decode!S == S(2, ["foo", "bar"], false));
 
 .. function:: encode(value, sink)
 
@@ -209,6 +214,12 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         auto sink = new JsonValueSink;
         S(2, ["foo", "bar"], false).encode(sink).case(Error: assert(false));
         assert(sink.value == JSONValue({"a": 2, "b": ["foo", "bar"], "c": false}));
+
+    Example::
+
+        auto sink = new JsonValueSink;
+        JSONValue({"a": 3}).encode(sink).case(Error: assert(false));
+        assert(sink.value == JSONValue({"a": 3}));
 
 .. function:: toString(token)
 

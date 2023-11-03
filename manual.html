@@ -125,6 +125,14 @@ Private declarations cannot be seen when the module is imported.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">5</span></code> is an integer literal of type <code class="code docutils literal notranslate"><span class="pre">int</span></code>.</p>
 <p>Integer literals may be arbitrarily divided by underscores for readability: <code class="code docutils literal notranslate"><span class="pre">1_048_576</span></code>.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code> is a string literal. <code class="code docutils literal notranslate"><span class="pre">string</span></code> is the same as <code class="code docutils literal notranslate"><span class="pre">char[]</span></code>.</p>
+<p>You can interpolate values into a string literal with <code class="code docutils literal notranslate"><span class="pre">$name</span></code> or <code class="code docutils literal notranslate"><span class="pre">$(expression)</span></code>. The
+compiler will select a type-appropriate default representation. For class and struct types,
+<code class="code docutils literal notranslate"><span class="pre">toString</span></code> will be called. An example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;$remaining bottles of beer on the wall.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="code docutils literal notranslate"><span class="pre">`Hello</span> <span class="pre">World`</span></code> is a literal string. Unlike regular string literals,
+escape sequences and format string quotes are not processed.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">1.2</span></code> is a <code class="code docutils literal notranslate"><span class="pre">double</span></code> literal. <code class="code docutils literal notranslate"><span class="pre">1.2f</span></code> is a <code class="code docutils literal notranslate"><span class="pre">float</span></code> literal.</p>
 </section>
 <section id="arithmetic">
