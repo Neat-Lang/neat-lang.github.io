@@ -186,6 +186,12 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         assert(JSONValue({"a": 2, "b": ["foo", "bar"], "c": false}).source.decode!S == S(2, ["foo", "bar"], false));
         assert(`{"a": 2, "b": ["foo", "bar"], "c": false}`.source.decode!S == S(2, ["foo", "bar"], false));
 
+        struct T {
+            int a = 5;
+            string toString() => "T(a=$a)";
+        }
+        assert(`{"b": {"c": [5], "d": "6"}}`.source.decode!T == T(5));
+
 .. function:: encode(value, sink)
 
     `(void | fail Error) encode(T)(T value, Sink!(JsonToken) sink)`
