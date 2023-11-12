@@ -27,7 +27,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
         parser.add("h", "help", :noArg, "Print this help page");
 
         with (parser.parse(null)
-            .case(string: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(remaining.empty);
         }
@@ -38,7 +38,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
         parser.add("h", "help", :noArg, "Print this help page");
 
         with (parser.parse(["foo"])
-            .case(string: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(remaining == ["foo"]);
         }
@@ -50,18 +50,18 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
         parser.parse(["-f"])
             .case(ArgResult: assert(false))
-            .assertEqual("Flag '-f' missing parameter");
+            .message.assertEqual("Flag '-f' missing parameter");
 
         parser.parse(["--foo"])
             .case(ArgResult: assert(false))
-            .assertEqual("Flag '--foo' missing parameter");
+            .message.assertEqual("Flag '--foo' missing parameter");
 
         parser.parse(["-f", "x"])
             .case(ArgResult: assert(false))
-            .assertEqual("Flag '-f' expected integer parameter");
+            .message.assertEqual("Flag '-f' expected integer parameter");
 
         with (parser.parse(["-f", "5"])
-            .case(string: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(has("foo"));
             assert(remaining.empty);
@@ -73,7 +73,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
         parser.add("f", "foo", :noArg, :hidden);
         parser.add("b", "bar", :noArg, :hidden);
 
-        with (parser.parse(["-fb"]).case(string s: assert(false))) {
+        with (parser.parse(["-fb"]).case(Error: assert(false))) {
             assert(get("foo") == "");
             assert(get("bar") == "");
             assert(remaining.empty);
@@ -87,13 +87,13 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
         parser.parse(["-fb"])
             .case(ArgResult: assert(false))
-            .assertEqual("Flag '-f' expected no parameter");
+            .message.assertEqual("Flag '-f' expected no parameter");
 
     Example::
 
         auto parser = new UnixArgParser;
         with (parser.parse(["foo", "--", "bar"])
-            .case(string s: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(remaining == ["foo"]);
             assert(extra == ["bar"]);
@@ -104,7 +104,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
         auto parser = new GccArgParser;
         parser.add("L", :multiArgs, :hidden);
         with (parser.parse(["-L-lpthreads"])
-            .case(string s: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(getMultiple("L") == ["-lpthreads"]);
         }
@@ -123,7 +123,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
         }
         parser.add(new &blaAction);
         with (parser.parse(["bla"])
-            .case(string: assert(false)))
+            .case(Error: assert(false)))
         {
             assert(get("bla") == "");
             assert(remaining.empty);
@@ -154,7 +154,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
     .. method:: parse(args)
 
-        `(ArgResult | fail string) parse(string[] args)`
+        `(ArgResult | Error) parse(string[] args)`
 
         Parse a list of command-line arguments. If a string is returned,
         the command-line arguments did not match the defined arguments.
@@ -206,7 +206,7 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
     .. method:: parse(args)
 
-        `(ArgResult | fail string) parse(string[] args)`
+        `(ArgResult | Error) parse(string[] args)`
 
 
 .. class:: UnixArgParser
@@ -223,5 +223,5 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
     .. method:: parse(args)
 
-        `(ArgResult | fail string) parse(string[] args)`
+        `(ArgResult | Error) parse(string[] args)`
 

@@ -50,7 +50,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
     .. method:: get()
 
-        `(JsonToken | :else | fail Error) get()`
+        `(JsonToken | :else | Error) get()`
 
 
 .. class:: JsonPrinter
@@ -84,7 +84,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
     .. method:: put(token)
 
-        `(void | fail Error) put(JsonToken token)`
+        `(void | Error) put(JsonToken token)`
 
 
 .. class:: JsonValueSink
@@ -103,7 +103,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
     .. method:: put(token)
 
-        `(void | fail Error) put(JsonToken token)`
+        `(void | Error) put(JsonToken token)`
 
 
 .. class:: JsonValueSource
@@ -115,7 +115,8 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         auto value = JSONValue({"a": 3, "b": [4, 5, 6], "c": "Hello World"});
         auto source = new JsonValueSource(value);
         mut JsonToken[] tokens;
-        // while (auto token = source.get? else break) {
+        // TODO
+        // while let (auto token = source.get? else break) {
         while (true) {
             auto token = source.get.case(:else: break, Error: assert(false));
             tokens ~= token;
@@ -147,12 +148,12 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
     .. method:: get()
 
-        `(JsonToken | :else | fail Error) get()`
+        `(JsonToken | :else | Error) get()`
 
 
 .. function:: decode(source)
 
-    `(T | fail Error) decode(T)(Source!(JsonToken) source)`
+    `(T | Error) decode(T)(Source!(JsonToken) source)`
 
     Decode a value from a JSON token stream.
 
@@ -194,7 +195,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
 .. function:: encode(value, sink)
 
-    `(void | fail Error) encode(T)(T value, Sink!(JsonToken) sink)`
+    `(void | Error) encode(T)(T value, Sink!(JsonToken) sink)`
 
     Encode a value as a JSON token stream.
 
