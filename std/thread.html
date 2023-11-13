@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="std.time" href="time.html" />
@@ -34,38 +34,38 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>std.thread<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<h1>std.thread<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>Module entries: <a class="reference internal" href="#CondVar" title="CondVar"><code class="xref py py-class docutils literal notranslate"><span class="pre">CondVar</span></code></a>, <a class="reference internal" href="#Mutex" title="Mutex"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mutex</span></code></a>, <a class="reference internal" href="#Semaphore" title="Semaphore"><code class="xref py py-class docutils literal notranslate"><span class="pre">Semaphore</span></code></a>, <a class="reference internal" href="#Task" title="Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a>, <a class="reference internal" href="#ThreadLocal" title="ThreadLocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThreadLocal</span></code></a>, <a class="reference internal" href="#ThreadPool" title="ThreadPool"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThreadPool</span></code></a>, <a class="reference internal" href="#Waitable" title="Waitable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Waitable</span></code></a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="CondVar">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CondVar</span></span><a class="headerlink" href="#CondVar" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CondVar</span></span><a class="headerlink" href="#CondVar" title="Link to this definition">¶</a></dt>
 <dd><p>This class implements condition variables.</p>
 <p>A condition variable allows a thread to wait until a condition is signaled.
 The provided mutex must be locked when <code class="code docutils literal notranslate"><span class="pre">wait</span></code> is called. It will be locked
 when wait returns, but be unlocked for the intermediate time.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="CondVar.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutex</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mutex</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this(this.mutex)</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CondVar.wait">
-<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.wait" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.wait" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">wait()</span></code></p>
 <p>Wait for a thread to signal us.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CondVar.signal">
-<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.signal" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.signal" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">signal()</span></code></p>
 <p>Wake up (at least) one waiting thread.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="CondVar.broadcast">
-<span class="sig-name descname"><span class="pre">broadcast</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.broadcast" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">broadcast</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CondVar.broadcast" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">broadcast()</span></code></p>
 <p>Wake up all waiting threads.</p>
 </dd></dl>
@@ -74,7 +74,7 @@ when wait returns, but be unlocked for the intermediate time.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="Mutex">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mutex</span></span><a class="headerlink" href="#Mutex" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mutex</span></span><a class="headerlink" href="#Mutex" title="Link to this definition">¶</a></dt>
 <dd><p>This class implements mutual exclusion.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">lock</span></code> and <code class="code docutils literal notranslate"><span class="pre">unlock</span></code> calls must be paired. Only one thread may be between <code class="code docutils literal notranslate"><span class="pre">lock</span></code>
 and <code class="code docutils literal notranslate"><span class="pre">unlock</span></code> at the same time. To enforce this, the second thread’s <code class="code docutils literal notranslate"><span class="pre">lock</span></code> will
@@ -103,27 +103,27 @@ block until the first thread calls <code class="code docutils literal notranslat
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="Mutex.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Mutex.lock">
-<span class="sig-name descname"><span class="pre">lock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.lock" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">lock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.lock" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">lock()</span></code></p>
 <p>Lock the mutex.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Mutex.locked">
-<span class="sig-name descname"><span class="pre">locked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.locked" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">locked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.locked" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">LockGuard</span> <span class="pre">locked()</span></code></p>
 <p>Scope guard that automatically calls lock on scope entry and unlock on scope exit.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Mutex.unlocked">
-<span class="sig-name descname"><span class="pre">unlocked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.unlocked" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">unlocked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.unlocked" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">UnlockGuard</span> <span class="pre">unlocked()</span></code></p>
 <p>Scope guard that automatically calls unlock on scope entry and lock on scope exit.</p>
 <p>Used to implement work loops that want to release their lock to do some task.</p>
@@ -131,7 +131,7 @@ block until the first thread calls <code class="code docutils literal notranslat
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Mutex.unlock">
-<span class="sig-name descname"><span class="pre">unlock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.unlock" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">unlock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Mutex.unlock" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">unlock()</span></code></p>
 <p>Unlock the mutex.</p>
 </dd></dl>
@@ -140,27 +140,27 @@ block until the first thread calls <code class="code docutils literal notranslat
 
 <dl class="py class">
 <dt class="sig sig-object py" id="Semaphore">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Semaphore</span></span><a class="headerlink" href="#Semaphore" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Semaphore</span></span><a class="headerlink" href="#Semaphore" title="Link to this definition">¶</a></dt>
 <dd><p>This class implements a counting semaphore.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">acquire</span></code> will only return when a matching number
 of <code class="code docutils literal notranslate"><span class="pre">release</span></code> calls has taken place.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Semaphore.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this(int</span> <span class="pre">i)</span></code></p>
 <p>Initialize the class with a number of available tokens.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Semaphore.acquire">
-<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.acquire" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">acquire</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.acquire" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">acquire()</span></code></p>
 <p>Consume a token if available; block if not.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Semaphore.release">
-<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.release" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Semaphore.release" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">release()</span></code></p>
 <p>Provide a token.</p>
 </dd></dl>
@@ -169,11 +169,11 @@ of <code class="code docutils literal notranslate"><span class="pre">release</sp
 
 <dl class="py class">
 <dt class="sig sig-object py" id="Task">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Task</span></span><a class="headerlink" href="#Task" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Task</span></span><a class="headerlink" href="#Task" title="Link to this definition">¶</a></dt>
 <dd><p>The superclass for a task that can be scheduled to run on a thread pool.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Task.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Task.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Task.run" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">run()</span></code></p>
 </dd></dl>
 
@@ -181,25 +181,25 @@ of <code class="code docutils literal notranslate"><span class="pre">release</sp
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ThreadLocal">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThreadLocal</span></span><a class="headerlink" href="#ThreadLocal" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThreadLocal</span></span><a class="headerlink" href="#ThreadLocal" title="Link to this definition">¶</a></dt>
 <dd><p>This class wraps a value that is unique per thread accessing it.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadLocal.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
 <p>Initialize a <code class="code docutils literal notranslate"><span class="pre">ThreadLocal</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadLocal.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.set" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.set" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">set(T</span> <span class="pre">value)</span></code></p>
 <p>Set the <code class="code docutils literal notranslate"><span class="pre">ThreadLocal</span></code> to a new value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadLocal.get">
-<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.get" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadLocal.get" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">get()</span></code></p>
 <p>Get the value stored in the <code class="code docutils literal notranslate"><span class="pre">ThreadLocal</span></code>.
 If <code class="code docutils literal notranslate"><span class="pre">set</span></code> has not been called, the default value for the type
@@ -210,19 +210,19 @@ is returned.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="ThreadPool">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThreadPool</span></span><a class="headerlink" href="#ThreadPool" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThreadPool</span></span><a class="headerlink" href="#ThreadPool" title="Link to this definition">¶</a></dt>
 <dd><p>A thread pool decouples threads and units of action. It manages multiple threads
 and keeps a queue of tasks, which are distributed over threads as they become available.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadPool.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this(int</span> <span class="pre">i)</span></code></p>
 <p>Create a thread pool with a number of threads.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadPool.waitComplete">
-<span class="sig-name descname"><span class="pre">waitComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.waitComplete" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">waitComplete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.waitComplete" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitComplete(void</span> <span class="pre">delegate!(float)</span> <span class="pre">progress)</span></code></p>
 <p>Returns when all queued tasks have completed.
 The callback will be invoked with a number between 0 and 1, indicating progress.
@@ -231,14 +231,14 @@ Intended for standalone tools that want to present a progress bar.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadPool.addTask">
-<span class="sig-name descname"><span class="pre">addTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.addTask" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">addTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.addTask" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">addTask(Task</span> <span class="pre">task)</span></code></p>
 <p>Add a task to the pool’s task queue.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ThreadPool.getTask">
-<span class="sig-name descname"><span class="pre">getTask</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.getTask" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">getTask</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ThreadPool.getTask" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">Task</span> <span class="pre">getTask()</span></code></p>
 <p>For internal use, returns a task when one has been queued.</p>
 </dd></dl>
@@ -247,40 +247,40 @@ Intended for standalone tools that want to present a progress bar.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="Waitable">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Waitable</span></span><a class="headerlink" href="#Waitable" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Waitable</span></span><a class="headerlink" href="#Waitable" title="Link to this definition">¶</a></dt>
 <dd><p>A convenience wrapper around CondVar that allows waiting
 for the outcome of an operation.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.this">
-<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.this" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.this" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">this(this.value)</span></code></p>
 <p>Create the class with an initial value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.set">
-<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.set" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.set" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">set(T</span> <span class="pre">value)</span></code></p>
 <p>Set the stored value to a new value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.update" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.update" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">update(T</span> <span class="pre">delegate!(T)</span> <span class="pre">action)</span></code></p>
 <p>Provide an action that updates the stored value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.waitFor">
-<span class="sig-name descname"><span class="pre">waitFor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitFor" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">waitFor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitFor" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitFor(bool</span> <span class="pre">delegate!(T)</span> <span class="pre">condition)</span></code></p>
 <p>Wait for the stored value to fulfill the condition.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Waitable.waitReact">
-<span class="sig-name descname"><span class="pre">waitReact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">react</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitReact" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">waitReact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">react</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Waitable.waitReact" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">waitReact(bool</span> <span class="pre">delegate!(T)</span> <span class="pre">condition,</span> <span class="pre">T</span> <span class="pre">delegate!(T)</span> <span class="pre">react)</span></code></p>
 <p>Wait for the stored value to fulfill the condition, then modify it.</p>
 </dd></dl>
@@ -353,7 +353,7 @@ for the outcome of an operation.</p>
       &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |

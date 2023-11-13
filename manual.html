@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <script src="_static/jquery.js?v=5d32c60e"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Standard Library" href="std.html" />
@@ -34,13 +34,13 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>Manual<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<h1>Manual<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>This document goes through every Neat language feature in approximate sequence.
 The goal is that you should be able to understand the entire language by just
 reading it top to bottom. But you can also use it as a reference to
 quickly find how a feature works.</p>
 <section id="lexical">
-<h2>Lexical<a class="headerlink" href="#lexical" title="Permalink to this heading"></a></h2>
+<h2>Lexical<a class="headerlink" href="#lexical" title="Link to this heading">¶</a></h2>
 <p>All Neat source files are encoded as UTF-8.</p>
 <p>Comment syntax is as in C:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
@@ -54,7 +54,7 @@ quickly find how a feature works.</p>
 <p>An identifier is a letter or underscore, followed by a sequence of letters, digits or underscores.</p>
 </section>
 <section id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
 <p>A Neat source file has the extension <code class="code docutils literal notranslate"><span class="pre">.nt</span></code>. Each source file corresponds to a module.
 A module is a dot-separated list of packages, corresponding to folders, followed the filename.</p>
 <p>Every file must begin with the module declaration. For instance, a file <code class="code docutils literal notranslate"><span class="pre">src/hello/world.nt</span></code>:</p>
@@ -63,7 +63,7 @@ A module is a dot-separated list of packages, corresponding to folders, followed
 </div>
 </section>
 <section id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this heading"></a></h2>
+<h2>Packages<a class="headerlink" href="#packages" title="Link to this heading">¶</a></h2>
 <p>Neat does not use includes, but instead packages. A package is a folder associated with a name:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ # -P&lt;name&gt;:&lt;folder&gt;[:&lt;dependency&gt;[,&lt;dependency]*]
 $ neat -Proot:src src/hello/world.nt
@@ -82,9 +82,9 @@ Because dependencies are explicitly listed, accidental import of modules from
 an unrelated package is impossible.</p>
 </section>
 <section id="module-level-statements">
-<h2>Module-Level Statements<a class="headerlink" href="#module-level-statements" title="Permalink to this heading"></a></h2>
+<h2>Module-Level Statements<a class="headerlink" href="#module-level-statements" title="Link to this heading">¶</a></h2>
 <section id="import">
-<h3>Import<a class="headerlink" href="#import" title="Permalink to this heading"></a></h3>
+<h3>Import<a class="headerlink" href="#import" title="Link to this heading">¶</a></h3>
 <p>A module can import another module:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">world</span><span class="p">;</span>
 
@@ -102,13 +102,13 @@ an unrelated package is impossible.</p>
 <p>Symbols can be imported by name: <code class="code docutils literal notranslate"><span class="pre">import</span> <span class="pre">std.stdio</span> <span class="pre">:</span> <span class="pre">print;</span></code>.</p>
 </section>
 <section id="declaration">
-<h3>Declaration<a class="headerlink" href="#declaration" title="Permalink to this heading"></a></h3>
+<h3>Declaration<a class="headerlink" href="#declaration" title="Link to this heading">¶</a></h3>
 <p>Structs, classes, templates and functions can be declared by name.
 Every declaration can be marked as <code class="code docutils literal notranslate"><span class="pre">public</span></code> or <code class="code docutils literal notranslate"><span class="pre">private</span></code>; they are <code class="code docutils literal notranslate"><span class="pre">public</span></code> by default.
 Private declarations cannot be seen when the module is imported.</p>
 </section>
 <section id="extern-c">
-<h3>Extern(C)<a class="headerlink" href="#extern-c" title="Permalink to this heading"></a></h3>
+<h3>Extern(C)<a class="headerlink" href="#extern-c" title="Link to this heading">¶</a></h3>
 <p>A function can be declared as <code class="code docutils literal notranslate"><span class="pre">extern(C)</span></code>. This will ensure that it matches the calling convention of the platform’s native C compiler.</p>
 <p>For example:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">extern</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">memcpy</span><span class="p">(</span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="p">*</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="nb">size_t</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
@@ -119,9 +119,9 @@ Private declarations cannot be seen when the module is imported.</p>
 </section>
 </section>
 <section id="expressions">
-<h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading"></a></h2>
+<h2>Expressions<a class="headerlink" href="#expressions" title="Link to this heading">¶</a></h2>
 <section id="literals">
-<h3>Literals<a class="headerlink" href="#literals" title="Permalink to this heading"></a></h3>
+<h3>Literals<a class="headerlink" href="#literals" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">5</span></code> is an integer literal of type <code class="code docutils literal notranslate"><span class="pre">int</span></code>.</p>
 <p>Integer literals may be arbitrarily divided by underscores for readability: <code class="code docutils literal notranslate"><span class="pre">1_048_576</span></code>.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code> is a string literal. <code class="code docutils literal notranslate"><span class="pre">string</span></code> is the same as <code class="code docutils literal notranslate"><span class="pre">char[]</span></code>.</p>
@@ -136,7 +136,7 @@ escape sequences and format string quotes are not processed.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">1.2</span></code> is a <code class="code docutils literal notranslate"><span class="pre">double</span></code> literal. <code class="code docutils literal notranslate"><span class="pre">1.2f</span></code> is a <code class="code docutils literal notranslate"><span class="pre">float</span></code> literal.</p>
 </section>
 <section id="arithmetic">
-<h3>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this heading"></a></h3>
+<h3>Arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading">¶</a></h3>
 <p>Binary operations can be performed on types. These are:</p>
 <table class="docutils align-default">
 <thead>
@@ -211,7 +211,7 @@ This is because C’s order is stupid^W a legacy holdover from before it had boo
 <p>Operator precedence can be clarified using parentheses: <code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">4)</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span></code>.</p>
 </section>
 <section id="ternary-if">
-<h3>Ternary If<a class="headerlink" href="#ternary-if" title="Permalink to this heading"></a></h3>
+<h3>Ternary If<a class="headerlink" href="#ternary-if" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">if</span> <span class="pre">t</span> <span class="pre">else</span> <span class="pre">b</span></code> has the value of <code class="code docutils literal notranslate"><span class="pre">a</span></code> if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, else it has the value of <code class="code docutils literal notranslate"><span class="pre">b</span></code>.</p>
 <p>Only the selected expression is evaluated. So if <code class="code docutils literal notranslate"><span class="pre">t</span></code> is true, <code class="code docutils literal notranslate"><span class="pre">b</span></code> is never evaluated.</p>
 <p>This operator has a lower rank than any of the binary operators.</p>
@@ -220,7 +220,7 @@ the expression branches to <code class="code docutils literal notranslate"><span
 <p>The ternary operator syntax diverges from C because <code class="code docutils literal notranslate"><span class="pre">?</span></code> is already used for error propagation.</p>
 </section>
 <section id="control-flow-expressions">
-<h3>Control flow expressions<a class="headerlink" href="#control-flow-expressions" title="Permalink to this heading"></a></h3>
+<h3>Control flow expressions<a class="headerlink" href="#control-flow-expressions" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">break</span></code> is an expression that, when evaluated, transfers control flow to after the current loop.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">continue</span></code> is an expression that, when evaluated, transfers control flow to the next pass
 of the current loop.</p>
@@ -234,7 +234,7 @@ to be used. If the <code class="code docutils literal notranslate"><span class="
 they are all typed <code class="code docutils literal notranslate"><span class="pre">bottom</span></code> - their <em>local</em> value is empty.</p>
 </section>
 <section id="error-propagation-operator">
-<h3>Error propagation operator<a class="headerlink" href="#error-propagation-operator" title="Permalink to this heading"></a></h3>
+<h3>Error propagation operator<a class="headerlink" href="#error-propagation-operator" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">x?</span></code> is the error propagation operator. Its behavior depends on the type of <code class="code docutils literal notranslate"><span class="pre">x</span></code>:</p>
 <ul class="simple">
 <li><p>if <code class="code docutils literal notranslate"><span class="pre">x</span></code> is a subtype of <code class="code docutils literal notranslate"><span class="pre">std.error.Error</span></code>, it is returned from the current function.</p></li>
@@ -275,7 +275,7 @@ the first application of <code class="code docutils literal notranslate"><span c
 </section>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <p>A function is a series of statements operating on a list of parameters, culminating in a return value:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">ReturnType</span><span class="w"> </span><span class="n">functionName</span><span class="p">(</span><span class="n">ParameterType</span><span class="w"> </span><span class="n">parameterName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">statement</span><span class="p">;</span>
@@ -293,7 +293,7 @@ returns to the caller when the function exits, by explicit <code class="code doc
 <p>If the return type is <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, it is inferred from the type returned by the <code class="code docutils literal notranslate"><span class="pre">return</span></code> statements
 in the function body. This is called return type inference.</p>
 <section id="call">
-<h3>Call<a class="headerlink" href="#call" title="Permalink to this heading"></a></h3>
+<h3>Call<a class="headerlink" href="#call" title="Link to this heading">¶</a></h3>
 <p>A function, class method or struct method can be called with a comma-separated list of arguments:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
 
@@ -309,13 +309,13 @@ called implicitly:</p>
 </div>
 <p>This also allows struct or class methods that look like properties.</p>
 <section id="uniform-function-call-syntax">
-<h4>Uniform Function Call Syntax<a class="headerlink" href="#uniform-function-call-syntax" title="Permalink to this heading"></a></h4>
+<h4>Uniform Function Call Syntax<a class="headerlink" href="#uniform-function-call-syntax" title="Link to this heading">¶</a></h4>
 <p>As in D, “uniform function call syntax” (UFCS) may be used. That is, if a call of the form <code class="code docutils literal notranslate"><span class="pre">a.method(b)</span></code>
 did not find a method <code class="code docutils literal notranslate"><span class="pre">a.method</span></code> to call, it will instead be interpreted as <code class="code docutils literal notranslate"><span class="pre">method(a,</span> <span class="pre">b)</span></code>.
 This allows easily defining global functions that can be called as if they are member functions of <code class="code docutils literal notranslate"><span class="pre">a</span></code>.</p>
 </section>
 <section id="named-arguments">
-<h4>Named Arguments<a class="headerlink" href="#named-arguments" title="Permalink to this heading"></a></h4>
+<h4>Named Arguments<a class="headerlink" href="#named-arguments" title="Link to this heading">¶</a></h4>
 <p>The value of every parameter on a call may be assigned by name:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">twice</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">twice</span><span class="p">(</span><span class="n">x</span><span class="p">=</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
@@ -326,7 +326,7 @@ ensure that arguments are passed to the intended parameter.</p>
 </section>
 </section>
 <section id="nested-functions">
-<h3>Nested functions<a class="headerlink" href="#nested-functions" title="Permalink to this heading"></a></h3>
+<h3>Nested functions<a class="headerlink" href="#nested-functions" title="Link to this heading">¶</a></h3>
 <p>Functions may be nested inside other functions. They remain valid while the surrounding function is running,
 and can access variables and parameters of the containing function, that were declared before them:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="kt">double</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -340,7 +340,7 @@ and can access variables and parameters of the containing function, that were de
 <p>Note that calling the nested function after the surrounding function has returned will lead to a crash!</p>
 </section>
 <section id="main">
-<h3>main<a class="headerlink" href="#main" title="Permalink to this heading"></a></h3>
+<h3>main<a class="headerlink" href="#main" title="Link to this heading">¶</a></h3>
 <p>Every program must contain a function with this signature:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="nb">string</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="p">}</span>
@@ -350,9 +350,9 @@ and can access variables and parameters of the containing function, that were de
 </section>
 </section>
 <section id="statements">
-<h2>Statements<a class="headerlink" href="#statements" title="Permalink to this heading"></a></h2>
+<h2>Statements<a class="headerlink" href="#statements" title="Link to this heading">¶</a></h2>
 <section id="variable-declaration">
-<h3>Variable declaration<a class="headerlink" href="#variable-declaration" title="Permalink to this heading"></a></h3>
+<h3>Variable declaration<a class="headerlink" href="#variable-declaration" title="Link to this heading">¶</a></h3>
 <p>A variable can be declared like so:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// a is 0</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
@@ -368,7 +368,7 @@ and can access variables and parameters of the containing function, that were de
 <p>Only mutable variables (<code class="code docutils literal notranslate"><span class="pre">mut</span> <span class="pre">a;</span></code>) may be changed later.</p>
 </section>
 <section id="variable-extraction-declaration">
-<h3>Variable extraction declaration<a class="headerlink" href="#variable-extraction-declaration" title="Permalink to this heading"></a></h3>
+<h3>Variable extraction declaration<a class="headerlink" href="#variable-extraction-declaration" title="Link to this heading">¶</a></h3>
 <p>When an expression is a sumtype, a subset or a single type may be extracted as such:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="n">Error</span><span class="p">)</span><span class="w"> </span><span class="n">foo</span><span class="p">;</span>
 <span class="c1">// `Error` will be returned if `foo` is not `int`.</span>
@@ -382,7 +382,7 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 </div>
 </section>
 <section id="block-statement">
-<h3>Block statement<a class="headerlink" href="#block-statement" title="Permalink to this heading"></a></h3>
+<h3>Block statement<a class="headerlink" href="#block-statement" title="Link to this heading">¶</a></h3>
 <p>Multiple statements can be combined into one block:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
@@ -393,7 +393,7 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 <p>Variables declared inside the block are not visible outside of it.</p>
 </section>
 <section id="expression-statement">
-<h3>Expression statement<a class="headerlink" href="#expression-statement" title="Permalink to this heading"></a></h3>
+<h3>Expression statement<a class="headerlink" href="#expression-statement" title="Link to this heading">¶</a></h3>
 <p>Expressions can appear as statements. They are terminated with a semicolon:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="p">;</span>
 <span class="n">foo</span><span class="p">();</span>
@@ -401,7 +401,7 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 </div>
 </section>
 <section id="assignment">
-<h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this heading"></a></h3>
+<h3>Assignment<a class="headerlink" href="#assignment" title="Link to this heading">¶</a></h3>
 <p>Any reference may be assigned a new value:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
@@ -412,7 +412,7 @@ The new error propagation syntax <code class="code docutils literal notranslate"
 some optimizations to reference counting, non-mutable variables should be preferred.</p>
 </section>
 <section id="if-block">
-<h3>If block<a class="headerlink" href="#if-block" title="Permalink to this heading"></a></h3>
+<h3>If block<a class="headerlink" href="#if-block" title="Link to this heading">¶</a></h3>
 <p>If a condition is true, execute one statement, else the other:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
 <span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;2 + 2 = 4&quot;</span><span class="p">);</span>
@@ -444,7 +444,7 @@ types can be converted to <code class="code docutils literal notranslate"><span 
 but doesn’t particularly care about its truth value.</p>
 </section>
 <section id="while-loop">
-<h3>While loop<a class="headerlink" href="#while-loop" title="Permalink to this heading"></a></h3>
+<h3>While loop<a class="headerlink" href="#while-loop" title="Link to this heading">¶</a></h3>
 <p>While a condition is true, execute a statement:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">mut</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -452,7 +452,7 @@ but doesn’t particularly care about its truth value.</p>
 </div>
 </section>
 <section id="for-loop">
-<h3>For loop<a class="headerlink" href="#for-loop" title="Permalink to this heading"></a></h3>
+<h3>For loop<a class="headerlink" href="#for-loop" title="Link to this heading">¶</a></h3>
 <p>You can loop over a range expression:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="c1">// prints 2, then 3</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="nb">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">..</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -474,15 +474,15 @@ but doesn’t particularly care about its truth value.</p>
 <p>But this is rarely needed.</p>
 </section>
 <section id="break-continue">
-<h3>break, continue<a class="headerlink" href="#break-continue" title="Permalink to this heading"></a></h3>
+<h3>break, continue<a class="headerlink" href="#break-continue" title="Link to this heading">¶</a></h3>
 <p>While inside any loop, you may immediately abort and continue after the loop with <code class="code docutils literal notranslate"><span class="pre">break</span></code>.</p>
 <p>You may immediately jump to the next iteration of the loop with <code class="code docutils literal notranslate"><span class="pre">continue</span></code>.</p>
 </section>
 </section>
 <section id="types">
-<h2>Types<a class="headerlink" href="#types" title="Permalink to this heading"></a></h2>
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading">¶</a></h2>
 <section id="basic-types">
-<h3>Basic types<a class="headerlink" href="#basic-types" title="Permalink to this heading"></a></h3>
+<h3>Basic types<a class="headerlink" href="#basic-types" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>name</p></th>
@@ -521,7 +521,7 @@ but doesn’t particularly care about its truth value.</p>
 </table>
 </section>
 <section id="array">
-<h3>Array<a class="headerlink" href="#array" title="Permalink to this heading"></a></h3>
+<h3>Array<a class="headerlink" href="#array" title="Link to this heading">¶</a></h3>
 <p>The type <code class="code docutils literal notranslate"><span class="pre">T[]</span></code> is an “array of T”, which some languages call a slice.
 It consists of a pointer, a length and a reference to the array object.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">[2]</span></code> is an array of ints (<code class="code docutils literal notranslate"><span class="pre">int[]</span></code>), allocated on the heap.</p>
@@ -534,7 +534,7 @@ cannot be directly modified! In other words, arrays are immutable by default.</p
 <p><code class="code docutils literal notranslate"><span class="pre">array.dup</span></code> creates a copy of the array. The copy will be mutable.</p>
 </section>
 <section id="mutable-array">
-<h3>Mutable Array<a class="headerlink" href="#mutable-array" title="Permalink to this heading"></a></h3>
+<h3>Mutable Array<a class="headerlink" href="#mutable-array" title="Link to this heading">¶</a></h3>
 <p>The type <code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">mut[]</span></code> is a “mutable array of T”. It differs from normal arrays in that elements
 can be freely reassigned.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">array.freeze</span></code> converts <code class="code docutils literal notranslate"><span class="pre">array</span></code> to an immutable array. Unless <code class="code docutils literal notranslate"><span class="pre">array</span></code> has exactly one
@@ -547,7 +547,7 @@ assurance that it won’t be modified. Likewise if you are a class, and somebody
 array that you store in a class member, the value of that array will not change on you.</p>
 </section>
 <section id="tuple">
-<h3>Tuple<a class="headerlink" href="#tuple" title="Permalink to this heading"></a></h3>
+<h3>Tuple<a class="headerlink" href="#tuple" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">float)</span></code> is a tuple with two member types, <code class="code docutils literal notranslate"><span class="pre">int</span></code> and <code class="code docutils literal notranslate"><span class="pre">float</span></code>. Each member can have an independent value.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3.0f)</span></code> is an expression of type <code class="code docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">float)</span></code>.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">tuple[0]</span></code> is the first member of the tuple. The index value must be an int literal.</p>
@@ -557,11 +557,11 @@ fields with names only convert to other fields with the same name.</p>
 <p>For example, <code class="code docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code> implicitly converts to <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">from,</span> <span class="pre">int</span> <span class="pre">to)</span></code>, but <code class="code docutils literal notranslate"><span class="pre">(min=2,</span> <span class="pre">max=3)</span></code> does not.</p>
 </section>
 <section id="pointers">
-<h3>Pointers<a class="headerlink" href="#pointers" title="Permalink to this heading"></a></h3>
+<h3>Pointers<a class="headerlink" href="#pointers" title="Link to this heading">¶</a></h3>
 <p>Don’t use pointers.</p>
 </section>
 <section id="sum-type">
-<h3>Sum type<a class="headerlink" href="#sum-type" title="Permalink to this heading"></a></h3>
+<h3>Sum type<a class="headerlink" href="#sum-type" title="Link to this heading">¶</a></h3>
 <p><code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">float)</span></code> is either an int or a float value:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 
@@ -587,7 +587,7 @@ fields with names only convert to other fields with the same name.</p>
 <p>Note that this is not required for subtypes of <code class="code docutils literal notranslate"><span class="pre">std.error.Error</span></code>.</p>
 </section>
 <section id="symbol-identifier">
-<h3>Symbol Identifier<a class="headerlink" href="#symbol-identifier" title="Permalink to this heading"></a></h3>
+<h3>Symbol Identifier<a class="headerlink" href="#symbol-identifier" title="Link to this heading">¶</a></h3>
 <p>A symbol identifier takes the form <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
 <p>It is both a type and an expression. The type <code class="code docutils literal notranslate"><span class="pre">:name</span></code> has one value, which is also <code class="code docutils literal notranslate"><span class="pre">:name</span></code>.</p>
 <p>This feature can be used to “type-tag” entries in sumtypes, to differentiate identically
@@ -595,7 +595,7 @@ typed entries, such as <code class="code docutils literal notranslate"><span cla
 <p>It is also used to construct “value-less” sumtype entries, such as <code class="code docutils literal notranslate"><span class="pre">(int</span> <span class="pre">|</span> <span class="pre">:none)</span></code>.</p>
 </section>
 <section id="struct">
-<h3>Struct<a class="headerlink" href="#struct" title="Permalink to this heading"></a></h3>
+<h3>Struct<a class="headerlink" href="#struct" title="Link to this heading">¶</a></h3>
 <p>A struct is a value type that combines various members and methods that operate on them:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="n">Foo</span>
 <span class="p">{</span>
@@ -612,7 +612,7 @@ typed entries, such as <code class="code docutils literal notranslate"><span cla
 on as a hidden parameter called <code class="code docutils literal notranslate"><span class="pre">this</span></code>.</p>
 </section>
 <section id="class">
-<h3>Class<a class="headerlink" href="#class" title="Permalink to this heading"></a></h3>
+<h3>Class<a class="headerlink" href="#class" title="Link to this heading">¶</a></h3>
 <p>A class is a <strong>reference type</strong> that combines various members and methods that operate on them:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="n">Foo</span>
 <span class="p">{</span>
@@ -699,7 +699,7 @@ of a non-nullable class and <code class="code docutils literal notranslate"><spa
 </div>
 </section>
 <section id="function-and-delegate">
-<h3>Function and Delegate<a class="headerlink" href="#function-and-delegate" title="Permalink to this heading"></a></h3>
+<h3>Function and Delegate<a class="headerlink" href="#function-and-delegate" title="Link to this heading">¶</a></h3>
 <p>You can take the address of a function using the <code class="code docutils literal notranslate"><span class="pre">&amp;</span></code> operator. The type of
 the expression is <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">function(T)</span></code>.</p>
 <p>When you take the address of a class method, the type will be <code class="code docutils literal notranslate"><span class="pre">R</span> <span class="pre">delegate(T)</span></code>.
@@ -716,7 +716,7 @@ the type will be <code class="code docutils literal notranslate"><span class="pr
 counted.</p>
 </section>
 <section id="typeof">
-<h3><code class="code docutils literal notranslate"><span class="pre">typeof</span></code><a class="headerlink" href="#typeof" title="Permalink to this heading"></a></h3>
+<h3><code class="code docutils literal notranslate"><span class="pre">typeof</span></code><a class="headerlink" href="#typeof" title="Link to this heading">¶</a></h3>
 <p>Given an expression, the type of the expression can be used as a type with <code class="code docutils literal notranslate"><span class="pre">typeof</span></code>:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">typeof</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span>
 </pre></div>
@@ -725,7 +725,7 @@ counted.</p>
 </section>
 </section>
 <section id="unittest">
-<h2>Unittest<a class="headerlink" href="#unittest" title="Permalink to this heading"></a></h2>
+<h2>Unittest<a class="headerlink" href="#unittest" title="Link to this heading">¶</a></h2>
 <p>Unittest blocks will be compiled and run when the compiler is called with <code class="code docutils literal notranslate"><span class="pre">-unittest</span></code>:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
@@ -737,7 +737,7 @@ counted.</p>
 </div>
 </section>
 <section id="templates">
-<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this heading"></a></h2>
+<h2>Templates<a class="headerlink" href="#templates" title="Link to this heading">¶</a></h2>
 <p>A template is a wrapper around a declaration that allows parameterizing it.
 The syntax is:</p>
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -758,14 +758,14 @@ try to unify the arguments passed with the template arguments available in order
 If only some template arguments are given in the instantiation, the compiler will try to infer the rest.</p>
 </section>
 <section id="ranges">
-<h2>Ranges<a class="headerlink" href="#ranges" title="Permalink to this heading"></a></h2>
+<h2>Ranges<a class="headerlink" href="#ranges" title="Link to this heading">¶</a></h2>
 <p>If a type <code class="code docutils literal notranslate"><span class="pre">T</span></code> has the properties <code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">empty</span></code>, <code class="code docutils literal notranslate"><span class="pre">T</span> <span class="pre">next</span></code> and <code class="code docutils literal notranslate"><span class="pre">E</span> <span class="pre">front</span></code>, then it is called a “range over <code class="code docutils literal notranslate"><span class="pre">E</span></code>”.</p>
 <p>Arrays are an example of such.</p>
 <p>Another example is range expressions: <code class="code docutils literal notranslate"><span class="pre">from</span> <span class="pre">..</span> <span class="pre">to</span></code>.</p>
 <p>If you define these properties in a data type, you can use it as the source of a loop.</p>
 </section>
 <section id="lambdas">
-<h2>Lambdas<a class="headerlink" href="#lambdas" title="Permalink to this heading"></a></h2>
+<h2>Lambdas<a class="headerlink" href="#lambdas" title="Link to this heading">¶</a></h2>
 <p>A lambda is a templated nested function reference. They can be assigned to a value. When called, they
 are implicitly instantiated.</p>
 <p>Example:</p>
@@ -786,7 +786,7 @@ To enable this, lambdas cannot be assigned to class fields, or in general put in
 the compiler could lose track of where the lambda is.</p>
 </section>
 <section id="macros">
-<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this heading"></a></h2>
+<h2>Macros<a class="headerlink" href="#macros" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For this feature, compiler knowledge is required!</p>
@@ -866,7 +866,7 @@ to limit yourself to the functionality in <code class="code docutils literal not
       &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |

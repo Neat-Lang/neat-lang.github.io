@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="std.thread" href="thread.html" />
@@ -34,11 +34,11 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>std.string<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<h1>std.string<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>Module entries: <a class="reference internal" href="#atoi" title="atoi"><code class="xref py py-func docutils literal notranslate"><span class="pre">atoi()</span></code></a>, <a class="reference internal" href="#cToString" title="cToString"><code class="xref py py-func docutils literal notranslate"><span class="pre">cToString()</span></code></a>, <a class="reference internal" href="#cToStringFree" title="cToStringFree"><code class="xref py py-func docutils literal notranslate"><span class="pre">cToStringFree()</span></code></a>, <a class="reference internal" href="#endsWith" title="endsWith"><code class="xref py py-func docutils literal notranslate"><span class="pre">endsWith()</span></code></a>, <a class="reference internal" href="#find" title="find"><code class="xref py py-func docutils literal notranslate"><span class="pre">find()</span></code></a>, <a class="reference internal" href="#itoa" title="itoa"><code class="xref py py-func docutils literal notranslate"><span class="pre">itoa()</span></code></a>, <a class="reference internal" href="#join" title="join"><code class="xref py py-func docutils literal notranslate"><span class="pre">join()</span></code></a>, <a class="reference internal" href="#replace" title="replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">replace()</span></code></a>, <a class="reference internal" href="#slice" title="slice"><code class="xref py py-func docutils literal notranslate"><span class="pre">slice()</span></code></a>, <a class="reference internal" href="#split" title="split"><code class="xref py py-func docutils literal notranslate"><span class="pre">split()</span></code></a>, <a class="reference internal" href="#startsWith" title="startsWith"><code class="xref py py-func docutils literal notranslate"><span class="pre">startsWith()</span></code></a>, <a class="reference internal" href="#strip" title="strip"><code class="xref py py-func docutils literal notranslate"><span class="pre">strip()</span></code></a>, <a class="reference internal" href="#toHexString" title="toHexString"><code class="xref py py-func docutils literal notranslate"><span class="pre">toHexString()</span></code></a>, <a class="reference internal" href="#toStringz" title="toStringz"><code class="xref py py-func docutils literal notranslate"><span class="pre">toStringz()</span></code></a></p>
 <dl class="py function">
 <dt class="sig sig-object py" id="atoi">
-<span class="sig-name descname"><span class="pre">atoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#atoi" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">atoi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#atoi" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">atoi(string</span> <span class="pre">s)</span></code></p>
 <p>The string <code class="code docutils literal notranslate"><span class="pre">s</span></code> converted to an integer.</p>
 <p>Example:</p>
@@ -50,14 +50,14 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cToString">
-<span class="sig-name descname"><span class="pre">cToString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cToString" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">cToString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cToString" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">cToString(char*</span> <span class="pre">ptr)</span></code></p>
 <p>Convert a C zero-terminated string pointer to a Neat string.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="cToStringFree">
-<span class="sig-name descname"><span class="pre">cToStringFree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cToStringFree" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">cToStringFree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cToStringFree" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">cToStringFree(char*</span> <span class="pre">ptr)</span></code></p>
 <p>Convert a C zero-terminated string pointer to a Neat string.</p>
 <p>For convenience, also frees the original pointer.</p>
@@ -65,7 +65,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="endsWith">
-<span class="sig-name descname"><span class="pre">endsWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">haystack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">needle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#endsWith" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">endsWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">haystack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">needle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#endsWith" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">endsWith(string</span> <span class="pre">haystack,</span> <span class="pre">string</span> <span class="pre">needle)</span></code></p>
 <p>Returns true if <code class="code docutils literal notranslate"><span class="pre">haystack</span></code> ends with <code class="code docutils literal notranslate"><span class="pre">needle</span></code>.</p>
 <p>Example:</p>
@@ -77,7 +77,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="find">
-<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#find" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">find(string</span> <span class="pre">text,</span> <span class="pre">string</span> <span class="pre">match)</span></code></p>
 <p>The offset in <code class="code docutils literal notranslate"><span class="pre">text</span></code> at which <code class="code docutils literal notranslate"><span class="pre">match</span></code> occurs, or -1 if it doesn’t.</p>
 <p>Example:</p>
@@ -89,7 +89,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="itoa">
-<span class="sig-name descname"><span class="pre">itoa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itoa" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">itoa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#itoa" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">itoa(int</span> <span class="pre">i)</span></code></p>
 <p>The integer <code class="code docutils literal notranslate"><span class="pre">i</span></code> converted to a string.</p>
 <p>Example:</p>
@@ -101,28 +101,28 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="join">
-<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#join" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">join(string[]</span> <span class="pre">array,</span> <span class="pre">string</span> <span class="pre">sep)</span></code></p>
 <p>All strings in <code class="code docutils literal notranslate"><span class="pre">array</span></code>, concatenated and joined with <code class="code docutils literal notranslate"><span class="pre">sep</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="replace">
-<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replace" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">match</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#replace" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">replace(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">match,</span> <span class="pre">string</span> <span class="pre">replace)</span></code></p>
 <p><code class="code docutils literal notranslate"><span class="pre">str</span></code> with all occurrences of <code class="code docutils literal notranslate"><span class="pre">match</span></code> replaced with <code class="code docutils literal notranslate"><span class="pre">replace</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="slice">
-<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slice" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#slice" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">(string</span> <span class="pre">fragment,</span> <span class="pre">string</span> <span class="pre">rest)</span> <span class="pre">slice(string</span> <span class="pre">text,</span> <span class="pre">string</span> <span class="pre">sep)</span></code></p>
 <p><code class="code docutils literal notranslate"><span class="pre">text</span></code> split into two halves at the first occurrence of <code class="code docutils literal notranslate"><span class="pre">sep</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="split">
-<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#split" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#split" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string[]</span> <span class="pre">split(string</span> <span class="pre">text,</span> <span class="pre">string</span> <span class="pre">sep)</span></code></p>
 <p><code class="code docutils literal notranslate"><span class="pre">text</span></code> split at every occurrence of <code class="code docutils literal notranslate"><span class="pre">sep</span></code>.</p>
 <p>Example:</p>
@@ -135,7 +135,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="startsWith">
-<span class="sig-name descname"><span class="pre">startsWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">haystack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">needle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#startsWith" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">startsWith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">haystack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">needle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#startsWith" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">bool</span> <span class="pre">startsWith(string</span> <span class="pre">haystack,</span> <span class="pre">string</span> <span class="pre">needle)</span></code></p>
 <p>Returns true if <code class="code docutils literal notranslate"><span class="pre">haystack</span></code> starts with <code class="code docutils literal notranslate"><span class="pre">needle</span></code>.</p>
 <p>Example:</p>
@@ -147,21 +147,21 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="strip">
-<span class="sig-name descname"><span class="pre">strip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strip" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">strip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#strip" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">strip(string</span> <span class="pre">text)</span></code></p>
 <p><code class="code docutils literal notranslate"><span class="pre">text</span></code>, with leading and trailing whitespace removed.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="toHexString">
-<span class="sig-name descname"><span class="pre">toHexString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#toHexString" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">toHexString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#toHexString" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">toHexString(ubyte[]</span> <span class="pre">data)</span></code></p>
 <p>The lower-case hexadecimal representation of the given byte data <code class="code docutils literal notranslate"><span class="pre">data</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="toStringz">
-<span class="sig-name descname"><span class="pre">toStringz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#toStringz" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">toStringz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#toStringz" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">char*</span> <span class="pre">toStringz(string</span> <span class="pre">s)</span></code></p>
 <p>Convert a Neat string to a C zero-terminated string pointer.</p>
 </dd></dl>
@@ -232,7 +232,7 @@
       &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |

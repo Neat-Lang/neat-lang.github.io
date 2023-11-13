@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
     <script src="../../_static/jquery.js?v=5d32c60e"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="std.math.vector" href="vector.html" />
@@ -34,115 +34,115 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>std.math.matrix<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<h1>std.math.matrix<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>Module entries: <a class="reference internal" href="#mat4x4" title="mat4x4"><code class="xref py py-class docutils literal notranslate"><span class="pre">mat4x4</span></code></a></p>
 <dl class="py class">
 <dt class="sig sig-object py" id="mat4x4">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mat4x4</span></span><a class="headerlink" href="#mat4x4" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mat4x4</span></span><a class="headerlink" href="#mat4x4" title="Link to this definition">¶</a></dt>
 <dd><p>This data type represents a 4x4 row-major matrix.</p>
 <p>The implementations for various matrix operations are effectively
 copy-pasted from the OpenGL manpages.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotateX">
-<span class="sig-name descname"><span class="pre">rotateX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateX" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotateX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateX" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotateX(float</span> <span class="pre">by)</span></code></p>
 <p>Add a rotation around X by <code class="code docutils literal notranslate"><span class="pre">by</span></code> in radians.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotateY">
-<span class="sig-name descname"><span class="pre">rotateY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotateY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateY" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotateY(float</span> <span class="pre">by)</span></code></p>
 <p>Add a rotation around Y by <code class="code docutils literal notranslate"><span class="pre">by</span></code> in radians.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotateZ">
-<span class="sig-name descname"><span class="pre">rotateZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateZ" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotateZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotateZ" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotateZ(float</span> <span class="pre">by)</span></code></p>
 <p>Add a rotation around Z by <code class="code docutils literal notranslate"><span class="pre">by</span></code> in radians.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.scale">
-<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.scale" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.scale" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">scale(float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">z)</span></code></p>
 <p>Scale the matrix in three dimensions.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.translate">
-<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.translate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.translate" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">translate(float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">z)</span></code></p>
 <p>Translate the matrix.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.mul">
-<span class="sig-name descname"><span class="pre">mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.mul" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.mul" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">mul(mat4x4</span> <span class="pre">other)</span></code></p>
 <p>Multiply with another matrix.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.row">
-<span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.row" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.row" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">vec4f</span> <span class="pre">row(int</span> <span class="pre">r)</span></code></p>
 <p>Select a row as a vector.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.transpose">
-<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.transpose" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.transpose" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">transpose()</span></code></p>
 <p>Transpose the matrix.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.identity">
-<span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.identity" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.identity" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">identity()</span></code></p>
 <p>Create an identity matrix.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotationX">
-<span class="sig-name descname"><span class="pre">rotationX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationX" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotationX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationX" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotationX(float</span> <span class="pre">angle)</span></code></p>
 <p>Create a rotation matrix around the X axis.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotationY">
-<span class="sig-name descname"><span class="pre">rotationY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationY" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotationY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationY" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotationY(float</span> <span class="pre">angle)</span></code></p>
 <p>Create a rotation matrix around the Y axis.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.rotationZ">
-<span class="sig-name descname"><span class="pre">rotationZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationZ" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">rotationZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.rotationZ" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">rotationZ(float</span> <span class="pre">angle)</span></code></p>
 <p>Create a rotation matrix around the Z axis.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.scaling">
-<span class="sig-name descname"><span class="pre">scaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.scaling" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">scaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.scaling" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">scaling(float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">z)</span></code></p>
 <p>Create a scaling matrix on three axes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.translation">
-<span class="sig-name descname"><span class="pre">translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.translation" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.translation" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">translation(float</span> <span class="pre">x,</span> <span class="pre">float</span> <span class="pre">y,</span> <span class="pre">float</span> <span class="pre">z)</span></code></p>
 <p>Create a translation matrix.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.ortho">
-<span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.ortho" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.ortho" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">ortho(float</span> <span class="pre">left,</span> <span class="pre">float</span> <span class="pre">right,</span> <span class="pre">float</span> <span class="pre">bottom_,</span> <span class="pre">float</span> <span class="pre">top,</span> <span class="pre">float</span> <span class="pre">near,</span> <span class="pre">float</span> <span class="pre">far)</span></code></p>
 <p>Create an orthogonal projection matrix.</p>
 </dd></dl>
@@ -215,7 +215,7 @@ copy-pasted from the OpenGL manpages.</p>
       &copy;@FeepingCreature.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
