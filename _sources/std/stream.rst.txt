@@ -1,0 +1,42 @@
+.. _std_stream:
+.. highlight:: d
+
+std.stream
+----------
+
+.. c:namespace:: std.stream
+
+Module entries: :class:`ArraySink`, :class:`ArraySource`
+
+.. class:: ArraySink
+
+    TODO: document
+
+    .. method:: this()
+
+        `this()`
+
+
+    .. method:: array()
+
+        `T[] array()`
+
+
+    .. method:: put(value)
+
+        `(void | Error) put(T value)`
+
+
+.. class:: ArraySource
+
+    TODO: document
+
+    .. method:: this(array)
+
+        `this(T[] array)`
+
+
+    .. method:: get()
+
+        `(T | :else | Error) get()`
+

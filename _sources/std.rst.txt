@@ -101,6 +101,12 @@ Module entries: :class:`SocketError`, :func:`connect`, :func:`errnoStr`, :class:
 
 Module entries: :func:`byLine`, :func:`print`
 
+.. rubric:: std.stream
+
+.. c:namespace:: std.stream
+
+Module entries: :class:`ArraySink`, :class:`ArraySource`
+
 .. rubric:: std.string
 
 .. c:namespace:: std.string

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>std.process &#8212; Neat  documentation</title>
+    <title>std.stream &#8212; Neat  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -15,8 +15,8 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="std.range.iota" href="range/iota.html" />
-    <link rel="prev" title="std.math.vector" href="math/vector.html" />
+    <link rel="next" title="std.string" href="string.html" />
+    <link rel="prev" title="std.stdio" href="stdio.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,35 +34,48 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1>std.process<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>Module entries: <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>, <a class="reference internal" href="#getEnv" title="getEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">getEnv()</span></code></a>, <a class="reference internal" href="#readback" title="readback"><code class="xref py py-func docutils literal notranslate"><span class="pre">readback()</span></code></a>, <a class="reference internal" href="#system" title="system"><code class="xref py py-func docutils literal notranslate"><span class="pre">system()</span></code></a></p>
-<dl class="py function">
-<dt class="sig sig-object py" id="exec">
-<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exec" title="Link to this definition">¶</a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">exec(string</span> <span class="pre">path,</span> <span class="pre">string[]</span> <span class="pre">args)</span></code></p>
-<p>Executes the binary found at <code class="code docutils literal notranslate"><span class="pre">path</span></code> with <code class="code docutils literal notranslate"><span class="pre">args</span></code>.
-Blocks until the binary returns.</p>
+<h1>std.stream<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>Module entries: <a class="reference internal" href="#ArraySink" title="ArraySink"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySink</span></code></a>, <a class="reference internal" href="#ArraySource" title="ArraySource"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySource</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ArraySink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArraySink</span></span><a class="headerlink" href="#ArraySink" title="Link to this definition">¶</a></dt>
+<dd><p>TODO: document</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArraySink.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArraySink.this" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this()</span></code></p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="getEnv">
-<span class="sig-name descname"><span class="pre">getEnv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getEnv" title="Link to this definition">¶</a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">getEnv(string</span> <span class="pre">name)</span></code></p>
-<p>The value of the environment variable named <code class="code docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArraySink.array">
+<span class="sig-name descname"><span class="pre">array</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArraySink.array" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">T[]</span> <span class="pre">array()</span></code></p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="readback">
-<span class="sig-name descname"><span class="pre">readback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#readback" title="Link to this definition">¶</a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">readback(string</span> <span class="pre">command)</span></code></p>
-<p>Executes the shell command and returns the output it wrote.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArraySink.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArraySink.put" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(void</span> <span class="pre">|</span> <span class="pre">Error)</span> <span class="pre">put(T</span> <span class="pre">value)</span></code></p>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="system">
-<span class="sig-name descname"><span class="pre">system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#system" title="Link to this definition">¶</a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">system(string</span> <span class="pre">command)</span></code></p>
-<p>Executes the shell command.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ArraySource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ArraySource</span></span><a class="headerlink" href="#ArraySource" title="Link to this definition">¶</a></dt>
+<dd><p>TODO: document</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ArraySource.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArraySource.this" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this(T[]</span> <span class="pre">array)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ArraySource.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ArraySource.get" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(T</span> <span class="pre">|</span> <span class="pre">:else</span> <span class="pre">|</span> <span class="pre">Error)</span> <span class="pre">get()</span></code></p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -99,12 +112,12 @@ Blocks until the binary returns.</p>
 <li class="toctree-l2"><a class="reference internal" href="math.html">std.math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/matrix.html">std.math.matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math/vector.html">std.math.vector</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">std.process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process.html">std.process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="range/iota.html">std.range.iota</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sha256.html">std.sha256</a></li>
 <li class="toctree-l2"><a class="reference internal" href="socket.html">std.socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stdio.html">std.stdio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.html">std.stream</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">std.stream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string.html">std.string</a></li>
 <li class="toctree-l2"><a class="reference internal" href="thread.html">std.thread</a></li>
 <li class="toctree-l2"><a class="reference internal" href="time.html">std.time</a></li>
@@ -136,7 +149,7 @@ Blocks until the binary returns.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
-      <a href="../_sources/std/process.rst.txt"
+      <a href="../_sources/std/stream.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
