@@ -101,6 +101,11 @@ as if the stopwatch had not been split.</p>
 <dt class="sig sig-object py" id="Time">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Time</span></span><a class="headerlink" href="#Time" title="Link to this definition">¶</a></dt>
 <dd><p>This type describes a time without a timezone.</p>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">print</span><span class="p">;</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;The current time is $(Time.now)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="Time.secondsSince">
 <span class="sig-name descname"><span class="pre">secondsSince</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Time.secondsSince" title="Link to this definition">¶</a></dt>
@@ -113,6 +118,61 @@ as if the stopwatch had not been split.</p>
 <span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.now" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">Time</span> <span class="pre">now()</span></code></p>
 <p>The current time in the system timezone.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.year">
+<span class="sig-name descname"><span class="pre">year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.year" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">year()</span></code></p>
+<p>Four-digit year, ie. “2003”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.month">
+<span class="sig-name descname"><span class="pre">month</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.month" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">month()</span></code></p>
+<p>One-base month</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.day">
+<span class="sig-name descname"><span class="pre">day</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.day" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">day()</span></code></p>
+<p>One-base day</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.hour">
+<span class="sig-name descname"><span class="pre">hour</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.hour" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">hour()</span></code></p>
+<p>Zero-base hour</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.minute">
+<span class="sig-name descname"><span class="pre">minute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.minute" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">minute()</span></code></p>
+<p>Zero-base minute</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.second">
+<span class="sig-name descname"><span class="pre">second</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.second" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">second()</span></code></p>
+<p>Zero-base seconds</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.millisecond">
+<span class="sig-name descname"><span class="pre">millisecond</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.millisecond" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">millisecond()</span></code></p>
+<p>Zero-base milliseconds</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Time.toString">
+<span class="sig-name descname"><span class="pre">toString</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Time.toString" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">toString()</span></code></p>
 </dd></dl>
 
 </dd></dl>

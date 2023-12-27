@@ -68,6 +68,11 @@ Module entries: :class:`Stopwatch`, :class:`Time`
 
     This type describes a time without a timezone.
 
+    Example::
+
+        import std.stdio : print;
+        print("The current time is $(Time.now)");
+
     .. method:: secondsSince(other)
 
         `float secondsSince(Time other)`
@@ -79,3 +84,50 @@ Module entries: :class:`Stopwatch`, :class:`Time`
         `Time now()`
 
         The current time in the system timezone.
+
+    .. method:: year()
+
+        `int year()`
+
+        Four-digit year, ie. "2003"
+
+    .. method:: month()
+
+        `int month()`
+
+        One-base month
+
+    .. method:: day()
+
+        `int day()`
+
+        One-base day
+
+    .. method:: hour()
+
+        `int hour()`
+
+        Zero-base hour
+
+    .. method:: minute()
+
+        `int minute()`
+
+        Zero-base minute
+
+    .. method:: second()
+
+        `int second()`
+
+        Zero-base seconds
+
+    .. method:: millisecond()
+
+        `int millisecond()`
+
+        Zero-base milliseconds
+
+    .. method:: toString()
+
+        `string toString()`
+
