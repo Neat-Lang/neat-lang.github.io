@@ -228,6 +228,13 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
         JSONValue({"a": 3}).encode(sink).case(Error: assert(false));
         assert(sink.value == JSONValue({"a": 3}));
 
+    Example::
+
+        auto sink = new JsonValueSink;
+        alias vec3i = Vector(int, 3);
+        vec3i(1, 2, 3).encode(sink).case(Error: assert(false));
+        assert(sink.value == JSONValue([1, 2, 3]));
+
 .. function:: toString(token)
 
     `string toString(JsonToken token)`

@@ -85,6 +85,11 @@ Module entries: :class:`Stopwatch`, :class:`Time`
 
         The current time in the system timezone.
 
+    .. method:: monotonic()
+
+        `Time monotonic()`
+
+
     .. method:: year()
 
         `int year()`

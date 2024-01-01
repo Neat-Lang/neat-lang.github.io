@@ -6,7 +6,7 @@ std.algorithm
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`, :func:`zip`
 
 .. function:: all(left, right)
 
@@ -91,3 +91,13 @@ Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`,
     Example::
 
         assert([2, 3, 4, 5].splitter(4).map(a => a.array).array == [[2, 3], [5]]);
+
+.. function:: zip(first, second)
+
+    `auto zip(R, S)(R first, S second)`
+
+    TODO: document
+
+    Example::
+
+        assert((0 .. 5).zip(3 .. 5).array == [(0, 3), (1, 4)]);
