@@ -35,11 +35,18 @@
             
   <section id="id1">
 <h1>std.process<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>Module entries: <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>, <a class="reference internal" href="#getEnv" title="getEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">getEnv()</span></code></a>, <a class="reference internal" href="#readback" title="readback"><code class="xref py py-func docutils literal notranslate"><span class="pre">readback()</span></code></a>, <a class="reference internal" href="#system" title="system"><code class="xref py py-func docutils literal notranslate"><span class="pre">system()</span></code></a></p>
+<p>Module entries: <a class="reference internal" href="#currentProcessPath" title="currentProcessPath"><code class="xref py py-func docutils literal notranslate"><span class="pre">currentProcessPath()</span></code></a>, <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>, <a class="reference internal" href="#getEnv" title="getEnv"><code class="xref py py-func docutils literal notranslate"><span class="pre">getEnv()</span></code></a>, <a class="reference internal" href="#readback" title="readback"><code class="xref py py-func docutils literal notranslate"><span class="pre">readback()</span></code></a>, <a class="reference internal" href="#system" title="system"><code class="xref py py-func docutils literal notranslate"><span class="pre">system()</span></code></a></p>
+<dl class="py function">
+<dt class="sig sig-object py" id="currentProcessPath">
+<span class="sig-name descname"><span class="pre">currentProcessPath</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#currentProcessPath" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">currentProcessPath()</span></code></p>
+<p>Gets the full path of the binary of the current process.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="exec">
 <span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exec" title="Link to this definition">¶</a></dt>
-<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">exec(string</span> <span class="pre">path,</span> <span class="pre">string[]</span> <span class="pre">args)</span></code></p>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">exec(string</span> <span class="pre">path,</span> <span class="pre">string[]</span> <span class="pre">args)</span></code></p>
 <p>Executes the binary found at <code class="code docutils literal notranslate"><span class="pre">path</span></code> with <code class="code docutils literal notranslate"><span class="pre">args</span></code>.
 Blocks until the binary returns.</p>
 </dd></dl>

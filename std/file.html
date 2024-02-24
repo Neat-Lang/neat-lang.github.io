@@ -35,7 +35,50 @@
             
   <section id="id1">
 <h1>std.file<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>Module entries: <a class="reference internal" href="#basename" title="basename"><code class="xref py py-func docutils literal notranslate"><span class="pre">basename()</span></code></a>, <a class="reference internal" href="#dirname" title="dirname"><code class="xref py py-func docutils literal notranslate"><span class="pre">dirname()</span></code></a>, <a class="reference internal" href="#exists" title="exists"><code class="xref py py-func docutils literal notranslate"><span class="pre">exists()</span></code></a>, <a class="reference internal" href="#mkdir" title="mkdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">mkdir()</span></code></a>, <a class="reference internal" href="#readFile" title="readFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">readFile()</span></code></a>, <a class="reference internal" href="#readText" title="readText"><code class="xref py py-func docutils literal notranslate"><span class="pre">readText()</span></code></a>, <a class="reference internal" href="#realpath" title="realpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">realpath()</span></code></a>, <a class="reference internal" href="#remove" title="remove"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove()</span></code></a>, <a class="reference internal" href="#rename" title="rename"><code class="xref py py-func docutils literal notranslate"><span class="pre">rename()</span></code></a>, <a class="reference internal" href="#withoutExtension" title="withoutExtension"><code class="xref py py-func docutils literal notranslate"><span class="pre">withoutExtension()</span></code></a>, <a class="reference internal" href="#writeFile" title="writeFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeFile()</span></code></a>, <a class="reference internal" href="#writeText" title="writeText"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeText()</span></code></a></p>
+<p>Module entries: <a class="reference internal" href="#FileSink" title="FileSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileSink</span></code></a>, <a class="reference internal" href="#FileSource" title="FileSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileSource</span></code></a>, <a class="reference internal" href="#basename" title="basename"><code class="xref py py-func docutils literal notranslate"><span class="pre">basename()</span></code></a>, <a class="reference internal" href="#dirname" title="dirname"><code class="xref py py-func docutils literal notranslate"><span class="pre">dirname()</span></code></a>, <a class="reference internal" href="#exists" title="exists"><code class="xref py py-func docutils literal notranslate"><span class="pre">exists()</span></code></a>, <a class="reference internal" href="#mkdir" title="mkdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">mkdir()</span></code></a>, <a class="reference internal" href="#readFile" title="readFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">readFile()</span></code></a>, <a class="reference internal" href="#readText" title="readText"><code class="xref py py-func docutils literal notranslate"><span class="pre">readText()</span></code></a>, <a class="reference internal" href="#realpath" title="realpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">realpath()</span></code></a>, <a class="reference internal" href="#remove" title="remove"><code class="xref py py-func docutils literal notranslate"><span class="pre">remove()</span></code></a>, <a class="reference internal" href="#rename" title="rename"><code class="xref py py-func docutils literal notranslate"><span class="pre">rename()</span></code></a>, <a class="reference internal" href="#sub" title="sub"><code class="xref py py-func docutils literal notranslate"><span class="pre">sub()</span></code></a>, <a class="reference internal" href="#withoutExtension" title="withoutExtension"><code class="xref py py-func docutils literal notranslate"><span class="pre">withoutExtension()</span></code></a>, <a class="reference internal" href="#writeFile" title="writeFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeFile()</span></code></a>, <a class="reference internal" href="#writeText" title="writeText"><code class="xref py py-func docutils literal notranslate"><span class="pre">writeText()</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="FileSink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FileSink</span></span><a class="headerlink" href="#FileSink" title="Link to this definition">¶</a></dt>
+<dd><p>Sink byte ranges into a file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="FileSink.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FileSink.this" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this(this.fd)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FileSink.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FileSink.put" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(void</span> <span class="pre">|</span> <span class="pre">Error)</span> <span class="pre">put(ubyte[]</span> <span class="pre">data)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FileSink.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FileSink.close" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">close()</span></code></p>
+<p>TODO sink finalization protocol</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="FileSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FileSource</span></span><a class="headerlink" href="#FileSource" title="Link to this definition">¶</a></dt>
+<dd><p>Read a file as a stream of byte ranges.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="FileSource.this">
+<span class="sig-name descname"><span class="pre">this</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FileSource.this" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">this(string</span> <span class="pre">name)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="FileSource.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FileSource.get" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">(ubyte[]</span> <span class="pre">|</span> <span class="pre">:else</span> <span class="pre">|</span> <span class="pre">Error)</span> <span class="pre">get()</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="basename">
 <span class="sig-name descname"><span class="pre">basename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#basename" title="Link to this definition">¶</a></dt>
@@ -105,6 +148,13 @@
 <span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rename" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">rename(string</span> <span class="pre">source,</span> <span class="pre">string</span> <span class="pre">dest)</span></code></p>
 <p>Change the name or location of a file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sub">
+<span class="sig-name descname"><span class="pre">sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fragment</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sub" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">sub(string</span> <span class="pre">path,</span> <span class="pre">string</span> <span class="pre">fragment)</span></code></p>
+<p>TODO: document</p>
 </dd></dl>
 
 <dl class="py function">

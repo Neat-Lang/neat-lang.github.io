@@ -91,6 +91,14 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
 
     Example::
 
+        auto parser = new GccArgParser;
+
+        parser.parse(["-mwindows"])
+            .case(ArgResult: assert(false))
+            .message.assertEqual("Unknown flag '-mwindows'");
+
+    Example::
+
         auto parser = new UnixArgParser;
         with (parser.parse(["foo", "--", "bar"])
             .case(Error: assert(false)))

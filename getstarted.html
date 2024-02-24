@@ -43,6 +43,30 @@ release cannot use LLVM, because it will not be built against it.</p>
 <p>The primary question, thus, is which backend you expect to use “by default.” However, to my knowledge, aside the inherent
 differences of LLVM’s and gcc’s backend, both Neat backends are equally capable. The choice is thus largely down to personal preference.</p>
 <p>The installation instructions assume, and are tested with, Ubuntu 22.04. Take required steps as equivalent for your system.</p>
+<section id="install-on-windows">
+<h2>Install on Windows<a class="headerlink" href="#install-on-windows" title="Link to this heading">¶</a></h2>
+<p>Warning: as I don’t have any Windows computer around, very little testing effort has gone into this deployment.
+The testsuite passes on Wine, that’s about all I can say.</p>
+<ol class="arabic">
+<li><p>Install <a class="reference external" href="https://github.com/mstorsjo/llvm-mingw/releases/tag/20220906">llvm-mingw with LLVM 15</a>.</p></li>
+<li><p>Ensure that the ‘bin’ folder of llvm-mingw distro is in the <code class="code docutils literal notranslate"><span class="pre">PATH</span></code>.</p></li>
+<li><p>Download the latest win64-gcc release from <a class="reference external" href="https://github.com/neat-lang/neat/releases">https://github.com/neat-lang/neat/releases</a></p></li>
+<li><p>Execute <code class="code docutils literal notranslate"><span class="pre">build.bat</span></code>. This should (eventually) create a file <code class="code docutils literal notranslate"><span class="pre">neat.exe</span></code>.</p></li>
+<li><p>Test the compiler: save a file ‘hello.nt’:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">hello</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="n">std</span><span class="p">.</span><span class="n">stdio</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Then compile it with:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">neat</span><span class="w"> </span><span class="n">hello</span><span class="p">.</span><span class="n">nt</span>
+<span class="n">hello</span><span class="p">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<p>If that printed “Hello World”, your Neat compiler is now ready for use!</p>
+</section>
 <section id="install-with-llvm">
 <h2>Install with LLVM<a class="headerlink" href="#install-with-llvm" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
@@ -269,6 +293,7 @@ is in the compiler, that it is deliberate and optimal. Feel free to experiment w
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-on-windows">Install on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-with-llvm">Install with LLVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-with-gcc">Install with GCC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#start-a-project">Start a Project</a></li>

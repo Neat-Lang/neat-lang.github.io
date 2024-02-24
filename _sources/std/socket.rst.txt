@@ -14,7 +14,7 @@ Module entries: :class:`SocketError`, :func:`connect`, :func:`errnoStr`, :class:
 
 .. function:: connect(host, port)
 
-    `(Socket | fail SocketError) connect(string host, short port)`
+    `(Socket | SocketError) connect(string host, short port)`
 
     TODO: document
 

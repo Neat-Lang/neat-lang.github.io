@@ -6,13 +6,7 @@ std.stdio
 
 .. c:namespace:: std.stdio
 
-Module entries: :func:`byLine`, :func:`print`
-
-.. function:: byLine(fileHandle)
-
-    `LineReader byLine(void* fileHandle)`
-
-    TODO: document
+Module entries: :func:`print`
 
 .. function:: print(str)
 

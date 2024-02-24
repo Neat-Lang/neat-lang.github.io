@@ -39,7 +39,7 @@ Module entries: :class:`Error`
 
 .. c:namespace:: std.file
 
-Module entries: :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`rename`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
+Module entries: :class:`FileSink`, :class:`FileSource`, :func:`basename`, :func:`dirname`, :func:`exists`, :func:`mkdir`, :func:`readFile`, :func:`readText`, :func:`realpath`, :func:`remove`, :func:`rename`, :func:`sub`, :func:`withoutExtension`, :func:`writeFile`, :func:`writeText`
 
 .. rubric:: std.json
 
@@ -57,7 +57,7 @@ Module entries: :class:`DecodeError`, :class:`JsonLexer`, :class:`JsonPrinter`, 
 
 .. c:namespace:: std.math
 
-Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`atan2`, :func:`cos`, :func:`exp`, :func:`max`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`
+Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`asin`, :func:`atan2`, :func:`ceil`, :func:`cos`, :func:`exp`, :func:`fmod`, :func:`max`, :func:`max`, :func:`max`, :func:`max`, :func:`min`, :func:`min`, :func:`min`, :func:`min`, :func:`pow`, :func:`sin`, :func:`sqrt`, :func:`tan`, :func:`trunc`
 
 .. rubric:: std.math.matrix
 
@@ -75,7 +75,7 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`length`, :f
 
 .. c:namespace:: std.process
 
-Module entries: :func:`exec`, :func:`getEnv`, :func:`readback`, :func:`system`
+Module entries: :func:`currentProcessPath`, :func:`exec`, :func:`getEnv`, :func:`readback`, :func:`system`
 
 .. rubric:: std.range.iota
 
@@ -99,7 +99,7 @@ Module entries: :class:`SocketError`, :func:`connect`, :func:`errnoStr`, :class:
 
 .. c:namespace:: std.stdio
 
-Module entries: :func:`byLine`, :func:`print`
+Module entries: :func:`print`
 
 .. rubric:: std.stream
 

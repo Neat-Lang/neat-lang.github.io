@@ -82,6 +82,27 @@ Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`,
 
     TODO: document
 
+    Example::
+
+        // quick xorshift rng
+        mut long a = 23;
+        int rand() {
+            mut long x = a;
+            x ^= x << 13;
+            x ^= x >> 7;
+            x ^= x << 17;
+            a = x;
+            return cast(int) x;
+        }
+        auto randomArray = [rand % i for i in 1 .. 10_000];
+        auto sortedArray = randomArray.sort((a, b) => a < b);
+        assert(sortedArray.length == randomArray.length);
+        // quick checksum
+        assert([sum a for a in randomArray] == [sum a for a in sortedArray]);
+        for (i in 0 .. sortedArray.length - 1) {
+            assert(sortedArray[i] <= sortedArray[i + 1]);
+        }
+
 .. function:: splitter(range, element)
 
     `auto splitter(R, E)(R range, E element)`

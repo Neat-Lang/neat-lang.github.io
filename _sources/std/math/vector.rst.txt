@@ -22,13 +22,13 @@ Module entries: :func:`angle`, :func:`cross`, :func:`length`, :func:`length`, :f
 
 .. function:: length(v)
 
-    `float length(vec2f v)`
+    `float length(vec3f v)`
 
     Return the length of the vector.
 
 .. function:: length(v)
 
-    `float length(vec3f v)`
+    `float length(vec2f v)`
 
     Return the length of the vector.
 
