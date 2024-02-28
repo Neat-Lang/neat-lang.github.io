@@ -131,6 +131,11 @@ compiler will select a type-appropriate default representation. For class and st
 <div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;$remaining bottles of beer on the wall.&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+<p>As in Python, expressions with a trailing <code class="code docutils literal notranslate"><span class="pre">=</span></code> are quoted in the output:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;$(a + b =)&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;a + b = 5&quot;</span>
+</pre></div>
+</div>
 <p><code class="code docutils literal notranslate"><span class="pre">`Hello</span> <span class="pre">World`</span></code> is a literal string. Unlike regular string literals,
 escape sequences and format string quotes are not processed.</p>
 <p><code class="code docutils literal notranslate"><span class="pre">1.2</span></code> is a <code class="code docutils literal notranslate"><span class="pre">double</span></code> literal. <code class="code docutils literal notranslate"><span class="pre">1.2f</span></code> is a <code class="code docutils literal notranslate"><span class="pre">float</span></code> literal.</p>
