@@ -168,6 +168,29 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Example:</p>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GccArgParser</span><span class="p">;</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">optionalArg</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">hidden</span><span class="p">);</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--test&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">Error</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;--test&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">Error</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">parser</span><span class="p">.</span><span class="n">parse</span><span class="p">([</span><span class="s">&quot;--test=2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="k">case</span><span class="p">(</span><span class="n">Error</span><span class="p">:</span><span class="w"> </span><span class="k">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">)))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;test&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;2&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">assert</span><span class="p">(</span><span class="n">remaining</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="ArgParser.add">
 <span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ArgParser.add" title="Link to this definition">¶</a></dt>

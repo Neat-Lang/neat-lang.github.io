@@ -15,7 +15,7 @@ Standard Library
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`, :func:`zip`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`reverse`, :func:`reversed`, :func:`sort`, :func:`splitter`, :func:`zip`
 
 .. rubric:: std.argparse
 

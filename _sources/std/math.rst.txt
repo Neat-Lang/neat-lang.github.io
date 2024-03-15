@@ -78,7 +78,7 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`asin
     Example::
 
         assert(max(2, 3) == 3);
-        assert(max(-4.5, -5) == -4.5);
+        assert(max(-4.5, -5.0) == -4.5);
 
 .. function:: max(a, b)
 
@@ -107,7 +107,7 @@ Module entries: :func:`abs`, :func:`abs`, :func:`abs`, :func:`acos`, :func:`asin
     Example::
 
         assert(min(2, 3) == 2);
-        assert(min(-4.5, -5) == -5);
+        assert(min(-4.5, -5.0) == -5);
 
 .. function:: min(a, b)
 

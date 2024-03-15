@@ -51,6 +51,11 @@ Module entries: :class:`mat4x4`
 
         Multiply with another matrix.
 
+    .. method:: transform(vec)
+
+        `vec4f transform(vec4f vec)`
+
+
     .. method:: row(r)
 
         `vec4f row(int r)`
@@ -104,3 +109,9 @@ Module entries: :class:`mat4x4`
         `mat4x4 ortho(float left, float right, float bottom_, float top, float near, float far)`
 
         Create an orthogonal projection matrix.
+
+    .. method:: perspective(fov, aspect, near, far)
+
+        `mat4x4 perspective(float fov, float aspect, float near, float far)`
+
+        Create a perspective matrix.

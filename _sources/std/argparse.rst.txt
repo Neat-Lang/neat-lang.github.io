@@ -137,6 +137,29 @@ Module entries: :class:`ArgInfo`, :class:`ArgParser`, :class:`ArgResult`, :class
             assert(remaining.empty);
         }
 
+    Example::
+
+        auto parser = new GccArgParser;
+        parser.add("test", :optionalArg, :hidden);
+        with (parser.parse(["foo", "--test"])
+            .case(Error: assert(false)))
+        {
+            assert(get("test") == "");
+            assert(remaining == ["foo"]);
+        }
+        with (parser.parse(["--test", "2", "foo"])
+            .case(Error: assert(false)))
+        {
+            assert(get("test") == "");
+            assert(remaining == ["2", "foo"]);
+        }
+        with (parser.parse(["--test=2", "foo"])
+            .case(Error: assert(false)))
+        {
+            assert(get("test") == "2");
+            assert(remaining == ["foo"]);
+        }
+
     .. method:: add(shortname, longname, kind, description)
 
         `void add(string shortname, string longname, ArgKind kind, (string | :hidden) description)`

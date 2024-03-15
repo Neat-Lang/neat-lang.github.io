@@ -85,6 +85,12 @@ copy-pasted from the OpenGL manpages.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="mat4x4.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.transform" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">vec4f</span> <span class="pre">transform(vec4f</span> <span class="pre">vec)</span></code></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="mat4x4.row">
 <span class="sig-name descname"><span class="pre">row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.row" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">vec4f</span> <span class="pre">row(int</span> <span class="pre">r)</span></code></p>
@@ -145,6 +151,13 @@ copy-pasted from the OpenGL manpages.</p>
 <span class="sig-name descname"><span class="pre">ortho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.ortho" title="Link to this definition">¶</a></dt>
 <dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">ortho(float</span> <span class="pre">left,</span> <span class="pre">float</span> <span class="pre">right,</span> <span class="pre">float</span> <span class="pre">bottom_,</span> <span class="pre">float</span> <span class="pre">top,</span> <span class="pre">float</span> <span class="pre">near,</span> <span class="pre">float</span> <span class="pre">far)</span></code></p>
 <p>Create an orthogonal projection matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mat4x4.perspective">
+<span class="sig-name descname"><span class="pre">perspective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fov</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aspect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">near</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">far</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mat4x4.perspective" title="Link to this definition">¶</a></dt>
+<dd><p><code class="code docutils literal notranslate"><span class="pre">mat4x4</span> <span class="pre">perspective(float</span> <span class="pre">fov,</span> <span class="pre">float</span> <span class="pre">aspect,</span> <span class="pre">float</span> <span class="pre">near,</span> <span class="pre">float</span> <span class="pre">far)</span></code></p>
+<p>Create a perspective matrix.</p>
 </dd></dl>
 
 </dd></dl>

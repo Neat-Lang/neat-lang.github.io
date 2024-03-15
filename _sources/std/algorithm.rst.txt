@@ -6,7 +6,7 @@ std.algorithm
 
 .. c:namespace:: std.algorithm
 
-Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`sort`, :func:`splitter`, :func:`zip`
+Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`, :func:`filter`, :func:`map`, :func:`reverse`, :func:`reversed`, :func:`sort`, :func:`splitter`, :func:`zip`
 
 .. function:: all(left, right)
 
@@ -75,6 +75,28 @@ Module entries: :func:`all`, :func:`any`, :func:`array`, :func:`cumulativeFold`,
 
         assert(a.length == 5);
         assert(a.array == [0, 2, 4, 6, 8]);
+
+.. function:: reverse(arr)
+
+    `void reverse(T)(T[] arr)`
+
+    Reverse a mutable array in place.
+
+    Example::
+
+        int mut[] array = [2, 3, 4].dup;
+        array.reverse;
+        assert(array == [4, 3, 2]);
+
+.. function:: reversed(arr)
+
+    `T[] reversed(T)(T[] arr)`
+
+    Given an array, return the reverse.
+
+    Example::
+
+        assert([2, 3, 4].reversed == [4, 3, 2]);
 
 .. function:: sort(array, smaller)
 
