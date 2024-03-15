@@ -451,7 +451,7 @@ but doesn’t particularly care about its truth value.</p>
 <section id="with-block">
 <h3>With block<a class="headerlink" href="#with-block" title="Link to this heading">¶</a></h3>
 <p>The <code class="code docutils literal notranslate"><span class="pre">with</span></code> block takes an expression and makes its fields implicitly accessible:</p>
-<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<div class="highlight-d notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">=</span><span class="mi">3</span><span class="p">);</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="k">with</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
