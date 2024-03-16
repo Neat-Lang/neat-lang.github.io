@@ -138,6 +138,22 @@ compiler will select a type-appropriate default representation. For class and st
 </div>
 <p><code class="code docutils literal notranslate"><span class="pre">`Hello</span> <span class="pre">World`</span></code> is a literal string. Unlike regular string literals,
 escape sequences and format string quotes are not processed.</p>
+<p>A backslash in a string starts an escape sequence.
+These escape sequences are supported in strings:</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">\r</span></code>: carriage return</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\n</span></code>: newline</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\t</span></code>: tab</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\&quot;</span></code>: double quote</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\'</span></code>: single quote</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\\</span></code>: backslash</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\0</span></code>: null character</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\x##</span></code>: two-digit hexadecimal character code (e.g., <code class="code docutils literal notranslate"><span class="pre">\x0A</span></code> for newline)</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">\$</span></code>: dollar sign</p></li>
+</ul>
+<p>Additionally, as in Rust, a backslash followed by a newline character (<code class="code docutils literal notranslate"><span class="pre">\n</span></code> or <code class="code docutils literal notranslate"><span class="pre">\r\n</span></code>) indicates
+a line continuation. The newline and all succeeding whitespace are removed. Note that as <em>opposed</em>
+to Rust, newline characters beyond the first are not skipped!</p>
 <p><code class="code docutils literal notranslate"><span class="pre">1.2</span></code> is a <code class="code docutils literal notranslate"><span class="pre">double</span></code> literal. <code class="code docutils literal notranslate"><span class="pre">1.2f</span></code> is a <code class="code docutils literal notranslate"><span class="pre">float</span></code> literal.</p>
 </section>
 <section id="arithmetic">
